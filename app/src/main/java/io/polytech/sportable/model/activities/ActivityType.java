@@ -1,4 +1,4 @@
-package io.polytech.sportable.model;
+package io.polytech.sportable.model.activities;
 
 public enum ActivityType {
     Walk,
