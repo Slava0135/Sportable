@@ -1,7 +1,5 @@
 package io.polytech.sportable.models.practice;
 
-import io.polytech.sportable.persistence.UserData;
-
 public class PracticeRecord {
 
     final float distance, speed, calories;
