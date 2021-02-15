@@ -9,17 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportable">
-        <activity android:name=".settings.UserInfoActivity"></activity>
-        <activity android:name=".freerun.FreeRunStatActivity" />
-        <activity android:name=".freerun.FreeRunActivity" />
+        <service
+            android:name=".services.PracticeCollector"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".activitites.settings.UserInfoActivity" />
+        <activity android:name=".activitites.freerun.FreeRunStatActivity" />
+        <activity android:name=".activitites.freerun.FreeRunActivity" />
         <activity
-            android:name=".StatActivity"
+            android:name=".activitites.StatActivity"
             android:label="@string/title_activity_stat"
             android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name=".activitites.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activitites.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,14 +1,16 @@
-package io.polytech.sportable;
+package io.polytech.sportable.activitites.freerun;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import io.polytech.sportable.R;
+
+public class FreeRunActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_free_run);
     }
 }

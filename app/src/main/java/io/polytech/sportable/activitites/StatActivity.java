@@ -1,4 +1,4 @@
-package io.polytech.sportable;
+package io.polytech.sportable.activitites;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+
+import io.polytech.sportable.R;
 
 public class StatActivity extends AppCompatActivity {
 
