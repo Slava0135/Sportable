@@ -1,6 +1,6 @@
-package io.polytech.sportable.model;
+package io.polytech.sportable.persistence;
 
-import io.polytech.sportable.model.activities.ActivityRecord;
+import io.polytech.sportable.models.practice.PracticeRecord;
 
 public class UserData {
 
@@ -16,9 +16,5 @@ public class UserData {
     }
 
     static void saveUserData(UserData data) { }
-
-    public float calculateCalories(ActivityRecord record) {
-        return 0f;
-    }
 
 }
