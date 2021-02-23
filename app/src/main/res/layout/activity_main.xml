@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FF0202"
-        android:text="Settings"
+        android:text="@string/settings_button_text"
+        app:layout_constraintStart_toEndOf="@id/stats_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#FFFFFF" />
@@ -20,8 +21,10 @@
         android:id="@+id/stats_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#FF0000"
-        android:text="Statistics"
+        android:text="@string/statistics_button_text"
+        app:layout_constraintEnd_toStartOf="@id/settings_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +36,7 @@
         android:layout_marginTop="488dp"
         android:layout_marginEnd="159dp"
         android:backgroundTint="#FF0000"
-        android:text="Freerun"
+        android:text="@string/freerun_button_freerun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
