@@ -1,35 +1,40 @@
 package io.polytech.sportable.persistence;
 
-import java.util.Date;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class PracticeResult {
+import io.polytech.sportable.models.practice.PracticeType;
 
-    private final float distance;
-    private final float calories;
-    private final String time;
-    private final long timeInMillies; //передаётся в миллисекундах и будет использоваться для удобного расчёта диаграмм
+@Entity
+abstract public class PracticeResult {
 
-    public PracticeResult(float distance, float calories, long time) {
+    @PrimaryKey
+    @ColumnInfo(name = "date")
+    public final long date;
+
+    @ColumnInfo(name = "distance")
+    public final float distance;
+
+    @ColumnInfo(name = "calories")
+    public final float calories;
+
+    @ColumnInfo(name = "time")
+    public final long time;
+
+    @ColumnInfo(name = "practiceType")
+    public final PracticeType practiceType;
+
+    public PracticeResult(float distance, float calories, long time, PracticeType type) {
         this.distance = distance;
         this.calories = calories;
-        this.timeInMillies = time;
-        this.time = String.format("%s:%s:%s", time / 3600000, time / 60000, time / 1000);
-    }
-
-    public float getDistance() {
-        return distance;
-    }
-
-    public float getCalories() {
-        return calories;
-    }
-
-    public long getTimeInMillies() {
-        return timeInMillies;
+        this.time = time;
+        this.practiceType = type;
+        date = System.currentTimeMillis();
     }
 
     public String getTime() {
-        return time;
+        return String.format("%s:%s:%s", time / 3600000, time / 60000, time / 1000);
     }
 }
 
