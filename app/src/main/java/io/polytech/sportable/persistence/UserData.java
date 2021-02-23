@@ -1,7 +1,5 @@
 package io.polytech.sportable.persistence;
 
-import io.polytech.sportable.models.practice.PracticeRecord;
-
 public class UserData {
 
     private final float weight, height;
