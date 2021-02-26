@@ -3,11 +3,13 @@ package io.polytech.sportable.persistence;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
 import io.polytech.sportable.models.practice.PracticeType;
 
 @Entity
-abstract public class PracticeResult {
+public class PracticeResult {
 
     @PrimaryKey
     @ColumnInfo(name = "date")
@@ -22,15 +24,17 @@ abstract public class PracticeResult {
     @ColumnInfo(name = "time")
     public final long time;
 
+    @TypeConverters({PracticeTypeConverter.class})
     @ColumnInfo(name = "practiceType")
     public final PracticeType practiceType;
 
-    public PracticeResult(float distance, float calories, long time, PracticeType type) {
+    public PracticeResult(long date, float distance, float calories, long time, PracticeType practiceType) {
+        this.date = date;
         this.distance = distance;
         this.calories = calories;
         this.time = time;
-        this.practiceType = type;
-        date = System.currentTimeMillis();
+        this.practiceType = practiceType;
+        //date = System.currentTimeMillis();
     }
 
     public String getTime() {
