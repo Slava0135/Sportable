@@ -1,7 +1,6 @@
 package io.polytech.sportable.activitites.settings;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
