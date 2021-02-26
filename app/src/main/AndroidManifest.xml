@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -12,7 +12,9 @@
         <service
             android:name=".services.PracticeCollector"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true">
+
+        </service>
 
         <activity android:name=".activitites.settings.UserInfoActivity" />
         <activity android:name=".activitites.freerun.FreeRunStatActivity" />
