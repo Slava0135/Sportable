@@ -15,7 +15,8 @@
         app:layout_constraintStart_toEndOf="@id/stats_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FFFFFF" />
+        app:strokeColor="#FFFFFF"
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/stats_button"

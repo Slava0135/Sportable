@@ -1,11 +1,16 @@
 package io.polytech.sportable.activitites.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activitites.MainActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -23,6 +28,16 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    public void changeProfile(View view) {
+        Toast.makeText(this, "Почему я здесь?", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(SettingsActivity.this, ChangeProfile.class);
+        startActivity(intent);
+    }
+
+    public void clearStatistics(View view) {
+        // удаляем всю статистику или типа того
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
