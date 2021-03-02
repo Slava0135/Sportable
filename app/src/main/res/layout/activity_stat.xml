@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitites.StatActivity">
+    tools:context=".activitites.statistics.StatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -30,23 +30,24 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
         <com.google.android.material.tabs.TabLayout
+            android:id = "@+id/main_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total" />
+                android:text="@string/total" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Activity" />
+                android:text="@string/certain_activity" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Day" />
+                android:text="@string/certain_day" />
 
         </com.google.android.material.tabs.TabLayout>
 

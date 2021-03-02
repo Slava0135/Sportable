@@ -8,6 +8,7 @@ import android.view.View;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activitites.settings.SettingsActivity;
+import io.polytech.sportable.activitites.statistics.StatActivity;
 
 public class MainActivity extends AppCompatActivity {
 

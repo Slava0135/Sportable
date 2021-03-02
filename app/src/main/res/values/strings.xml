@@ -28,4 +28,7 @@
     <string name="changeAge">Поменять возраст</string>
     <string name="end">закончить все это</string>
     <string name="clearStatistics">Очистить статистику</string>
+    <string name="total">Total</string>
+    <string name="certain_activity">Certain Activity</string>
+    <string name="certain_day">Certain Day</string>
 </resources>
