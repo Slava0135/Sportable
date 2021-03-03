@@ -20,11 +20,5 @@ public class StatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stat);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(
-                new Adapter(getSupportFragmentManager(), StatActivity.this)
-        );
-        TabLayout tabLayout = findViewById(R.id.main_tabs);
-        tabLayout.setupWithViewPager(viewPager);
     }
 }
