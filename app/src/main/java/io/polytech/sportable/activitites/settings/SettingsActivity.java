@@ -31,7 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void changeProfile(View view) {
-        Toast.makeText(this, "Почему я здесь?", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Вы действительно хотите поменять профиль?", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(SettingsActivity.this, ChangeProfile.class);
         startActivity(intent);
     }
