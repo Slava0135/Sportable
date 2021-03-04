@@ -34,7 +34,6 @@ public class ChangeProfile extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        /*
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -78,7 +77,6 @@ public class ChangeProfile extends AppCompatActivity {
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
 
-         */
     }
 
     // Меняем имя
