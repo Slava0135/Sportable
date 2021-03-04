@@ -20,7 +20,7 @@
         <activity android:name=".activities.freerun.FreeRunStatActivity" />
         <activity android:name=".activities.freerun.FreeRunActivity" />
         <activity
-            android:name=".activities.StatActivity"
+            android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"
             android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity

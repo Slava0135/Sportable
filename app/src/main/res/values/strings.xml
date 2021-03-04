@@ -34,5 +34,8 @@
     <string name="total">total</string>
     <string name="certain_activity">certain activity</string>
     <string name="certain_day">certain day</string>
+    <string name="changeSex">поменять пол</string>
+    <string name="changeWeight">поменять вес</string>
+    <string name="saveAndQuit">выйти</string>
 
 </resources>

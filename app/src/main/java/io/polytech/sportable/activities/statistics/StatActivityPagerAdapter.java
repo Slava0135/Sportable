@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites.statistics;
+package io.polytech.sportable.activities.statistics;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
