@@ -30,5 +30,7 @@
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="putName">Введите имя</string>
+    <string name="map_button_map" />
+    <string name="map">map</string>
 
 </resources>

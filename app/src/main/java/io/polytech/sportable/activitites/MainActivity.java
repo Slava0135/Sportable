@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activitites.freerun.FreeRunActivity;
 import io.polytech.sportable.activitites.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,4 +26,28 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
-}
+
+    public void onMyButtonClick(View view) {
+        switch (view.getId()) {
+            case R.id.stats_button:
+                Intent stats = new Intent(MainActivity.this, StatActivity.class);
+                startActivity(stats);
+                break;
+
+            case R.id.settings_button:
+                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settings);
+                break;
+
+            case R.id.map_button:
+                Intent map = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(map);
+                break;
+
+            case R.id.freerun_button:
+                Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
+                startActivity(freerun);
+                break;
+        }
+        }
+    }
