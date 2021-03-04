@@ -1,12 +1,9 @@
-package io.polytech.sportable.activitites.settings;
+package io.polytech.sportable.activities.settings;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
@@ -14,8 +11,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.MainActivity;
-import io.polytech.sportable.persistence.UserData;
 
 public class ChangeProfile extends AppCompatActivity {
 
@@ -33,11 +28,13 @@ public class ChangeProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_profile);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        /*
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -81,36 +78,40 @@ public class ChangeProfile extends AppCompatActivity {
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
 
+         */
     }
 
     // Меняем имя
     public void changeName(View view) {
         //UserData.setName(newName);
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем $eк$
     public void changeSex(View view) {
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем рост
     public void changeHeight(View view) {
         //UserData.setName(newName);
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем вес
     public void changeWeight(View view) {
         //UserData.setName(newName);
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем возраст
     public void changeAge(View view) {
-
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     public void saveAndQuit(View view) {
-        Toast.makeText(this,
-                "Вы действительно хотите бегать!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(ChangeProfile.this, MainActivity.class);
+        Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
         startActivity(intent);
     }
 }

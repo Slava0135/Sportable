@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites.settings;
+package io.polytech.sportable.activities.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.MainActivity;
+import io.polytech.sportable.activities.MainActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -18,9 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
-        if (savedInstanceState == null) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.settings, new SettingsFragment()).commit();
-        }
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -28,19 +26,18 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void changeProfile(View view) {
-        Toast.makeText(this,
-                "Вы действительно хотите поменять профиль!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Вы будете менять профиль!", Toast.LENGTH_SHORT).show();
         Intent intentChangeProfile = new Intent(SettingsActivity.this, ChangeProfile.class);
         startActivity(intentChangeProfile);
     }
 
     public void clearStatistics(View view) {
         // удаляем всю статистику
+        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
     public void saveAndQuit(View view) {
-        Toast.makeText(this,
-                "Вы действительно хотите бегать!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Вы выходите из настроек!", Toast.LENGTH_SHORT).show();
         Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(intentQuit);
     }

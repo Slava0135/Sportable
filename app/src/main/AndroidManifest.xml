@@ -16,23 +16,28 @@
 
         </service>
 
-        <activity android:name=".activitites.settings.UserInfoActivity" />
-        <activity android:name=".activitites.freerun.FreeRunStatActivity" />
-        <activity android:name=".activitites.freerun.FreeRunActivity" />
+        <activity android:name=".activities.settings.UserInfoActivity" />
+        <activity android:name=".activities.freerun.FreeRunStatActivity" />
+        <activity android:name=".activities.freerun.FreeRunActivity" />
         <activity
-            android:name=".activitites.StatActivity"
+            android:name=".activities.StatActivity"
             android:label="@string/title_activity_stat"
             android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity
-            android:name=".activitites.settings.SettingsActivity"
+            android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".activitites.MainActivity">
+        <activity android:name=".activities.MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.settings.ChangeProfile" />
+
+
     </application>
 
 </manifest>

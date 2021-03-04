@@ -1,13 +1,14 @@
-package io.polytech.sportable.activitites;
+package io.polytech.sportable.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.settings.SettingsActivity;
+import io.polytech.sportable.activities.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        Toast.makeText(this, "Вы будете настраивать!", Toast.LENGTH_SHORT).show();
         Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intentSettings);
     }

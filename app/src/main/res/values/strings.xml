@@ -32,5 +32,6 @@
     <string name="putName">Введите имя</string>
     <string name="changeSex">изменить пол</string>
     <string name="SaveAndQuit">Выйти</string>
+    <string name="changeWeight">изменить вес</string>
 
 </resources>
