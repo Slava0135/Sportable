@@ -18,9 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
-        if (savedInstanceState == null) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.settings, new SettingsFragment()).commit();
-        }
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -29,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void changeProfile(View view) {
         Toast.makeText(this,
-                "Вы действительно хотите поменять профиль!", Toast.LENGTH_SHORT).show();
+                "Вы действительно хотите изменить профиль?", Toast.LENGTH_SHORT).show();
         Intent intentChangeProfile = new Intent(SettingsActivity.this, ChangeProfile.class);
         startActivity(intentChangeProfile);
     }
@@ -40,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void saveAndQuit(View view) {
         Toast.makeText(this,
-                "Вы действительно хотите бегать!", Toast.LENGTH_SHORT).show();
+                "Вы действительно хотите бегать?", Toast.LENGTH_SHORT).show();
         Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(intentQuit);
     }
