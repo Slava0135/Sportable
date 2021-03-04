@@ -17,8 +17,8 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_stat">StatActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <!--<string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>-->
     <string name="statistics_button_text">Statistics</string>
     <string name="settings_button_text">Settings</string>
     <string name="freerun_button_freerun">Freerun</string>
@@ -30,5 +30,11 @@
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="putName">Введите имя</string>
+    <string name="text_tab1">total</string>
+    <string name="text_tab2">certain activity</string>
+    <string name="text_tab3">certain day</string>
+    <string name="total">total</string>
+    <string name="certain_activity">certain activity</string>
+    <string name="certain_day">certain day</string>
 
 </resources>
