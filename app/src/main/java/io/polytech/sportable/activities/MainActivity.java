@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activities.settings.SettingsActivity;
+import io.polytech.sportable.activitities.settings.SettingsActivity;
+import io.polytech.sportable.activitities.statistics.StatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
