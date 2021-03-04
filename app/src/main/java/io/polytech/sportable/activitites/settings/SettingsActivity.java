@@ -19,10 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.settings, new SettingsFragment())
-                    .commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.settings, new SettingsFragment()).commit();
         }
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -31,13 +28,21 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void changeProfile(View view) {
-        Toast.makeText(this, "Вы действительно хотите поменять профиль?", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(SettingsActivity.this, ChangeProfile.class);
-        startActivity(intent);
+        Toast.makeText(this,
+                "Вы действительно хотите поменять профиль!", Toast.LENGTH_SHORT).show();
+        Intent intentChangeProfile = new Intent(SettingsActivity.this, ChangeProfile.class);
+        startActivity(intentChangeProfile);
     }
 
     public void clearStatistics(View view) {
-        // удаляем всю статистику или типа того
+        // удаляем всю статистику
+    }
+
+    public void saveAndQuit(View view) {
+        Toast.makeText(this,
+                "Вы действительно хотите бегать!", Toast.LENGTH_SHORT).show();
+        Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
+        startActivity(intentQuit);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

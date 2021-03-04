@@ -1,68 +1,71 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/change_profile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/name_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="changeName"
+        android:text="@string/changeName"
+        android:textColor="#000000"/>
 
-        <Button
-            android:id="@+id/name_button"
-            android:layout_width="300dp"
-            android:layout_height="90dp"
-            android:backgroundTint="#FF018786"
-            android:onClick="changeName"
-            android:text="@string/changeName"
-            android:textColor="#000000"
-            android:translationX="55dp"
-            android:translationY="60dp" />
+    <Button
+        android:id="@+id/sex_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="changeSex"
+        android:text="@string/changeSex"
+        android:textColor="#000000"/>
 
-        <Button
-            android:id="@+id/height_button"
-            android:layout_width="300dp"
-            android:layout_height="90dp"
-            android:backgroundTint="#FF018786"
-            android:onClick="changeHeight"
-            android:text="@string/changeHeight"
-            android:textColor="#000000"
-            android:translationX="55dp"
-            android:translationY="190dp" />
+    <Button
+        android:id="@+id/height_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="270dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="changeHeight"
+        android:text="@string/changeHeight"
+        android:textColor="#000000" />
 
-        <Button
-            android:id="@+id/weight_button"
-            android:layout_width="300dp"
-            android:layout_height="90dp"
-            android:backgroundTint="#FF018786"
-            android:onClick="changeWeight"
-            android:text="@string/changeWeigth"
-            android:textColor="#000000"
-            android:translationX="55dp"
-            android:translationY="320dp" />
+    <Button
+        android:id="@+id/weight_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="380dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="changeWeight"
+        android:text="@string/changeWeigth"
+        android:textColor="#000000" />
 
-        <Button
-            android:id="@+id/age_button"
-            android:layout_width="300dp"
-            android:layout_height="90dp"
-            android:backgroundTint="#FF018786"
-            android:onClick="changeAge"
-            android:text="@string/changeAge"
-            android:textColor="#000000"
-            android:translationX="55dp"
-            android:translationY="450dp" />
+    <Button
+        android:id="@+id/age_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="490dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="changeAge"
+        android:text="@string/changeAge"
+        android:textColor="#000000"/>
 
-        <Button
-            android:id="@+id/kill_button"
-            android:layout_width="300dp"
-            android:layout_height="90dp"
-            android:backgroundTint="#FF018786"
-            android:onClick="saveAndQuit"
-            android:text="@string/end"
-            android:textColor="#000000"
-            android:translationX="55dp"
-            android:translationY="580dp" />
-
-    </FrameLayout>
+    <Button
+        android:id="@+id/kill_button"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="-300dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#F16D26"
+        android:onClick="saveAndQuit"
+        android:text="@string/end"
+        android:textColor="#000000" />
 
 </LinearLayout>

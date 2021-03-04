@@ -30,5 +30,7 @@
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="putName">Введите имя</string>
+    <string name="changeSex">изменить пол</string>
+    <string name="SaveAndQuit">Выйти</string>
 
 </resources>
