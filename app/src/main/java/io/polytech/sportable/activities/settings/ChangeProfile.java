@@ -85,7 +85,7 @@ public class ChangeProfile extends AppCompatActivity {
         Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
 
-    // Меняем $eк$
+    // Меняем пол
     public void changeSex(View view) {
         Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
     }
