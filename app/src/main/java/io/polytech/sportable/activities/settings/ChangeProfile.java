@@ -1,9 +1,12 @@
 package io.polytech.sportable.activities.settings;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.*;
 
@@ -33,7 +36,7 @@ public class ChangeProfile extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
+/*
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -76,13 +79,33 @@ public class ChangeProfile extends AppCompatActivity {
         weight_button.setOnClickListener(onClickListener);
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
-
+*/
     }
 
     // Меняем имя
     public void changeName(View view) {
         //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("МЕНЯЕМ ИМЯ");
+        alert.setMessage("имя любимое моё твоё именно");
+
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable value = input.getText();
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+
+        alert.show();
     }
 
     // Меняем пол
