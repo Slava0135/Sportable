@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites.settings;
+package io.polytech.sportable.activitities.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.MainActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 

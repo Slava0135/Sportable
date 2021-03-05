@@ -16,17 +16,17 @@
 
         </service>
 
-        <activity android:name=".activitites.settings.UserInfoActivity" />
-        <activity android:name=".activitites.freerun.FreeRunStatActivity" />
-        <activity android:name=".activitites.freerun.FreeRunActivity" />
+        <activity android:name=".activitities.settings.UserInfoActivity" />
+        <activity android:name=".activitities.freerun.FreeRunStatActivity" />
+        <activity android:name=".activitities.freerun.FreeRunActivity" />
         <activity
-            android:name=".activitites.StatActivity"
+            android:name=".activitities.StatActivity"
             android:label="@string/title_activity_stat"
             android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity
-            android:name=".activitites.settings.SettingsActivity"
+            android:name=".activitities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".activitites.MainActivity">
+        <activity android:name=".activitities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

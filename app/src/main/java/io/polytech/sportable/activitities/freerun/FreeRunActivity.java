@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites.freerun;
+package io.polytech.sportable.activitities.freerun;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,8 +13,6 @@ import java.util.Locale;
 import java.util.Random;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.MainActivity;
-import io.polytech.sportable.activitites.StatActivity;
 
 public class FreeRunActivity extends AppCompatActivity {
     float distance = 0.0f;

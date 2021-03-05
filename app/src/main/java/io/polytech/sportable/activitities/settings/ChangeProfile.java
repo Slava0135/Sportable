@@ -1,11 +1,8 @@
-package io.polytech.sportable.activitites.settings;
+package io.polytech.sportable.activitities.settings;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
@@ -13,7 +10,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.persistence.UserData;
 
 public class ChangeProfile extends AppCompatActivity {
 

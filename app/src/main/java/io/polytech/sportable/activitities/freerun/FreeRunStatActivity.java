@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites.freerun;
+package io.polytech.sportable.activitities.freerun;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.MainActivity;
-import io.polytech.sportable.activitites.StatActivity;
+import io.polytech.sportable.activitities.MainActivity;
+import io.polytech.sportable.activitities.StatActivity;
 
 public class FreeRunStatActivity extends AppCompatActivity {
 

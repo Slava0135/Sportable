@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitites;
+package io.polytech.sportable.activitities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activitites.freerun.FreeRunActivity;
-import io.polytech.sportable.activitites.settings.SettingsActivity;
+import io.polytech.sportable.activitities.freerun.FreeRunActivity;
+import io.polytech.sportable.activitities.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
