@@ -10,7 +10,7 @@ import io.polytech.sportable.R;
 import io.polytech.sportable.activities.statistics.StatActivity;
 import io.polytech.sportable.activities.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
-
+//Удалить этот комментарий
 public class MainActivity extends AppCompatActivity {
 
     @Override
