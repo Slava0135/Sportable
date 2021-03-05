@@ -4,6 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activities.freerun.FreeRunActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="408dp"
+        android:layout_height="733dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="46dp"
+                android:fontFamily="sans-serif"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="Время:"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/textKilometers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="46dp"
+                android:fontFamily="sans-serif"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="Расстояние:"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/textCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="sans-serif"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="Калории:"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/textSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="53dp"
+                android:fontFamily="sans-serif"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="Скорость:"
+                android:textSize="28sp" />
+
+            <FrameLayout
+                android:layout_width="197dp"
+                android:layout_height="377dp">
+
+                <Button
+                    android:id="@+id/buttonPause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="205dp"
+                    android:background="#4CAF50"
+                    android:text="pause"
+                    android:textColor="#FFFFFF"
+                    app:iconTint="#FF9800"
+                    app:layout_constraintTop_toBottomOf="@+id/textTime"
+                    app:rippleColor="#4CAF50" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="211dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/valueTime"
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="46dp"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/valueDistance"
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="46dp"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/valueCalories"
+                android:layout_width="188dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="55dp"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/valueSpeed"
+                android:layout_width="189dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="38dp"
+                android:textSize="28sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="377dp"
+                android:layout_marginTop="6dp">
+
+                <Button
+                    android:id="@+id/buttonStop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="200dp"
+                    android:text="stop"
+                    app:iconTint="#F44336"
+                    app:rippleColor="#4CAF50" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

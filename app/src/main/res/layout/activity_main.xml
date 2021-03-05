@@ -12,12 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FF0202"
+        android:onClick="onMyButtonClick"
         android:text="@string/settings_button_text"
-        app:layout_constraintStart_toEndOf="@id/stats_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stats_button"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FFFFFF"
-        android:onClick="onClick"/>
+        app:strokeColor="#FFFFFF" />
 
     <Button
         android:id="@+id/stats_button"
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:backgroundTint="#FF0000"
+        android:onClick="onMyButtonClick"
         android:text="@string/statistics_button_text"
         app:layout_constraintEnd_toStartOf="@id/settings_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +36,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="492dp"
         android:layout_marginEnd="159dp"
         android:backgroundTint="#FF0000"
+        android:onClick="onMyButtonClick"
         android:text="@string/freerun_button_freerun"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/map_button"
+        android:layout_width="99dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="424dp"
+        android:layout_marginEnd="161dp"
+        android:backgroundTint="#FF0000"
+        android:onClick="onMyButtonClick"
+        android:text="@string/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -28,6 +28,8 @@
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="putName">Введите имя</string>
+    <string name="map_button_map" />
+    <string name="map">map</string>
     <string name="text_tab1">total</string>
     <string name="text_tab2">certain activity</string>
     <string name="text_tab3">certain day</string>
