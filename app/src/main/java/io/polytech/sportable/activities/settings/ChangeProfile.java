@@ -1,12 +1,11 @@
 package io.polytech.sportable.activities.settings;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.*;
@@ -15,9 +14,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.persistence.UserData;
 
 public class ChangeProfile extends AppCompatActivity {
+
+    public static final String NAME = "Name";
+    private static final Float WEIGHT = null;
+    private static final Float HEIGHT = null;
+    private static final Integer YEAR = null;
+    private static final String SEX = "M";
 
     Button name_button;
     Button sex_button;
@@ -29,6 +33,8 @@ public class ChangeProfile extends AppCompatActivity {
     final Context context = this;
     private TextView final_text;
 
+    SharedPreferences settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,13 @@ public class ChangeProfile extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
+
+        TextView nameView = (TextView) findViewById(R.id.nameView);
+        String name = settings.getString(NAME,"не определено");
+        nameView.setText(name);
+
+        /*
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -81,6 +94,7 @@ public class ChangeProfile extends AppCompatActivity {
         weight_button.setOnClickListener(onClickListener);
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
+         */
     }
 
     public String newInfo;
@@ -99,8 +113,9 @@ public class ChangeProfile extends AppCompatActivity {
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //Editable value = input.getText();
                 newInfo  = input.getText().toString();
+                Toast.makeText(ChangeProfile.this,
+                        "Изменения сохранены :)", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -116,56 +131,57 @@ public class ChangeProfile extends AppCompatActivity {
         return newInfo;
     }
 
+
     // Меняем имя
     public void changeName(View view) {
-        String newName = ch("МЕНЯЕМ ИМЯ", "имя любимое моё твоё именно");
-        //Toast.makeText(this, newName, Toast.LENGTH_SHORT).show();
+        // получаем введенное имя
+        EditText nameBox = (EditText) findViewById(R.id.nameBox);
+        String name = nameBox.getText().toString();
+        // сохраняем его в настройках
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString(NAME, name);
+        prefEditor.apply();
 
-        UserData.setName(newName);
-        Toast.makeText(this,
-                newName + " ?= " + UserData.getName(), Toast.LENGTH_SHORT).show();
+        TextView nameView = (TextView) findViewById(R.id.nameView);
+        nameView.setText(name);
     }
+
+    public void getName(View view) {
+        ((TextView) findViewById(R.id.nameView))
+                .setText(settings.getString(NAME,""));
+    }
+
 
     // Меняем пол
     public void changeSex(View view) {
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
-
-        float newAge = Float.parseFloat(ch("Введите новый возраст", ""));
-        Toast.makeText(this, (int) newAge, Toast.LENGTH_SHORT).show();
-
-        UserData.setYear(newAge);
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем рост
     public void changeHeight(View view) {
-        //UserData.setName(newName);
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
 
-        float newHeight = Float.parseFloat(ch("Введите новый рост", ""));
-        Toast.makeText(this, (int) newHeight, Toast.LENGTH_SHORT).show();
+        /*String newHeight = ch("Введите новый рост",
+                "Рост на данный момент: " + UserData.getHeight());
 
-        UserData.setYear(newHeight);
+        UserData.setYear(Float.parseFloat(newHeight));*/
     }
 
     // Меняем вес
     public void changeWeight(View view) {
-        //UserData.setName(newName);
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
+        /*String newWeight = ch("Введите новый вес",
+                "Вес на данный момент:" + UserData.getWeight());
 
-        float newWeight = Float.parseFloat(ch("Введите новый вес", ""));
-        Toast.makeText(this, (int) newWeight, Toast.LENGTH_SHORT).show();
-
-        UserData.setYear(newWeight);
+        UserData.setYear(Float.parseFloat(newWeight));*/
     }
 
     // Меняем возраст
     public void changeAge(View view) {
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
+        /*String newYear = ch("Введите новый год рождения",
+                "Год рождения на данный момент: " + UserData.getYear());
 
-        float newAge = Float.parseFloat(ch("Введите новый возраст", ""));
-        Toast.makeText(this, (int) newAge, Toast.LENGTH_SHORT).show();
-
-        UserData.setYear(newAge);
+        UserData.setYear(Integer.parseInt(newYear));*/
     }
 
     public void saveAndQuit(View view) {

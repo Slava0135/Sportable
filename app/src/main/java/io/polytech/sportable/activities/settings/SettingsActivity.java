@@ -1,6 +1,7 @@
 package io.polytech.sportable.activities.settings;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -27,7 +28,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void changeProfile(View view) {
         Toast.makeText(this, "Вы будете менять профиль!", Toast.LENGTH_SHORT).show();
-        Intent intentChangeProfile = new Intent(SettingsActivity.this, ChangeProfile.class);
+        Intent intentChangeProfile =
+                new Intent(SettingsActivity.this, ChangeProfile.class);
         startActivity(intentChangeProfile);
     }
 

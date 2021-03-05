@@ -6,33 +6,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.settings.ChangeProfile">
 
+    <EditText
+        android:id="@+id/nameBox"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="195dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:hint="@string/newName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/saveButton" />
     <Button
-        android:id="@+id/name_button"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#FF018786"
-        android:textColor="#000000"
+        android:id="@+id/saveButton"
+        android:layout_marginStart="195dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/changeName"
-        android:onClick="changeName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/sex_button"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="130dp"
-        android:backgroundTint="#FF018786"
-        android:onClick="changeSex"
-        android:text="@string/changeSex"
+        android:backgroundTint="#F16D26"
         android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        android:onClick="changeName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameBox"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Имя:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/nameView"/>
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/saveButton"/>
 
     <Button
         android:id="@+id/height_button"
@@ -81,9 +97,9 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="530dp"
-        android:backgroundTint="#F16D26"
         android:onClick="saveAndQuit"
         android:text="@string/end"
+        android:backgroundTint="#F16D26"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
