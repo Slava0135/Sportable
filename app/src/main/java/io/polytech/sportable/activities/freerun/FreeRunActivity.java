@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
 
 public class FreeRunActivity extends AppCompatActivity {
     float distance = 0.0f;

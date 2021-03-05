@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.MainActivity;
-import io.polytech.sportable.activities.StatActivity;
+import io.polytech.sportable.activities.statistics.StatActivity;
 
 public class FreeRunStatActivity extends AppCompatActivity {
 
