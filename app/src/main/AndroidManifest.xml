@@ -35,7 +35,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.settings.ChangeProfile" />
+        <activity android:name=".activities.settings.ChangeProfile" >
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
 
     </application>
