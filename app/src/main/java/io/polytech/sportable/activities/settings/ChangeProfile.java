@@ -1,12 +1,12 @@
 package io.polytech.sportable.activities.settings;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
+import android.text.InputType;
 import android.view.View;
 import android.widget.*;
 
@@ -16,6 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import io.polytech.sportable.R;
 
 public class ChangeProfile extends AppCompatActivity {
+
+    public static final String NAME = "Name";
+    private static final Float WEIGHT = null;
+    private static final Float HEIGHT = null;
+    private static final Integer YEAR = null;
+    private static final String SEX = "M";
 
     Button name_button;
     Button sex_button;
@@ -27,6 +33,8 @@ public class ChangeProfile extends AppCompatActivity {
     final Context context = this;
     private TextView final_text;
 
+    SharedPreferences settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +44,14 @@ public class ChangeProfile extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-/*
+
+        settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
+
+        TextView nameView = (TextView) findViewById(R.id.nameView);
+        String name = settings.getString(NAME,"не определено");
+        nameView.setText(name);
+
+        /*
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -79,55 +94,94 @@ public class ChangeProfile extends AppCompatActivity {
         weight_button.setOnClickListener(onClickListener);
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
-*/
+         */
     }
+
+    public String newInfo;
+
+    public String ch (String title, String message) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                newInfo  = input.getText().toString();
+                Toast.makeText(ChangeProfile.this,
+                        "Изменения сохранены :)", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(ChangeProfile.this,
+                        "Изменения не были внесены :(", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            }
+        });
+        builder.show();
+
+        return newInfo;
+    }
+
 
     // Меняем имя
     public void changeName(View view) {
-        //UserData.setName(newName);
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        // получаем введенное имя
+        EditText nameBox = (EditText) findViewById(R.id.nameBox);
+        String name = nameBox.getText().toString();
+        // сохраняем его в настройках
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString(NAME, name);
+        prefEditor.apply();
 
-        alert.setTitle("МЕНЯЕМ ИМЯ");
-        alert.setMessage("имя любимое моё твоё именно");
-
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-            }
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-            }
-        });
-
-        alert.show();
+        TextView nameView = (TextView) findViewById(R.id.nameView);
+        nameView.setText(name);
     }
+
+    public void getName(View view) {
+        ((TextView) findViewById(R.id.nameView))
+                .setText(settings.getString(NAME,""));
+    }
+
 
     // Меняем пол
     public void changeSex(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
     }
 
     // Меняем рост
     public void changeHeight(View view) {
-        //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        /*String newHeight = ch("Введите новый рост",
+                "Рост на данный момент: " + UserData.getHeight());
+
+        UserData.setYear(Float.parseFloat(newHeight));*/
     }
 
     // Меняем вес
     public void changeWeight(View view) {
-        //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
+        /*String newWeight = ch("Введите новый вес",
+                "Вес на данный момент:" + UserData.getWeight());
+
+        UserData.setYear(Float.parseFloat(newWeight));*/
     }
 
     // Меняем возраст
     public void changeAge(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
+        /*String newYear = ch("Введите новый год рождения",
+                "Год рождения на данный момент: " + UserData.getYear());
+
+        UserData.setYear(Integer.parseInt(newYear));*/
     }
 
     public void saveAndQuit(View view) {
