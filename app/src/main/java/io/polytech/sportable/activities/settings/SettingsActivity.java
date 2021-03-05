@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitities.settings;
+package io.polytech.sportable.activities.settings;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitities.freerun;
+package io.polytech.sportable.activities.freerun;
 
 import androidx.appcompat.app.AppCompatActivity;
 

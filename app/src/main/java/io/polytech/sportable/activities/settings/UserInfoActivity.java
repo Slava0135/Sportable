@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitities.settings;
+package io.polytech.sportable.activities.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 

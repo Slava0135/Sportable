@@ -1,4 +1,4 @@
-package io.polytech.sportable.activitities;
+package io.polytech.sportable.activities;
 
 import android.os.Bundle;
 
