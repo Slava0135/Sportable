@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.view.View;
 import android.widget.*;
 
@@ -14,6 +15,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.persistence.UserData;
 
 public class ChangeProfile extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class ChangeProfile extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-/*
+
         name_button = (Button) findViewById(R.id.name_button);
         sex_button = (Button) findViewById(R.id.sex_button);
         height_button = (Button) findViewById(R.id.height_button);
@@ -79,55 +81,91 @@ public class ChangeProfile extends AppCompatActivity {
         weight_button.setOnClickListener(onClickListener);
         age_button.setOnClickListener(onClickListener);
         kill_button.setOnClickListener(onClickListener);
-*/
+    }
+
+    public String newInfo;
+
+    public String ch (String title, String message) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Editable value = input.getText();
+                newInfo  = input.getText().toString();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(ChangeProfile.this,
+                        "Изменения не были внесены :(", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            }
+        });
+        builder.show();
+
+        return newInfo;
     }
 
     // Меняем имя
     public void changeName(View view) {
-        //UserData.setName(newName);
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        String newName = ch("МЕНЯЕМ ИМЯ", "имя любимое моё твоё именно");
+        //Toast.makeText(this, newName, Toast.LENGTH_SHORT).show();
 
-        alert.setTitle("МЕНЯЕМ ИМЯ");
-        alert.setMessage("имя любимое моё твоё именно");
-
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-            }
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-            }
-        });
-
-        alert.show();
+        UserData.setName(newName);
+        Toast.makeText(this,
+                newName + " ?= " + UserData.getName(), Toast.LENGTH_SHORT).show();
     }
 
     // Меняем пол
     public void changeSex(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        float newAge = Float.parseFloat(ch("Введите новый возраст", ""));
+        Toast.makeText(this, (int) newAge, Toast.LENGTH_SHORT).show();
+
+        UserData.setYear(newAge);
     }
 
     // Меняем рост
     public void changeHeight(View view) {
         //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        float newHeight = Float.parseFloat(ch("Введите новый рост", ""));
+        Toast.makeText(this, (int) newHeight, Toast.LENGTH_SHORT).show();
+
+        UserData.setYear(newHeight);
     }
 
     // Меняем вес
     public void changeWeight(View view) {
         //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        float newWeight = Float.parseFloat(ch("Введите новый вес", ""));
+        Toast.makeText(this, (int) newWeight, Toast.LENGTH_SHORT).show();
+
+        UserData.setYear(newWeight);
     }
 
     // Меняем возраст
     public void changeAge(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        float newAge = Float.parseFloat(ch("Введите новый возраст", ""));
+        Toast.makeText(this, (int) newAge, Toast.LENGTH_SHORT).show();
+
+        UserData.setYear(newAge);
     }
 
     public void saveAndQuit(View view) {
