@@ -1,5 +1,6 @@
 package io.polytech.sportable.persistence;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface PracticeDao {
 
     @Query("SELECT * from practice_table ORDER BY date DESC")
-    List<PracticeResult> getAll();
+    LiveData<List<PracticeResult>> getAll();
 
     @Query("SELECT * from practice_table WHERE date >= :date ORDER BY date DESC")
     List<PracticeResult> getAllAfter(long date);
@@ -19,5 +20,5 @@ public interface PracticeDao {
     void deleteAll();
 
     @Insert
-    void insertAll(PracticeResult... results);
+    void insert(PracticeResult result);
 }
