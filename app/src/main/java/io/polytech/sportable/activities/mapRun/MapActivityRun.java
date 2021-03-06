@@ -1,4 +1,4 @@
-package io.polytech.sportable.activities;
+package io.polytech.sportable.activities.mapRun;
 
 import android.os.Bundle;
 
@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import io.polytech.sportable.R;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivityRun  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_map_run);
     }
 }
-

@@ -19,6 +19,8 @@
         <activity android:name=".activities.settings.UserInfoActivity" />
         <activity android:name=".activities.freerun.FreeRunStatActivity" />
         <activity android:name=".activities.freerun.FreeRunActivity" />
+        <activity android:name=".activities.mapRun.MapActivity" />
+        <activity android:name=".activities.mapRun.MapActivityRun" />
         <activity
             android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"
