@@ -18,11 +18,11 @@ public class PracticeRepository {
         mAllPractices = mPracticeDao.getAll();
     }
 
-    LiveData<List<PracticeResult>> getAllPractices() {
+    public LiveData<List<PracticeResult>> getAllPractices() {
         return mAllPractices;
     }
 
-    List<PracticeResult> getAllPracticesAfter(long date) {
+    public List<PracticeResult> getAllPracticesAfter(long date) {
         return mPracticeDao.getAllAfter(date);
     }
 
