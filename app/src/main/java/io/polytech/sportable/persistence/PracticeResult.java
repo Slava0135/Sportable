@@ -3,12 +3,11 @@ package io.polytech.sportable.persistence;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 import io.polytech.sportable.models.practice.PracticeType;
 
-@Entity
+@Entity(tableName = "practice_table")
 public class PracticeResult {
 
     @PrimaryKey
@@ -34,7 +33,6 @@ public class PracticeResult {
         this.calories = calories;
         this.time = time;
         this.practiceType = practiceType;
-        //date = System.currentTimeMillis();
     }
 
     public String getTime() {
