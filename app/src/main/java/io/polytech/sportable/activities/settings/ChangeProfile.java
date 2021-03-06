@@ -41,7 +41,7 @@ public class ChangeProfile extends AppCompatActivity {
         TextView nameView = (TextView) findViewById(R.id.nameView);
         String name = settings.getString(NAME,"user");
         nameView.setText(name);
-
+/*
         TextView heightView = (TextView) findViewById(R.id.heightView);
         int height = settings.getInt(HEIGHT,0);
         heightView.setText(Float.toString(height));
@@ -53,7 +53,7 @@ public class ChangeProfile extends AppCompatActivity {
         TextView yearView = (TextView) findViewById(R.id.yearView);
         int year = settings.getInt(YEAR,0);
         yearView.setText(year);
-/**/
+*/
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
