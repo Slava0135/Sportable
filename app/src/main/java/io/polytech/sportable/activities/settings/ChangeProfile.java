@@ -21,11 +21,11 @@ public class ChangeProfile extends AppCompatActivity {
     public static final String NAME = "Name";
     private static final String HEIGHT = "0";
     private static final String WEIGHT = "0.0";
-    private static final String YEAR = "0";
+    private static final String YEAR = "1900";
     private static final String SEX = "M";
 
     final Context context = this;
-    private TextView final_text;
+
 
     SharedPreferences settings;
 
@@ -38,125 +38,87 @@ public class ChangeProfile extends AppCompatActivity {
 
         settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
 
-        TextView nameView = (TextView) findViewById(R.id.nameView);
-        String name = settings.getString(NAME,"user");
+        TextView nameView =  findViewById(R.id.nameView);
+        String name = settings.getString(NAME, "user");
         nameView.setText(name);
-/*
-        TextView heightView = (TextView) findViewById(R.id.heightView);
-        int height = settings.getInt(HEIGHT,0);
-        heightView.setText(Float.toString(height));
 
-        TextView weightView = (TextView) findViewById(R.id.weightView);
-        float weight = settings.getFloat(WEIGHT,0);
+        TextView heightView = findViewById(R.id.heightView);
+        int height = settings.getInt(HEIGHT, 0);
+        heightView.setText(Integer.toString(height));
+
+        TextView weightView = findViewById(R.id.weightView);
+        float weight = settings.getFloat(WEIGHT, 0);
         weightView.setText(Float.toString(weight));
 
-        TextView yearView = (TextView) findViewById(R.id.yearView);
-        int year = settings.getInt(YEAR,0);
-        yearView.setText(year);
-*/
+        TextView yearView = findViewById(R.id.yearView);
+        int year = settings.getInt(YEAR, 1900);
+        yearView.setText(Integer.toString(year));
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
-    public String newInfo;
-
-    public String ch(String title, String message) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle(title);
-        builder.setMessage(message);
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
-        builder.setView(input);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                newInfo  = input.getText().toString();
-                Toast.makeText(ChangeProfile.this,
-                        "Изменения сохранены :)", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(ChangeProfile.this,
-                        "Изменения не были внесены :(", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-            }
-        });
-        builder.show();
-
-        return newInfo;
-    }
-
-
     // Меняем имя
     public void changeName(View view) {
         // получаем введенное имя
-        EditText nameBox = (EditText) findViewById(R.id.nameBox);
+        EditText nameBox = findViewById(R.id.nameBox);
         String name = nameBox.getText().toString();
         // сохраняем его в настройках
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString(NAME, name);
         prefEditor.apply();
 
-        TextView nameView = (TextView) findViewById(R.id.nameView);
+        TextView nameView = findViewById(R.id.nameView);
         nameView.setText(name);
+        nameBox.setText(null);
     }
-/*
-    // Меняем пол
-    public void changeSex(View view) {
-        Toast.makeText(ChangeProfile.this, "недоступно", Toast.LENGTH_SHORT).show();
-    }
-
-*/
 
     // Меняем рост
     @SuppressLint("SetTextI18n")
     public void changeHeight(View view) {
 
-        EditText heightBox = (EditText) findViewById(R.id.heightBox);
+        EditText heightBox = findViewById(R.id.heightBox);
         int height = Integer.parseInt(heightBox.getText().toString());
         // сохраняем его в настройках
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putInt(HEIGHT, height);
         prefEditor.apply();
 
-        TextView heightView = (TextView) findViewById(R.id.heightView);
+        TextView heightView = findViewById(R.id.heightView);
         heightView.setText(Integer.toString(height));
+        heightBox.setText(null);
     }
 
     // Меняем вес
     @SuppressLint("SetTextI18n")
     public void changeWeight(View view) {
-        EditText weightBox = (EditText) findViewById(R.id.weightBox);
+        EditText weightBox = findViewById(R.id.weightBox);
         float weight = Float.parseFloat(weightBox.getText().toString());
         // сохраняем его в настройках
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putFloat(WEIGHT, weight);
         prefEditor.apply();
 
-        TextView weightView = (TextView) findViewById(R.id.weightView);
+        TextView weightView = findViewById(R.id.weightView);
         weightView.setText(Float.toString(weight));
+        weightBox.setText(null);
     }
 
     // Меняем возраст
     @SuppressLint("SetTextI18n")
     public void changeYear(View view) {
-        EditText yearBox = (EditText) findViewById(R.id.yearBox);
+        EditText yearBox = findViewById(R.id.yearBox);
         int year = Integer.parseInt(yearBox.getText().toString());
-        // сохраняем его в настройках
+
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putInt(YEAR, year);
         prefEditor.apply();
 
-        TextView yearView = (TextView) findViewById(R.id.yearView);
-        yearView.setText(year);
+        TextView yearView = findViewById(R.id.yearView);
+        yearView.setText(Integer.toString(year));
+        yearBox.setText(null);
     }
 
     public void saveAndQuit(View view) {
