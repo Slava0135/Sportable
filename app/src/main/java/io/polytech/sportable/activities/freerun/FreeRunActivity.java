@@ -1,13 +1,17 @@
 package io.polytech.sportable.activities.freerun;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 import java.util.Random;
@@ -27,6 +31,11 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_run);
+        //кнопка назад
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         isRunning = true;
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
@@ -45,6 +54,17 @@ public class FreeRunActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NotNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onPause() {
         isRunning = false;
         super.onPause();
@@ -60,14 +80,15 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
-        stats.putExtra("distance", distance);
-        stats.putExtra("time", seconds);
-        stats.putExtra("calories", calories);
-        stats.putExtra("speed", speed);
-        isRunning = false;
-        startActivity(stats);
-
-
+        if (isRunning) {
+            stats.putExtra("distance", distance);
+            stats.putExtra("time", seconds);
+            stats.putExtra("calories", calories);
+            stats.putExtra("speed", speed);
+            isRunning = false;
+            startActivity(stats);
+            finish();
+        }
     }
 
     float getDistance(){
