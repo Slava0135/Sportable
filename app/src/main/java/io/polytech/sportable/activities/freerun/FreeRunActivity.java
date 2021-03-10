@@ -25,6 +25,7 @@ public class FreeRunActivity extends AppCompatActivity {
     int calories = 0;
     float speed = 0;
     boolean isRunning;
+    boolean isEnd;  //чтобы статистика не вылезала лишний раз
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
@@ -58,6 +59,7 @@ public class FreeRunActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
+                isEnd = true;
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,12 +82,13 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
-        if (isRunning) {
+        if (!isEnd) {
             stats.putExtra("distance", distance);
             stats.putExtra("time", seconds);
             stats.putExtra("calories", calories);
             stats.putExtra("speed", speed);
             isRunning = false;
+            isEnd = true;
             startActivity(stats);
             finish();
         }
