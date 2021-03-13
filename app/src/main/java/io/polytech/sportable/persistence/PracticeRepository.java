@@ -12,7 +12,7 @@ public class PracticeRepository {
     private PracticeDao mPracticeDao;
     private LiveData<List<PracticeResult>> mAllPractices;
 
-    PracticeRepository(Application application) {
+    public PracticeRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         mPracticeDao = db.practiceDao();
         mAllPractices = mPracticeDao.getAll();
