@@ -19,7 +19,8 @@
 
         </service>
 
-        <activity android:name=".activities.freerun.FreeRunStatActivity" />
+        <activity android:name=".activities.MapActivity"/>
+        <activity android:name=".activities.freerun.FreeRunStatActivity"/>
         <activity android:name=".activities.freerun.FreeRunActivity" />
         <activity
             android:name=".activities.statistics.StatActivity"
