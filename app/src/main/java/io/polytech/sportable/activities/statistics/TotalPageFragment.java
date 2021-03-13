@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.persistence.PracticeRepository;
 
 public class TotalPageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";

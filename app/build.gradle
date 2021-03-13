@@ -28,8 +28,15 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "http://maven.google.com/"
+    }
+}
+
 dependencies {
 
+    implementation 'com.yandex.android:maps.mobile:4.0.0-lite'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     def room_version = "2.2.6"
 
