@@ -36,7 +36,7 @@ repositories {
 
 dependencies {
 
-    implementation 'com.yandex.android:maps.mobile:4.0.0-lite'
+    implementation 'com.yandex.android:maps.mobile:4.0.0-full'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     def room_version = "2.2.6"
 
