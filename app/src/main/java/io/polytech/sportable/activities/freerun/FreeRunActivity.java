@@ -3,9 +3,13 @@ package io.polytech.sportable.activities.freerun;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,13 +18,13 @@ import java.util.Random;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
+import io.polytech.sportable.services.PracticeService;
 
 public class FreeRunActivity extends AppCompatActivity {
-    float distance = 0.0f;
-    int seconds = 0;
-    int calories = 0;
-    float speed = 0;
+
     boolean isRunning;
+    PracticeService mService;
+    boolean mBound = false;
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
@@ -45,6 +49,14 @@ public class FreeRunActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, PracticeService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+
+    @Override
     public void onPause() {
         isRunning = false;
         super.onPause();
@@ -60,31 +72,14 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
-        stats.putExtra("distance", distance);
-        stats.putExtra("time", seconds);
-        stats.putExtra("calories", calories);
-        stats.putExtra("speed", speed);
+        stats.putExtra("distance", mService.getDistanceMeters());
+        stats.putExtra("time", mService.getTimeSeconds());
+        stats.putExtra("calories", mService.getCalories());
+        stats.putExtra("speed", mService.getSpeedMetersPerSecond());
         isRunning = false;
+        unbindService(connection);
+        mBound = false;
         startActivity(stats);
-
-
-    }
-
-    float getDistance(){
-        Random random = new Random();
-        distance += (float)random.nextInt(10)/10;
-        return distance;
-    }
-
-    float getSpeed(){
-        speed = distance / ((float)seconds / 3600);
-        return speed;
-    }
-
-    int getCalories(){
-        Random random = new Random();
-        calories += random.nextInt(10);
-        return calories;
     }
 
     public void runTimer() {
@@ -97,23 +92,37 @@ public class FreeRunActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                int minutes = (seconds % 3600) / 60;
-                int secs = seconds % 60;
-                if (isRunning) {
-                    String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
-                    String distanceN = "" + getDistance();
-                    String speed = "" + getSpeed();
-                    String calories = "" + getCalories();
+                if (mBound){
+                    int seconds = mService.getTimeSeconds();
+                    int minutes = seconds / 60;
+                    if (isRunning) {
+                        String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
-                    valueTime.setText(time);
-                    valueDistance.setText(distanceN);
-                    valueSpeed.setText(speed);
-                    valueCalories.setText(calories);
-                    seconds++;
+                        valueTime.setText(time);
+                        valueDistance.setText((int) mService.getDistanceMeters());
+                        valueSpeed.setText((int) mService.getSpeedMetersPerSecond());
+                        valueCalories.setText((int) mService.getCalories());
+                    }
+                    handler.postDelayed(this, 1000);
                 }
-                handler.postDelayed(this, 1000);
             }
         });
     }
+
+    private ServiceConnection connection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            PracticeService.PracticeBinder binder = (PracticeService.PracticeBinder) service;
+            mService = binder.getService();
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            mBound = false;
+        }
+    };
+
 
 }

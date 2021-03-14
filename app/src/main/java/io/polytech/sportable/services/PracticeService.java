@@ -1,6 +1,7 @@
 package io.polytech.sportable.services;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,49 +22,32 @@ import com.google.android.gms.location.LocationServices;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.polytech.sportable.models.practice.PracticeType;
+
 import static android.content.ContentValues.TAG;
 
 public class PracticeService extends Service {
 
+    private int time;
+    private float distance;
+    private PracticeType practiceType;
+
+    private Handler handler;
+    private Runnable locationUpdate;
+    private Runnable infoUpdate;
+    private boolean isRunning;
+
+    private int locatePeriod = 10000;
+    private int infoPeriod = 1000;
+
     private FusedLocationProviderClient mFusedLocationClient;
+    private Location mLocation;
 
     private IBinder mBinder = new PracticeBinder();
 
-    private long mStartTimeMillis;
-    private volatile float distance;
-
-    private volatile boolean isRunning;
-
-    private Timer timer;
-    private UpdateDistanceTask task;
-
-    private Location mLocation;
-
     public class PracticeBinder extends Binder {
-
-        PracticeService getService() {
+        public PracticeService getService() {
             return PracticeService.this;
-        }
-
-        public float getDistanceRunning() {
-            return distance;
-        }
-
-        public long getTimeRunning() {
-            return System.currentTimeMillis() - mStartTimeMillis;
-        }
-
-        public void pause() {
-            isRunning = false;
-        }
-
-        public void resume() {
-            isRunning = true;
-        }
-
-        public void reset() {
-            distance = 0;
-            mStartTimeMillis = System.currentTimeMillis();
         }
     }
 
@@ -76,44 +60,76 @@ public class PracticeService extends Service {
     @Override
     public void onCreate() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        timer = new Timer();
-        task = new UpdateDistanceTask();
+        handler = new Handler();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_STICKY;
+    }
+
+    public void run(PracticeType practiceType) {
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return super.onStartCommand(intent, flags, startId);
+            return;
         }
-        mStartTimeMillis = System.currentTimeMillis();
+
+        time = 0;
         distance = 0;
+        this.practiceType = practiceType;
         isRunning = true;
+
+        handler = new Handler();
+
         mLocation = mFusedLocationClient.getLastLocation().getResult();
-        timer.schedule(task, 0, 10000);
-        return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public boolean stopService(Intent name) {
-        timer = null;
-        task = null;
-        mLocation = null;
-        mFusedLocationClient = null;
-        return super.stopService(name);
-    }
-
-    private class UpdateDistanceTask extends TimerTask {
-        public void run() {
-            if (isRunning){
-                if (ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
+        locationUpdate = () -> {
+            if (isRunning) {
                 Location newLocation = mFusedLocationClient.getLastLocation().getResult();
                 distance += mLocation.distanceTo(newLocation);
                 mLocation = newLocation;
-                Log.i(TAG, "Distance: " + distance);
-                Log.i(TAG, "Time: " + (System.currentTimeMillis() - mStartTimeMillis));
+                handler.postDelayed(locationUpdate, locatePeriod);
             }
+        };
+        handler.post(locationUpdate);
+
+        infoUpdate = () -> {
+            if (isRunning) {
+                time += infoPeriod;
+                handler.postDelayed(infoUpdate, infoPeriod);
+            }
+        };
+    }
+
+    public void pause() {
+        isRunning = false;
+    }
+
+    @SuppressLint("MissingPermission")
+    public void resume() {
+        isRunning = true;
+        mLocation = mFusedLocationClient.getLastLocation().getResult();
+    }
+
+    public float getDistanceMeters() {
+        return distance;
+    }
+    public int getTimeSeconds() {
+        return time / 1000;
+    }
+    public float getSpeedMetersPerSecond() {
+        return 1000 * distance / time;
+    }
+    public float getCalories() {
+        return 0;
+    }
+
+    @Override
+    public void onDestroy() {
+        if (handler != null) {
+            handler.removeCallbacks(locationUpdate);
         }
+        mLocation = null;
+        mFusedLocationClient = null;
+        super.onDestroy();
     }
 }
