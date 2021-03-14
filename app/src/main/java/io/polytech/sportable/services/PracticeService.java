@@ -30,7 +30,6 @@ public class PracticeService extends Service {
 
     private Timer timer;
     private UpdateDistanceTask task;
-    private volatile boolean isRunning;
 
     private FusedLocationProviderClient mFusedLocationClient;
     private Location mLocation;
@@ -63,33 +62,30 @@ public class PracticeService extends Service {
         }
         mStartTimeMillis = System.currentTimeMillis();
         distance = 0;
-        isRunning = true;
         mLocation = mFusedLocationClient.getLastLocation().getResult();
         timer.schedule(task, 0, 10000);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
-    public boolean stopService(Intent name) {
+    public void onDestroy() {
         timer = null;
         task = null;
         mLocation = null;
         mFusedLocationClient = null;
-        return super.stopService(name);
+        super.onDestroy();
     }
 
     private class UpdateDistanceTask extends TimerTask {
         public void run() {
-            if (isRunning){
-                if (ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                Location newLocation = mFusedLocationClient.getLastLocation().getResult();
-                distance += mLocation.distanceTo(newLocation);
-                mLocation = newLocation;
-                Log.i(TAG, "Distance: " + distance);
-                Log.i(TAG, "Time: " + (System.currentTimeMillis() - mStartTimeMillis));
+            if (ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(PracticeService.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
             }
+            Location newLocation = mFusedLocationClient.getLastLocation().getResult();
+            distance += mLocation.distanceTo(newLocation);
+            mLocation = newLocation;
+            Log.i(TAG, "Distance: " + distance);
+            Log.i(TAG, "Time: " + (System.currentTimeMillis() - mStartTimeMillis));
         }
     }
 
@@ -99,14 +95,6 @@ public class PracticeService extends Service {
 
     public long getTimeRunning() {
         return System.currentTimeMillis() - mStartTimeMillis;
-    }
-
-    public void pause() {
-        isRunning = false;
-    }
-
-    public void resume() {
-        isRunning = true;
     }
 
     public void reset() {
