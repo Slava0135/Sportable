@@ -1,7 +1,11 @@
 package io.polytech.sportable.activities.freerun;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
@@ -23,21 +27,19 @@ import io.polytech.sportable.services.PracticeService;
 
 public class FreeRunActivity extends AppCompatActivity {
 
-    private PracticeType practiceType = PracticeType.Run;
-
-    boolean isRunning;
-    PracticeService mService;
-    boolean mBound = false;
+    RunViewModel model;
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+        model = new ViewModelProvider(this).get(RunViewModel.class);
         setContentView(R.layout.activity_free_run);
-        isRunning = true;
+        model.isRunning = true;
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
-            if (isRunning) {
+            if (model.isRunning) {
                 buttonPause.setText("continue");
                 onPause();
             } else {
@@ -55,24 +57,24 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Intent intent = new Intent(this, PracticeService.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
     }
 
 
     @Override
     public void onPause() {
-        isRunning = false;
-        if (mBound){
-            mService.pause();
+        model.isRunning = false;
+        if (model.mBound){
+            model.mService.pause();
         }
         super.onPause();
     }
 
     @Override
     public void onResume() {
-        isRunning = true;
-        if (mBound){
-            mService.resume();
+        model.isRunning = true;
+        if (model.mBound){
+            model.mService.resume();
         }
         super.onResume();
     }
@@ -81,13 +83,13 @@ public class FreeRunActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
-        stats.putExtra("distance", mService.getDistanceMeters());
-        stats.putExtra("time", mService.getTimeSeconds());
-        stats.putExtra("calories", mService.getCalories());
-        stats.putExtra("speed", mService.getSpeedMetersPerSecond());
-        isRunning = false;
-        unbindService(connection);
-        mBound = false;
+        stats.putExtra("distance", model.mService.getDistanceMeters());
+        stats.putExtra("time", model.mService.getTimeSeconds());
+        stats.putExtra("calories", model.mService.getCalories());
+        stats.putExtra("speed", model.mService.getSpeedMetersPerSecond());
+        model.isRunning = false;
+        unbindService(model.connection);
+        model.mBound = false;
         startActivity(stats);
     }
 
@@ -101,39 +103,20 @@ public class FreeRunActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if (mBound){
-                    int seconds = mService.getTimeSeconds();
+                if (model.mBound){
+                    int seconds = model.mService.getTimeSeconds();
                     int minutes = seconds / 60;
-                    if (isRunning) {
+                    if (model.isRunning) {
                         String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
                         valueTime.setText(time);
-                        valueDistance.setText((int) mService.getDistanceMeters());
-                        valueSpeed.setText((int) mService.getSpeedMetersPerSecond());
-                        valueCalories.setText((int) mService.getCalories());
+                        valueDistance.setText((int) model.mService.getDistanceMeters());
+                        valueSpeed.setText((int) model.mService.getSpeedMetersPerSecond());
+                        valueCalories.setText((int) model.mService.getCalories());
                     }
                     handler.postDelayed(this, 1000);
                 }
             }
         });
     }
-
-    private ServiceConnection connection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            PracticeService.PracticeBinder binder = (PracticeService.PracticeBinder) service;
-            mService = binder.getService();
-            mService.run(practiceType);
-            mBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            mBound = false;
-        }
-    };
-
-
-
 }
