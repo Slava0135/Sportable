@@ -21,13 +21,13 @@ public class PracticeResult {
     public final float calories;
 
     @ColumnInfo(name = "time")
-    public final long time;
+    public final int time;
 
     @TypeConverters({PracticeTypeConverter.class})
     @ColumnInfo(name = "practiceType")
     public final PracticeType practiceType;
 
-    public PracticeResult(long date, float distance, float calories, long time, PracticeType practiceType) {
+    public PracticeResult(long date, float distance, float calories, int time, PracticeType practiceType) {
         this.date = date;
         this.distance = distance;
         this.calories = calories;

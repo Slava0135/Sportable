@@ -24,6 +24,7 @@ import java.util.Random;
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
 import io.polytech.sportable.models.practice.PracticeType;
+import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
 public class FreeRunActivity extends AppCompatActivity {
@@ -62,6 +63,12 @@ public class FreeRunActivity extends AppCompatActivity {
             stats.putExtra("time", model.mService.getTimeSeconds());
             stats.putExtra("calories", model.mService.getCalories());
             stats.putExtra("speed", model.mService.getSpeedMetersPerSecond());
+            model.insertRecord(new PracticeResult(
+                    System.currentTimeMillis(),
+                    model.mService.getDistanceMeters(),
+                    model.mService.getCalories(),
+                    model.mService.getTimeSeconds(),
+                    model.practiceType));
             startActivity(stats);
         });
         Intent intent = new Intent(this, PracticeService.class);
