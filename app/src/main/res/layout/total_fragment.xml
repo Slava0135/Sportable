@@ -20,7 +20,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/total_all_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -37,7 +37,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/total_averaged_calories_in_one_workout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -53,7 +53,7 @@
                 android:text="Пройденная дистанция" />
 
             <TextView
-                android:id="@+id/textView35"
+                android:id="@+id/total_all_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -69,7 +69,7 @@
                 android:text="Дистанция в среднем за тренировку:" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/total_averaged_distance_in_one_workout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -85,7 +85,7 @@
                 android:text="Средняя скорость: " />
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/total_averaged_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -101,7 +101,7 @@
                 android:text="Время тренировки всего: " />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/total_all_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -117,7 +117,7 @@
                 android:text="Время тренировки в среднем: " />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/total_averaged_time_in_one_workout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -133,7 +133,7 @@
                 android:text="Самая частая активность: " />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/total_most_popular_activity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
