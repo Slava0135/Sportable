@@ -30,15 +30,15 @@ public class FreeRunStatActivity extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
 
         float distance = (float) arguments.get("distance");
-        int minutes = (int) arguments.get("time") / 60;
-        int seconds = (int) arguments.get("time") - minutes*60;
-        int calories = (int) arguments.get("calories");
+        int seconds = (int) arguments.get("time");
+        int minutes = seconds / 60;
+        float calories = (float) arguments.get("calories");
         float speed = (float) arguments.get("speed");
 
         final TextView textView = findViewById(R.id.textForUser);
 
         @SuppressLint("DefaultLocale")
-        String str = String.format("Вы пробежали %.2f километров за %s:%s минут и сожгли %s калорий со средней скоростью %.2f км/ч",
+        String str = String.format("Вы пробежали %.1f метров за %s:%s и сожгли %s калорий со средней скоростью %.2f км/ч",
                 distance, new DecimalFormat( "00" ).format(minutes),  new DecimalFormat( "00" ).format(seconds),calories,speed);
 
         textView.setText(str);

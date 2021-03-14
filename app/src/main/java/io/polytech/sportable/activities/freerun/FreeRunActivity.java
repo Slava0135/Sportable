@@ -50,7 +50,14 @@ public class FreeRunActivity extends AppCompatActivity {
         });
 
         final Button buttonStop = findViewById(R.id.buttonStop);
-        buttonStop.setOnClickListener(v -> onStop());
+        buttonStop.setOnClickListener(v -> {
+            Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
+            stats.putExtra("distance", model.mService.getDistanceMeters());
+            stats.putExtra("time", model.mService.getTimeSeconds());
+            stats.putExtra("calories", model.mService.getCalories());
+            stats.putExtra("speed", model.mService.getSpeedMetersPerSecond());
+            startActivity(stats);
+        });
         runTimer();
     }
 
@@ -83,15 +90,11 @@ public class FreeRunActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
-        stats.putExtra("distance", model.mService.getDistanceMeters());
-        stats.putExtra("time", model.mService.getTimeSeconds());
-        stats.putExtra("calories", model.mService.getCalories());
-        stats.putExtra("speed", model.mService.getSpeedMetersPerSecond());
         model.isRunning = false;
-        unbindService(model.connection);
+        if (model.mBound){
+            unbindService(model.connection);
+        }
         model.mBound = false;
-        startActivity(stats);
     }
 
     public void runTimer() {
@@ -109,9 +112,9 @@ public class FreeRunActivity extends AppCompatActivity {
                     int minutes = seconds / 60;
                     String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
                     valueTime.setText(time);
-                    //valueDistance.setText((int) model.mService.getDistanceMeters());
-                    //valueSpeed.setText((int) model.mService.getSpeedMetersPerSecond());
-                    //valueCalories.setText((int) model.mService.getCalories());
+                    valueDistance.setText("" + model.mService.getDistanceMeters());
+                    valueSpeed.setText("" + model.mService.getSpeedMetersPerSecond());
+                    valueCalories.setText("" + model.mService.getCalories());
                 }
                 handler.postDelayed(this, 1000);
             }
