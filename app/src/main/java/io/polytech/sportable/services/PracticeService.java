@@ -45,6 +45,7 @@ public class PracticeService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        run();
         return mBinder;
     }
 
@@ -55,16 +56,14 @@ public class PracticeService extends Service {
         task = new UpdateDistanceTask();
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public void run() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return super.onStartCommand(intent, flags, startId);
+            return;
         }
         mStartTimeMillis = System.currentTimeMillis();
         distance = 0;
         mLocation = mFusedLocationClient.getLastLocation().getResult();
         timer.schedule(task, 0, 10000);
-        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -84,8 +83,6 @@ public class PracticeService extends Service {
             Location newLocation = mFusedLocationClient.getLastLocation().getResult();
             distance += mLocation.distanceTo(newLocation);
             mLocation = newLocation;
-            Log.i(TAG, "Distance: " + distance);
-            Log.i(TAG, "Time: " + (System.currentTimeMillis() - mStartTimeMillis));
         }
     }
 
