@@ -79,18 +79,19 @@ public class PracticeService extends Service {
         this.practiceType = practiceType;
         isRunning = true;
 
-        handler = new Handler();
-
-        mLocation = mFusedLocationClient.getLastLocation().getResult();
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> mLocation = task.getResult());
         locationUpdate = () -> {
             if (isRunning) {
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
-                    Location newLocation = task.getResult();
-                    distance += mLocation.distanceTo(newLocation);
-                    mLocation = newLocation;
-                    handler.postDelayed(locationUpdate, locatePeriod);
+                    if (mLocation != null) {
+                        Location newLocation = task.getResult();
+                        distance += mLocation.distanceTo(newLocation);
+                        mLocation = newLocation;
+                        handler.postDelayed(locationUpdate, locatePeriod);
+                    }
                 });
             }
+            handler.postDelayed(locationUpdate, locatePeriod);
         };
         handler.post(locationUpdate);
 
@@ -99,7 +100,9 @@ public class PracticeService extends Service {
                 time += infoPeriod;
                 handler.postDelayed(infoUpdate, infoPeriod);
             }
+            handler.postDelayed(locationUpdate, locatePeriod);
         };
+        handler.post(infoUpdate);
     }
 
     public void pause() {

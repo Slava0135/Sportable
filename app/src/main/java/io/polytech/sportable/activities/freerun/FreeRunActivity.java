@@ -14,6 +14,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -116,6 +117,7 @@ public class FreeRunActivity extends AppCompatActivity {
                     }
                     handler.postDelayed(this, 1000);
                 }
+                handler.postDelayed(this, 1000);
             }
         });
     }
