@@ -1,50 +1,33 @@
 package io.polytech.sportable.services;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import io.polytech.sportable.models.practice.PracticeType;
 
-import static android.content.ContentValues.TAG;
-
 public class PracticeService extends Service {
+
+    LocationManager locationManager;
 
     private int time;
     private float distance;
     private PracticeType practiceType;
 
     private Handler handler;
-    private Runnable locationUpdate;
     private Runnable infoUpdate;
     private boolean isRunning;
 
-    private int locatePeriod = 10000;
     private int infoPeriod = 1000;
-
-    private FusedLocationProviderClient mFusedLocationClient;
-    private Location mLocation;
 
     private IBinder mBinder = new PracticeBinder();
 
@@ -60,10 +43,14 @@ public class PracticeService extends Service {
         return mBinder;
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         handler = new Handler();
+        locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates( LocationManager.GPS_PROVIDER,
+                1000,
+                10, locationListener);
     }
 
     @Override
@@ -78,21 +65,6 @@ public class PracticeService extends Service {
         distance = 0;
         this.practiceType = practiceType;
         isRunning = true;
-
-        mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> mLocation = task.getResult());
-        locationUpdate = () -> {
-            if (isRunning) {
-                mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
-                    if (mLocation != null) {
-                        Location newLocation = task.getResult();
-                        distance += mLocation.distanceTo(newLocation);
-                        mLocation = newLocation;
-                    }
-                });
-            }
-            handler.postDelayed(locationUpdate, locatePeriod);
-        };
-        handler.post(locationUpdate);
 
         infoUpdate = () -> {
             if (isRunning) {
@@ -110,7 +82,6 @@ public class PracticeService extends Service {
     @SuppressLint("MissingPermission")
     public void resume() {
         isRunning = true;
-        mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> mLocation = task.getResult());
     }
 
     public float getDistanceMeters() {
@@ -129,10 +100,21 @@ public class PracticeService extends Service {
     @Override
     public void onDestroy() {
         if (handler != null) {
-            handler.removeCallbacks(locationUpdate);
+            handler.removeCallbacks(infoUpdate);
         }
-        mLocation = null;
-        mFusedLocationClient = null;
         super.onDestroy();
     }
+
+    LocationListener locationListener = new LocationListener() {
+
+        Location mLocation;
+
+        @Override
+        public void onLocationChanged(android.location.Location location) {
+            if (mLocation != null) {
+                distance += mLocation.distanceTo(location);
+            }
+            mLocation = location;
+        }
+    };
 }
