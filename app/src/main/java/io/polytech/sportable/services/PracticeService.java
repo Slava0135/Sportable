@@ -25,45 +25,21 @@ import static android.content.ContentValues.TAG;
 
 public class PracticeService extends Service {
 
-    private FusedLocationProviderClient mFusedLocationClient;
-
-    private IBinder mBinder = new PracticeBinder();
-
     private long mStartTimeMillis;
     private volatile float distance;
 
-    private volatile boolean isRunning;
-
     private Timer timer;
     private UpdateDistanceTask task;
+    private volatile boolean isRunning;
 
+    private FusedLocationProviderClient mFusedLocationClient;
     private Location mLocation;
 
+    private IBinder mBinder = new PracticeBinder();
+
     public class PracticeBinder extends Binder {
-
-        PracticeService getService() {
+        public PracticeService getService() {
             return PracticeService.this;
-        }
-
-        public float getDistanceRunning() {
-            return distance;
-        }
-
-        public long getTimeRunning() {
-            return System.currentTimeMillis() - mStartTimeMillis;
-        }
-
-        public void pause() {
-            isRunning = false;
-        }
-
-        public void resume() {
-            isRunning = true;
-        }
-
-        public void reset() {
-            distance = 0;
-            mStartTimeMillis = System.currentTimeMillis();
         }
     }
 
@@ -115,5 +91,26 @@ public class PracticeService extends Service {
                 Log.i(TAG, "Time: " + (System.currentTimeMillis() - mStartTimeMillis));
             }
         }
+    }
+
+    public float getDistanceRunning() {
+        return distance;
+    }
+
+    public long getTimeRunning() {
+        return System.currentTimeMillis() - mStartTimeMillis;
+    }
+
+    public void pause() {
+        isRunning = false;
+    }
+
+    public void resume() {
+        isRunning = true;
+    }
+
+    public void reset() {
+        distance = 0;
+        mStartTimeMillis = System.currentTimeMillis();
     }
 }
