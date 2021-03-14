@@ -110,11 +110,11 @@ public class PracticeService extends Service {
         mLocation = mFusedLocationClient.getLastLocation().getResult();
     }
 
-    public float getDistanceRunning() {
+    public float getDistanceMeters() {
         return distance;
     }
-    public int getTimeRunning() {
-        return time;
+    public int getTimeSeconds() {
+        return time / 1000;
     }
     public float getSpeedMetersPerSecond() {
         return 1000 * distance / time;
