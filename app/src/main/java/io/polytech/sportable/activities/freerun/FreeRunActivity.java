@@ -104,18 +104,14 @@ public class FreeRunActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if (model.mBound){
+                if (model.mBound && model.isRunning){
                     int seconds = model.mService.getTimeSeconds();
                     int minutes = seconds / 60;
-                    if (model.isRunning) {
-                        String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-                        valueTime.setText(time);
-                        valueDistance.setText((int) model.mService.getDistanceMeters());
-                        valueSpeed.setText((int) model.mService.getSpeedMetersPerSecond());
-                        valueCalories.setText((int) model.mService.getCalories());
-                    }
-                    handler.postDelayed(this, 1000);
+                    String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                    valueTime.setText(time);
+                    //valueDistance.setText((int) model.mService.getDistanceMeters());
+                    //valueSpeed.setText((int) model.mService.getSpeedMetersPerSecond());
+                    //valueCalories.setText((int) model.mService.getCalories());
                 }
                 handler.postDelayed(this, 1000);
             }

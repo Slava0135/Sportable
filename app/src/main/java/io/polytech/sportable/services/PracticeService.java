@@ -87,7 +87,6 @@ public class PracticeService extends Service {
                         Location newLocation = task.getResult();
                         distance += mLocation.distanceTo(newLocation);
                         mLocation = newLocation;
-                        handler.postDelayed(locationUpdate, locatePeriod);
                     }
                 });
             }
@@ -98,9 +97,8 @@ public class PracticeService extends Service {
         infoUpdate = () -> {
             if (isRunning) {
                 time += infoPeriod;
-                handler.postDelayed(infoUpdate, infoPeriod);
             }
-            handler.postDelayed(locationUpdate, locatePeriod);
+            handler.postDelayed(infoUpdate, infoPeriod);
         };
         handler.post(infoUpdate);
     }
