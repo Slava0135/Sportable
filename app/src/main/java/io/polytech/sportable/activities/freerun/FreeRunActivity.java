@@ -42,10 +42,16 @@ public class FreeRunActivity extends AppCompatActivity {
         buttonPause.setOnClickListener(v -> {
             if (model.isRunning) {
                 buttonPause.setText("continue");
-                onPause();
+                model.isRunning = false;
+                if (model.mBound){
+                    model.mService.pause();
+                }
             } else {
+                model.isRunning = true;
+                if (model.mBound){
+                    model.mService.resume();
+                }
                 buttonPause.setText("pause");
-                onResume();
             }
         });
 
@@ -58,50 +64,16 @@ public class FreeRunActivity extends AppCompatActivity {
             stats.putExtra("speed", model.mService.getSpeedMetersPerSecond());
             startActivity(stats);
         });
+        Intent intent = new Intent(this, PracticeService.class);
+        bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
         runTimer();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, PracticeService.class);
-        bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
-    }
-
-
-    @Override
-    public void onPause() {
-        model.isRunning = false;
-        if (model.mBound){
-            model.mService.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        model.isRunning = true;
-        if (model.mBound){
-            model.mService.resume();
-        }
-        super.onResume();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        model.isRunning = false;
-        if (model.mBound){
-            unbindService(model.connection);
-        }
-        model.mBound = false;
-    }
-
     public void runTimer() {
-        final TextView valueTime = (TextView)findViewById(R.id.valueTime);
-        final TextView valueDistance = (TextView)findViewById(R.id.valueDistance);
-        final TextView valueSpeed = (TextView)findViewById(R.id.valueSpeed);
-        final TextView valueCalories = (TextView)findViewById(R.id.valueCalories);
+        final TextView valueTime = findViewById(R.id.valueTime);
+        final TextView valueDistance = findViewById(R.id.valueDistance);
+        final TextView valueSpeed = findViewById(R.id.valueSpeed);
+        final TextView valueCalories = findViewById(R.id.valueCalories);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
 
