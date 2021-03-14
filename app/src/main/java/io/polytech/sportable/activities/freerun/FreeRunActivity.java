@@ -18,9 +18,12 @@ import java.util.Random;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
+import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.services.PracticeService;
 
 public class FreeRunActivity extends AppCompatActivity {
+
+    private PracticeType practiceType = PracticeType.Run;
 
     boolean isRunning;
     PracticeService mService;
@@ -59,12 +62,18 @@ public class FreeRunActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         isRunning = false;
+        if (mBound){
+            mService.pause();
+        }
         super.onPause();
     }
 
     @Override
     public void onResume() {
         isRunning = true;
+        if (mBound){
+            mService.resume();
+        }
         super.onResume();
     }
 
@@ -115,6 +124,7 @@ public class FreeRunActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName className, IBinder service) {
             PracticeService.PracticeBinder binder = (PracticeService.PracticeBinder) service;
             mService = binder.getService();
+            mService.run(practiceType);
             mBound = true;
         }
 
@@ -123,6 +133,7 @@ public class FreeRunActivity extends AppCompatActivity {
             mBound = false;
         }
     };
+
 
 
 }
