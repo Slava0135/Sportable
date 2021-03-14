@@ -13,11 +13,14 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -68,36 +71,36 @@ public class PracticeService extends Service {
         return START_STICKY;
     }
 
+    @SuppressLint("MissingPermission")
     public void run(PracticeType practiceType) {
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
 
         time = 0;
         distance = 0;
         this.practiceType = practiceType;
         isRunning = true;
 
-        handler = new Handler();
-
-        mLocation = mFusedLocationClient.getLastLocation().getResult();
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> mLocation = task.getResult());
         locationUpdate = () -> {
             if (isRunning) {
-                Location newLocation = mFusedLocationClient.getLastLocation().getResult();
-                distance += mLocation.distanceTo(newLocation);
-                mLocation = newLocation;
-                handler.postDelayed(locationUpdate, locatePeriod);
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
+                    if (mLocation != null) {
+                        Location newLocation = task.getResult();
+                        distance += mLocation.distanceTo(newLocation);
+                        mLocation = newLocation;
+                    }
+                });
             }
+            handler.postDelayed(locationUpdate, locatePeriod);
         };
         handler.post(locationUpdate);
 
         infoUpdate = () -> {
             if (isRunning) {
                 time += infoPeriod;
-                handler.postDelayed(infoUpdate, infoPeriod);
             }
+            handler.postDelayed(infoUpdate, infoPeriod);
         };
+        handler.post(infoUpdate);
     }
 
     public void pause() {
@@ -107,7 +110,7 @@ public class PracticeService extends Service {
     @SuppressLint("MissingPermission")
     public void resume() {
         isRunning = true;
-        mLocation = mFusedLocationClient.getLastLocation().getResult();
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> mLocation = task.getResult());
     }
 
     public float getDistanceMeters() {
