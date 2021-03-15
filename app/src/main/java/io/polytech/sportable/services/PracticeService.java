@@ -49,7 +49,7 @@ public class PracticeService extends Service {
         handler = new Handler();
         locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates( LocationManager.GPS_PROVIDER,
-                1000, 50, locationListener);
+                2000, 25, locationListener);
     }
 
     @Override

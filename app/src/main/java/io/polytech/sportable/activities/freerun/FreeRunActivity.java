@@ -89,7 +89,7 @@ public class FreeRunActivity extends AppCompatActivity {
                 if (model.mBound && model.isRunning){
                     int seconds = model.mService.getTimeSeconds();
                     int minutes = seconds / 60;
-                    String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                    String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds % 60);
                     valueTime.setText(time);
                     valueDistance.setText("" + model.mService.getDistanceMeters());
                     valueSpeed.setText("" + model.mService.getSpeedMetersPerSecond());
