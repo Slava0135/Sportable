@@ -1,28 +1,37 @@
 package io.polytech.sportable.activities.freerun;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 import java.util.Random;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
+import io.polytech.sportable.activities.settings.ChangeProfile;
+import io.polytech.sportable.activities.settings.SettingsActivity;
 import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
@@ -30,6 +39,14 @@ import io.polytech.sportable.services.PracticeService;
 public class FreeRunActivity extends AppCompatActivity {
 
     RunViewModel model;
+    public boolean isGeoEnabled() {
+        Context mContext = getApplicationContext();
+        LocationManager mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        boolean mIsGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean mIsNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        boolean mIsGeoDisabled = mIsGPSEnabled && mIsNetworkEnabled;
+        return mIsGeoDisabled;
+    }
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
@@ -38,6 +55,13 @@ public class FreeRunActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
         model = new ViewModelProvider(this).get(RunViewModel.class);
         setContentView(R.layout.activity_free_run);
+        boolean geo = isGeoEnabled();
+        if (!isGeoEnabled()) {
+            Toast.makeText(this, "Еблан зачем ты зашел в карты без геолокации? Соси хуй еп)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(FreeRunActivity.this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
         model.isRunning = true;
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
