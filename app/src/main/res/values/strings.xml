@@ -56,7 +56,7 @@
     <string name="text_no_workout">Вы не провели ещё ни одной тренировки</string>
 
     <!--SettingsActivity Part-->
-    <string name="menuName">Изменение данных профиля</string>
+    <string name="menuName">Введите данные профиля</string>
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="saveAndQuit">Выйти</string>
