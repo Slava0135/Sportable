@@ -16,28 +16,62 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="title_activity_stat">StatActivity</string>
+
+    <!-- MainActivity Part -->
     <string name="statistics_button_text">Statistics</string>
     <string name="settings_button_text">Settings</string>
-    <string name="freerun_button_freerun">Freerun</string>
+    <string name="freerun_button_text">Freerun</string>
+    <string name="map_button_text">map</string>
+    <!-- StatActivity Part -->
+    <string name="title_activity_stat">StatActivity</string>
+    <string name="tab_total">Общее</string>
+    <string name="tab_certain_activity">По тренировкам</string>
+    <string name="tab_certain_day">По дням</string>
+    <string name="tab_walking">Ходьба</string>
+    <string name="tab_running">Бег</string>
+    <string name="tab_bicycle">Велосипед</string>
+    <string name="tab_skiing">Лыжи</string>
+    <string name="text_title_calories">О каллориях</string>
+    <string name="text_total_calories">Всего сожено калорий:</string>
+    <string name="text_average_calories">В среднем за одну тренировку сжигалось:</string>
+    <string name="text_biggest_calories">Максимально сожено за одну тренировку:</string>
+    <string name="text_smallest_calories">Минимально сожено за одну тренировку:</string>
+    <string name="text_title_distance">О дистанции</string>
+    <string name="text_total_distance">Общая дистанция:</string>
+    <string name="text_average_distance">Средняя дистанция за одну тренировку:</string>
+    <string name="text_biggest_distance">Максимальная дистанция:</string>
+    <string name="text_smallest_distance">Минимальная дистанция:</string>
+    <string name="text_title_time">О времени</string>
+    <string name="text_total_time">Всего вы прозанимались:</string>
+    <string name="text_average_time">В среднем одна тренировка длилась:</string>
+    <string name="text_biggest_time">Самая долгая тренировка:</string>
+    <string name="text_smallest_time">Самая короткая тренировка:</string>
+    <string name="text_average_speed">Средняя скорость:</string>
+    <string name="text_biggest_speed">Максимальная скорость:</string>
+    <string name="text_smallest_speed">Минимальная скорость:</string>
+    <string name="text_favourite_workout">Любимый вид тренировки:</string>
+    <string name="text_kind_of_workout">Вид тренировки:</string>
+    <string name="text_time_of_workout">Время тренировки:</string>
+    <string name="text_distance">Дистанция тренировки:</string>
+    <string name="text_no_workout">Вы не провели ещё ни одной тренировки</string>
+    <!--SettingsActivity Part-->
     <string name="changeName">Изменить имя</string>
     <string name="changeHeight">Изменить рост</string>
-    <string name="changeWeigth">Изменить вес</string>
-    <string name="changeAge">Изменить возраст</string>
+    <string name="changeWeight">Изменить вес</string>
+    <string name="changeAge">Изменить год</string>
     <string name="end">Закончить</string>
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="putName">Введите имя</string>
-    <string name="map_button_map" />
-    <string name="map">map</string>
-    <string name="text_tab1">total</string>
-    <string name="text_tab2">certain activity</string>
-    <string name="text_tab3">certain day</string>
-    <string name="total">total</string>
-    <string name="certain_activity">certain activity</string>
-    <string name="certain_day">certain day</string>
-    <string name="changeSex">поменять пол</string>
-    <string name="changeWeight">поменять вес</string>
+    <string name="changeSex">Изменить пол</string>
     <string name="saveAndQuit">выйти</string>
-
+    <string name="newName">Введите новое имя</string>
+    <string name="newHeight">Введите рост</string>
+    <string name="getName">Обновить</string>
+    <string name="newWeight">Введите вес</string>
+    <string name="newYear">Введите год</string>
+    <string name="weight">Вес:</string>
+    <string name="height">Рост:</string>
+    <string name="name">Имя:</string>
+    <string name="year">Год рождения:</string>
 </resources>

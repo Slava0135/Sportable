@@ -5,8 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
+import android.text.InputType;
 import android.view.View;
 import android.widget.*;
 
@@ -17,117 +18,107 @@ import io.polytech.sportable.R;
 
 public class ChangeProfile extends AppCompatActivity {
 
-    Button name_button;
-    Button sex_button;
-    Button height_button;
-    Button weight_button;
-    Button age_button;
-    Button kill_button;
+    public static final String NAME = "Name";
+    private static final String HEIGHT = "0";
+    private static final String WEIGHT = "0.0";
+    private static final String YEAR = "1900";
+    private static final String SEX = "M";
 
     final Context context = this;
-    private TextView final_text;
 
+
+    SharedPreferences settings;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_profile);
 
+
+        settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
+
+        TextView nameView =  findViewById(R.id.nameView);
+        String name = settings.getString(NAME, "user");
+        nameView.setText(name);
+
+        TextView heightView = findViewById(R.id.heightView);
+        int height = settings.getInt(HEIGHT, 0);
+        heightView.setText(Integer.toString(height));
+
+        TextView weightView = findViewById(R.id.weightView);
+        float weight = settings.getFloat(WEIGHT, 0);
+        weightView.setText(Float.toString(weight));
+
+        TextView yearView = findViewById(R.id.yearView);
+        int year = settings.getInt(YEAR, 1900);
+        yearView.setText(Integer.toString(year));
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-/*
-        name_button = (Button) findViewById(R.id.name_button);
-        sex_button = (Button) findViewById(R.id.sex_button);
-        height_button = (Button) findViewById(R.id.height_button);
-        weight_button = (Button) findViewById(R.id.weight_button);
-        age_button = (Button) findViewById(R.id.age_button);
-        kill_button = (Button) findViewById(R.id.kill_button);
-
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()){
-                    case R.id.name_button:
-                       changeName(view);
-                        break;
-                    case R.id.sex_button:
-                        changeSex(view);
-                        break;
-                    case R.id.height_button:
-                        changeHeight(view);
-                        break;
-                    case R.id.weight_button:
-                        changeWeight(view);
-                        break;
-                    case R.id.age_button:
-                        changeAge(view);
-                        break;
-                    case R.id.kill_button:
-                        saveAndQuit(view);
-                        break;
-                }
-
-            }
-        };
-
-        name_button.setOnClickListener(onClickListener);
-        sex_button.setOnClickListener(onClickListener);
-        height_button.setOnClickListener(onClickListener);
-        weight_button.setOnClickListener(onClickListener);
-        age_button.setOnClickListener(onClickListener);
-        kill_button.setOnClickListener(onClickListener);
-*/
     }
 
     // Меняем имя
     public void changeName(View view) {
-        //UserData.setName(newName);
-        //Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        // получаем введенное имя
+        EditText nameBox = findViewById(R.id.nameBox);
+        String name = nameBox.getText().toString();
+        // сохраняем его в настройках
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString(NAME, name);
+        prefEditor.apply();
 
-        alert.setTitle("МЕНЯЕМ ИМЯ");
-        alert.setMessage("имя любимое моё твоё именно");
-
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-            }
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-            }
-        });
-
-        alert.show();
-    }
-
-    // Меняем пол
-    public void changeSex(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        TextView nameView = findViewById(R.id.nameView);
+        nameView.setText(name);
+        nameBox.setText(null);
     }
 
     // Меняем рост
+    @SuppressLint("SetTextI18n")
     public void changeHeight(View view) {
-        //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        EditText heightBox = findViewById(R.id.heightBox);
+        int height = Integer.parseInt(heightBox.getText().toString());
+        // сохраняем его в настройках
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putInt(HEIGHT, height);
+        prefEditor.apply();
+
+        TextView heightView = findViewById(R.id.heightView);
+        heightView.setText(Integer.toString(height));
+        heightBox.setText(null);
     }
 
     // Меняем вес
+    @SuppressLint("SetTextI18n")
     public void changeWeight(View view) {
-        //UserData.setName(newName);
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+        EditText weightBox = findViewById(R.id.weightBox);
+        float weight = Float.parseFloat(weightBox.getText().toString());
+        // сохраняем его в настройках
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putFloat(WEIGHT, weight);
+        prefEditor.apply();
+
+        TextView weightView = findViewById(R.id.weightView);
+        weightView.setText(Float.toString(weight));
+        weightBox.setText(null);
     }
 
     // Меняем возраст
-    public void changeAge(View view) {
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+    @SuppressLint("SetTextI18n")
+    public void changeYear(View view) {
+        EditText yearBox = findViewById(R.id.yearBox);
+        int year = Integer.parseInt(yearBox.getText().toString());
+
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putInt(YEAR, year);
+        prefEditor.apply();
+
+        TextView yearView = findViewById(R.id.yearView);
+        yearView.setText(Integer.toString(year));
+        yearBox.setText(null);
     }
 
     public void saveAndQuit(View view) {
