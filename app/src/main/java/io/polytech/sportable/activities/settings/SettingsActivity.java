@@ -1,15 +1,13 @@
 package io.polytech.sportable.activities.settings;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
-
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.MainActivity;
 
@@ -49,5 +47,16 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Toast.makeText(this, "Вы выходите из настроек!", Toast.LENGTH_SHORT).show();
+            Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
+            startActivity(intentQuit);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
