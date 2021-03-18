@@ -18,8 +18,6 @@ public class ChangeProfile extends AppCompatActivity {
     private static final String HEIGHT = "0";
     private static final String WEIGHT = "0.0";
     private static final String YEAR = "1900";
-    //private static final String SEX = "M";
-
 
     SharedPreferences settings;
 
@@ -72,38 +70,51 @@ public class ChangeProfile extends AppCompatActivity {
         }
 
         if (!heightBox.getText().toString().equals("")) {
-            int height = Integer.parseInt(heightBox.getText().toString());
-            // сохраняем его в настройках
-            SharedPreferences.Editor prefEditor = settings.edit();
-            prefEditor.putInt(HEIGHT, height);
-            prefEditor.apply();
+            try {
+                int height = Integer.parseInt(heightBox.getText().toString());
+                SharedPreferences.Editor prefEditor = settings.edit();
+                prefEditor.putInt(HEIGHT, height);
+                prefEditor.apply();
 
-            TextView heightView = findViewById(R.id.heightView);
-            heightView.setText(Integer.toString(height));
-            heightBox.setText(null);
+                TextView heightView = findViewById(R.id.heightView);
+                heightView.setText(Integer.toString(height));
+                heightBox.setText(null);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Некорректные данные, дурачина!",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
         if (!weightBox.getText().toString().equals("")) {
-            float weight = Float.parseFloat(weightBox.getText().toString());
-            // сохраняем его в настройках
-            SharedPreferences.Editor prefEditor = settings.edit();
-            prefEditor.putFloat(WEIGHT, weight);
-            prefEditor.apply();
+            try {
+                float weight = Float.parseFloat(weightBox.getText().toString());
+                SharedPreferences.Editor prefEditor = settings.edit();
+                prefEditor.putFloat(WEIGHT, weight);
+                prefEditor.apply();
 
-            TextView weightView = findViewById(R.id.weightView);
-            weightView.setText(Float.toString(weight));
-            weightBox.setText(null);
+                TextView weightView = findViewById(R.id.weightView);
+                weightView.setText(Float.toString(weight));
+                weightBox.setText(null);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Некорректные данные, дурачина!",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
         if (!yearBox.getText().toString().equals("")) {
-            int year = Integer.parseInt(yearBox.getText().toString());
-            SharedPreferences.Editor prefEditor = settings.edit();
-            prefEditor.putInt(YEAR, year);
-            prefEditor.apply();
+            try {
+                int year = Integer.parseInt(yearBox.getText().toString());
+                SharedPreferences.Editor prefEditor = settings.edit();
+                prefEditor.putInt(YEAR, year);
+                prefEditor.apply();
 
-            TextView yearView = findViewById(R.id.yearView);
-            yearView.setText(Integer.toString(year));
-            yearBox.setText(null);
+                TextView yearView = findViewById(R.id.yearView);
+                yearView.setText(Integer.toString(year));
+                yearBox.setText(null);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Некорректные данные, дурачина!",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
         Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
