@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment;
 import io.polytech.sportable.R;
 
 public class CertainDayFragment extends Fragment {
-    public static final String ARG_PAGE = "ARG_PAGE";
 
-    @NonNull
     public static CertainDayFragment newInstance() {
         return new CertainDayFragment();
     }

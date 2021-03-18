@@ -1,52 +1,70 @@
 package io.polytech.sportable.activities.statistics;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.List;
-
 import io.polytech.sportable.R;
-import io.polytech.sportable.persistence.PracticeRepository;
-import io.polytech.sportable.persistence.PracticeResult;
 
 public class StatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatViewModel local = new StatViewModel(getApplication());
         setContentView(R.layout.activity_stat);
         ViewPager2 viewPager = findViewById(R.id.stat_view);
         TabLayout tabLayout = findViewById(R.id.tabs);
-        viewPager.setAdapter(
-                new StatActivityPagerAdapter(getSupportFragmentManager(), getLifecycle()));
+        viewPager.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
+
+            final int PAGE_COUNT = 3;
+
+            @Override
+            public int getItemCount() {
+                return PAGE_COUNT;
+            }
+
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                    if (local.getAllPractices().getValue() != null) {
+                        switch (position) {
+                            case 0:
+                                return new TotalPageFragment(local);
+                            case 1:
+                                return CertainActivityPageFragment.newInstance();
+                            case 2:
+                                return CertainDayFragment.newInstance();
+                            default:
+                                return null;
+                        }
+                    } else {
+                        return NoInformationFragment.newInstance();
+                    }
+            }
+        });
         TabLayoutMediator mediator = new TabLayoutMediator(
                 tabLayout, viewPager, true, (tab, position) -> {
                     switch (position) {
                         case 0:
-                            tab.setText("Total");
+                            tab.setText("Общее");
                             break;
                         case 1:
-                            tab.setText("Certain Activity");
+                            tab.setText("По тренировкам");
                             break;
                         case 2:
-                            tab.setText("Certain Day");
+                            tab.setText("По дням");
                             break;
                     }
                     viewPager.setCurrentItem(tab.getPosition(), true);
-        });
+                });
         mediator.attach();
-        /*PracticeRepository local = new PracticeRepository(getApplication());
-        List<PracticeResult> localData = local.getAllPractices().getValue();
-        TextView totalAllCalories = findViewById(R.id.total_all_calories);
-        TextView totalAveragedCalories = findViewById(R.id.total_averaged_calories_in_one_workout);
-        TextView totalAllDistance = findViewById(R.id.total_all_distance);
-        TextView totalAveragedDistance = findViewById(R.id.total_averaged_distance_in_one_workout);*/
     }
 }
