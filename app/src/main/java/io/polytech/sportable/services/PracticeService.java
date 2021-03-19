@@ -54,7 +54,7 @@ public class PracticeService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @SuppressLint("MissingPermission")
@@ -99,8 +99,9 @@ public class PracticeService extends Service {
     @Override
     public void onDestroy() {
         if (handler != null) {
-            handler.removeCallbacks(infoUpdate);
+            handler.removeCallbacksAndMessages(null);
         }
+        handler = null;
         super.onDestroy();
     }
 
