@@ -51,6 +51,9 @@ public class ChangeProfile extends AppCompatActivity {
         }
     }
 
+    boolean flag = true;
+
+    @SuppressLint("SetTextI18n")
     public void saveAndQuit(View view) {
 
         EditText nameBox = findViewById(R.id.nameBox);
@@ -79,9 +82,10 @@ public class ChangeProfile extends AppCompatActivity {
                 TextView heightView = findViewById(R.id.heightView);
                 heightView.setText(Integer.toString(height));
                 heightBox.setText(null);
+
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                heightBox.setText(null);
+                flag = false;
             }
         }
 
@@ -96,8 +100,8 @@ public class ChangeProfile extends AppCompatActivity {
                 weightView.setText(Float.toString(weight));
                 weightBox.setText(null);
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                weightBox.setText(null);
+                flag = false;
             }
         }
 
@@ -112,14 +116,22 @@ public class ChangeProfile extends AppCompatActivity {
                 yearView.setText(Integer.toString(year));
                 yearBox.setText(null);
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                yearBox.setText(null);
+                flag = false;
             }
         }
+        tryToQuit();
+    }
 
-        Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
-        startActivity(intent);
+    public void tryToQuit() {
+        if (flag) {
+            Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
+            startActivity(intent);
+        }
+        else {
+             Toast.makeText(this, "Некорректно введены данные!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
