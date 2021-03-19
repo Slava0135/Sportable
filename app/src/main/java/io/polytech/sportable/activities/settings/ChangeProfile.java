@@ -1,7 +1,6 @@
 package io.polytech.sportable.activities.settings;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +19,7 @@ public class ChangeProfile extends AppCompatActivity {
     private static final String YEAR = "1900";
 
     SharedPreferences settings;
+    boolean flag = true;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -75,6 +75,8 @@ public class ChangeProfile extends AppCompatActivity {
         if (!heightBox.getText().toString().equals("")) {
             try {
                 int height = Integer.parseInt(heightBox.getText().toString());
+                if (height < 50 || height > 300) throw new NumberFormatException();
+
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putInt(HEIGHT, height);
                 prefEditor.apply();
@@ -92,6 +94,7 @@ public class ChangeProfile extends AppCompatActivity {
         if (!weightBox.getText().toString().equals("")) {
             try {
                 float weight = Float.parseFloat(weightBox.getText().toString());
+                if (weight < 20.0 || weight > 200.0) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putFloat(WEIGHT, weight);
                 prefEditor.apply();
@@ -108,6 +111,7 @@ public class ChangeProfile extends AppCompatActivity {
         if (!yearBox.getText().toString().equals("")) {
             try {
                 int year = Integer.parseInt(yearBox.getText().toString());
+                if (year < 1900 || year > 2015) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putInt(YEAR, year);
                 prefEditor.apply();
@@ -129,9 +133,7 @@ public class ChangeProfile extends AppCompatActivity {
             Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intent);
         }
-        else {
-             Toast.makeText(this, "Некорректно введены данные!", Toast.LENGTH_SHORT).show();
-        }
+        else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
     }
 
     @Override

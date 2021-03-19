@@ -62,8 +62,8 @@
     <string name="saveAndQuit">Выйти</string>
     <!--ChangeProfile Part-->
     <string name="name">Имя:</string>
-    <string name="weight">Вес:</string>
-    <string name="height">Рост:</string>
+    <string name="weight">Вес (кг):</string>
+    <string name="height">Рост (см):</string>
     <string name="year">Год рождения:</string>
     <string name="newName">Введите новое имя</string>
     <string name="newHeight">Введите новый рост</string>
