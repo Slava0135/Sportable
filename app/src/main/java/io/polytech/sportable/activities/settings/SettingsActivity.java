@@ -1,5 +1,6 @@
 package io.polytech.sportable.activities.settings;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,8 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.MainActivity;
+import io.polytech.sportable.persistence.PracticeRepository;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    PracticeRepository deleteStat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,8 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        deleteStat = new PracticeRepository(getApplication());
     }
 
     public void changeProfile(View view) {
@@ -32,8 +38,23 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clearStatistics(View view) {
-        // удаляем всю статистику
-        Toast.makeText(this, "Пока недоступно :(", Toast.LENGTH_SHORT).show();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Удалить статистику");
+        builder.setMessage("Вы уверены, что хотите всего этого?");
+
+        builder.setPositiveButton("ДА", (dialog, which) -> {
+            deleteStat.deleteAll();
+            Toast.makeText(SettingsActivity.this,
+                    "Работает или нет? who knows..", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        builder.setNegativeButton("НЕТ", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void saveAndQuit(View view) {

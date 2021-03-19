@@ -1,7 +1,6 @@
 package io.polytech.sportable.activities.settings;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +19,7 @@ public class ChangeProfile extends AppCompatActivity {
     private static final String YEAR = "1900";
 
     SharedPreferences settings;
+    boolean flag = true;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -72,6 +72,8 @@ public class ChangeProfile extends AppCompatActivity {
         if (!heightBox.getText().toString().equals("")) {
             try {
                 int height = Integer.parseInt(heightBox.getText().toString());
+                if (height < 50 || height > 300) throw new NumberFormatException();
+
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putInt(HEIGHT, height);
                 prefEditor.apply();
@@ -80,14 +82,15 @@ public class ChangeProfile extends AppCompatActivity {
                 heightView.setText(Integer.toString(height));
                 heightBox.setText(null);
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                heightBox.setText(null);
+                flag = false;
             }
         }
 
         if (!weightBox.getText().toString().equals("")) {
             try {
                 float weight = Float.parseFloat(weightBox.getText().toString());
+                if (weight < 20.0 || weight > 200.0) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putFloat(WEIGHT, weight);
                 prefEditor.apply();
@@ -96,14 +99,15 @@ public class ChangeProfile extends AppCompatActivity {
                 weightView.setText(Float.toString(weight));
                 weightBox.setText(null);
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                weightBox.setText(null);
+                flag = false;
             }
         }
 
         if (!yearBox.getText().toString().equals("")) {
             try {
                 int year = Integer.parseInt(yearBox.getText().toString());
+                if (year < 1900 || year > 2015) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putInt(YEAR, year);
                 prefEditor.apply();
@@ -112,14 +116,22 @@ public class ChangeProfile extends AppCompatActivity {
                 yearView.setText(Integer.toString(year));
                 yearBox.setText(null);
             } catch (NumberFormatException e) {
-                Toast.makeText(this, "Некорректные данные, дурачина!",
-                        Toast.LENGTH_SHORT).show();
+                yearBox.setText(null);
+                flag = false;
             }
         }
+        tryToQuit();
+    }
 
-        Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
-        startActivity(intent);
+    public void tryToQuit() {
+        if (flag) {
+            Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Некорректно введены данные!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
