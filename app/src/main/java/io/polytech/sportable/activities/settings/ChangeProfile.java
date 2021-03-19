@@ -129,9 +129,7 @@ public class ChangeProfile extends AppCompatActivity {
             Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intent);
         }
-        else {
-            Toast.makeText(this, "Некорректно введены данные!", Toast.LENGTH_SHORT).show();
-        }
+        else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
