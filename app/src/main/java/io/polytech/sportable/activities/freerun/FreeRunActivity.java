@@ -71,9 +71,16 @@ public class FreeRunActivity extends AppCompatActivity {
                     model.practiceType));
             startActivity(stats);
         });
-        Intent intent = new Intent(this, PracticeService.class);
-        bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
+
+        bindService(new Intent(this, PracticeService.class), model.connection, Context.BIND_AUTO_CREATE);
         runTimer();
+    }
+
+    @Override
+    protected void onDestroy() {
+        unbindService(model.connection);
+        model.mService.stopSelf();
+        super.onDestroy();
     }
 
     public void runTimer() {
