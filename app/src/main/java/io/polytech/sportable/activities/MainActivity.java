@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.freerun_button:
                 Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
                 startActivity(freerun);
+                finish();
                 break;
         }
     }

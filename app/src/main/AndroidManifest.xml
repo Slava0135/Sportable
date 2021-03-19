@@ -33,9 +33,7 @@
         <activity
             android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity
-            android:name=".activities.MainActivity"
-            android:noHistory="true">
+        <activity android:name=".activities.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
