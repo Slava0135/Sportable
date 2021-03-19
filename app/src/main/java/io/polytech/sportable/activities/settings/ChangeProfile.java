@@ -51,6 +51,9 @@ public class ChangeProfile extends AppCompatActivity {
         }
     }
 
+    boolean flag = true;
+
+    @SuppressLint("SetTextI18n")
     public void saveAndQuit(View view) {
 
         EditText nameBox = findViewById(R.id.nameBox);
@@ -81,6 +84,7 @@ public class ChangeProfile extends AppCompatActivity {
                 TextView heightView = findViewById(R.id.heightView);
                 heightView.setText(Integer.toString(height));
                 heightBox.setText(null);
+
             } catch (NumberFormatException e) {
                 heightBox.setText(null);
                 flag = false;
