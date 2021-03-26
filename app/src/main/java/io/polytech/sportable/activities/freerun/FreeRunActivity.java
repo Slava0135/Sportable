@@ -69,6 +69,7 @@ public class FreeRunActivity extends AppCompatActivity {
                     model.mService.getCalories(),
                     model.mService.getTimeSeconds(),
                     model.practiceType));
+            finish();
             startActivity(stats);
         });
 
@@ -78,10 +79,10 @@ public class FreeRunActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void finish() {
         unbindService(model.connection);
         model.mService.stopSelf();
-        super.onDestroy();
+        super.finish();
     }
 
     public void runTimer() {
@@ -99,9 +100,9 @@ public class FreeRunActivity extends AppCompatActivity {
                     int minutes = seconds / 60;
                     String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds % 60);
                     valueTime.setText(time);
-                    valueDistance.setText("" + model.mService.getDistanceMeters());
-                    valueSpeed.setText("" + model.mService.getSpeedMetersPerSecond());
-                    valueCalories.setText("" + model.mService.getCalories());
+                    valueDistance.setText(String.format(Locale.getDefault(), "%.0f", model.mService.getDistanceMeters()));
+                    valueSpeed.setText(String.format(Locale.getDefault(), "%.1f", model.mService.getSpeedMetersPerSecond()));
+                    valueCalories.setText(String.format(Locale.getDefault(), "%.0f",  + model.mService.getCalories()));
                 }
                 handler.postDelayed(this, 1000);
             }
