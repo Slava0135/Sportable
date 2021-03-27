@@ -14,14 +14,17 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 import io.polytech.sportable.models.practice.PracticeType;
+import io.polytech.sportable.models.practice.UserModel;
 
 public class PracticeService extends Service {
 
     LocationManager locationManager;
 
-    private int time;
+    private int timeMillis;
     private float distance;
     private PracticeType practiceType;
+
+    private UserModel userModel;
 
     private Handler handler;
     private Runnable infoUpdate;
@@ -60,14 +63,15 @@ public class PracticeService extends Service {
     @SuppressLint("MissingPermission")
     public void run(PracticeType practiceType) {
 
-        time = 0;
+        timeMillis = 0;
         distance = 0;
         this.practiceType = practiceType;
+        userModel = new UserModel(getSharedPreferences("io.polytech.sportable", MODE_PRIVATE));
         isRunning = true;
 
         infoUpdate = () -> {
             if (isRunning) {
-                time += infoPeriod;
+                timeMillis += infoPeriod;
             }
             handler.postDelayed(infoUpdate, infoPeriod);
         };
@@ -87,13 +91,13 @@ public class PracticeService extends Service {
         return distance;
     }
     public int getTimeSeconds() {
-        return time / 1000;
+        return timeMillis / 1000;
     }
     public float getSpeedMetersPerSecond() {
-        return 1000 * distance / time;
+        return 1000 * distance / timeMillis;
     }
     public float getCalories() {
-        return 0;
+        return userModel.getCalories(practiceType, getTimeSeconds(), getSpeedMetersPerSecond());
     }
 
     @Override
@@ -101,7 +105,6 @@ public class PracticeService extends Service {
         if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
-        handler = null;
         super.onDestroy();
     }
 

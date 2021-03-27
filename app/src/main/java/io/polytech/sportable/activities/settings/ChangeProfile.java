@@ -13,10 +13,10 @@ import io.polytech.sportable.R;
 
 public class ChangeProfile extends AppCompatActivity {
 
-    public static final String NAME = "Name";
-    private static final String HEIGHT = "0";
-    private static final String WEIGHT = "0.0";
-    private static final String YEAR = "1900";
+    public static final String NAME = "name";
+    private static final String HEIGHT = "height";
+    private static final String WEIGHT = "weight";
+    private static final String YEAR = "year";
 
     SharedPreferences settings;
     boolean flag = true;
