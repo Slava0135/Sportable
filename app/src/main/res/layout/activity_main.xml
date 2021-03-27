@@ -60,6 +60,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
+        android:id="@+id/activityType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -68,25 +69,25 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioSki"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ski" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioBicycle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bicycle" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioRun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/run" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radioWalk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"

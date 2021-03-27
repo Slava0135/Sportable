@@ -37,8 +37,9 @@ public class FreeRunActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
         model = new ViewModelProvider(this).get(RunViewModel.class);
-        setContentView(R.layout.activity_free_run);
+        model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
         model.isRunning = true;
+        setContentView(R.layout.activity_free_run);
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
             if (model.isRunning) {
