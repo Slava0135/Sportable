@@ -20,8 +20,14 @@
         </service>
 
         <activity android:name=".activities.MapActivity"/>
-        <activity android:name=".activities.freerun.FreeRunStatActivity" />
-        <activity android:name=".activities.freerun.FreeRunActivity" />
+        <activity
+            android:name=".activities.freerun.FreeRunStatActivity"
+            android:theme="@style/Theme.Sportable.NoActionBar"
+            />
+        <activity
+            android:name=".activities.freerun.FreeRunActivity"
+            android:theme="@style/Theme.Sportable.NoActionBar"
+            />
         <activity
             android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"

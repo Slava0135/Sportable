@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.statistics.StatActivity;
 import io.polytech.sportable.activities.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
+import io.polytech.sportable.models.practice.PracticeType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,9 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.freerun_button:
                 Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
+                freerun.putExtra("activity_type", getSelectedActivity());
                 startActivity(freerun);
                 finish();
                 break;
         }
+    }
+
+    private String getSelectedActivity() {
+        RadioGroup group = findViewById(R.id.activityType);
+        switch (group.getCheckedRadioButtonId()) {
+            case R.id.radioWalk: return PracticeType.Walk.toString();
+            case R.id.radioSki: return PracticeType.Skies.toString();
+            case R.id.radioBicycle: return PracticeType.Bicycle.toString();
+            case R.id.radioRun: return PracticeType.Run.toString();
+        }
+        return "";
     }
 }
