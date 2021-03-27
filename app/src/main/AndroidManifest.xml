@@ -29,7 +29,9 @@
         <activity
             android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

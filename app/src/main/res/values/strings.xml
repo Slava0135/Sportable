@@ -70,4 +70,9 @@
     <string name="newWeight">Введите новый вес</string>
     <string name="newYear">Введите новый год рождения</string>
     <string name="end">Сохранить и выйти</string>
+    <!--MainActivity Part-->
+    <string name="walk">Ходьба</string>
+    <string name="run">Бег</string>
+    <string name="bicycle">Велосипед</string>
+    <string name="ski">Лыжи</string>
 </resources>
