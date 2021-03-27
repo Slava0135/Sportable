@@ -19,7 +19,7 @@ public class TotalPageFragment extends Fragment {
     TotalFragmentInformation inf;
 
     public TotalPageFragment(StatViewModel local) {
-        this.inf = local.createForTotalFragment();
+        this.inf = local.createTotalFragmentInformation();
     }
 
     @Override

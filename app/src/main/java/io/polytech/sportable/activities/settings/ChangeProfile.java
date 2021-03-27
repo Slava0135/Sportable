@@ -51,8 +51,6 @@ public class ChangeProfile extends AppCompatActivity {
         }
     }
 
-    boolean flag = true;
-
     @SuppressLint("SetTextI18n")
     public void saveAndQuit(View view) {
 
