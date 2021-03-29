@@ -43,12 +43,5 @@ public class FreeRunStatActivity extends AppCompatActivity {
             finish();
             startActivity(main);
         });
-
-        final Button buttonStats = findViewById(R.id.buttonToStatistics);
-        buttonStats.setOnClickListener(v -> {
-            Intent stats = new Intent(FreeRunStatActivity.this, StatActivity.class);
-            finish();
-            startActivity(stats);
-        });
     }
 }
