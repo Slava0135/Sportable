@@ -1,4 +1,4 @@
-package io.polytech.sportable.activities.statistics;
+package io.polytech.sportable.activities.statistics.certain_day;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

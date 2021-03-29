@@ -12,10 +12,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.statistics.certain_activity.CertainActivityPageFragment;
+import io.polytech.sportable.activities.statistics.certain_day.CertainDayFragment;
+import io.polytech.sportable.activities.statistics.total.TotalPageFragment;
 
 public class StatActivity extends AppCompatActivity {
-
-    StatViewModel local;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,6 @@ public class StatActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        local = new StatViewModel(getApplication(), this);
         ViewPager2 viewPager = findViewById(R.id.stat_view);
         TabLayout tabLayout = findViewById(R.id.tabs);
         viewPager.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
@@ -41,10 +41,9 @@ public class StatActivity extends AppCompatActivity {
             @NonNull
             @Override
             public Fragment createFragment(int position) {
-                //if (local.getAllPractices().getValue() != null) {
                     switch (position) {
                         case 0:
-                            return new TotalPageFragment(local);
+                            return TotalPageFragment.newInstance();
                         case 1:
                             return CertainActivityPageFragment.newInstance();
                         case 2:
@@ -52,10 +51,7 @@ public class StatActivity extends AppCompatActivity {
                         default:
                             return null;
                     }
-                } /*else {
-                    return NoInformationFragment.newInstance();
-                }*/
-            //}
+                }
         });
         TabLayoutMediator mediator = new TabLayoutMediator(
                 tabLayout, viewPager, true, (tab, position) -> {
