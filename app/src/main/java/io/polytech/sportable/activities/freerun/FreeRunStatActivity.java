@@ -47,12 +47,14 @@ public class FreeRunStatActivity extends AppCompatActivity {
         buttonToMain.setOnClickListener(v -> {
             Intent main = new Intent(FreeRunStatActivity.this, MainActivity.class);
             startActivity(main);
+            finish();
         });
 
         final Button buttonStats = findViewById(R.id.buttonToStatistics);
         buttonStats.setOnClickListener(v -> {
             Intent stats = new Intent(FreeRunStatActivity.this, StatActivity.class);
             startActivity(stats);
+            finish();
         });
     }
 }

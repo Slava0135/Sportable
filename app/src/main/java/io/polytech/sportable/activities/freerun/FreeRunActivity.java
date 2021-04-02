@@ -39,14 +39,7 @@ import io.polytech.sportable.services.PracticeService;
 public class FreeRunActivity extends AppCompatActivity {
 
     RunViewModel model;
-    public boolean isGeoEnabled() {
-        Context mContext = getApplicationContext();
-        LocationManager mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        boolean mIsGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        boolean mIsNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        boolean mIsGeoDisabled = mIsGPSEnabled && mIsNetworkEnabled;
-        return mIsGeoDisabled;
-    }
+
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
@@ -55,13 +48,7 @@ public class FreeRunActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
         model = new ViewModelProvider(this).get(RunViewModel.class);
         setContentView(R.layout.activity_free_run);
-        boolean geo = isGeoEnabled();
-        if (!isGeoEnabled()) {
-            Toast.makeText(this, "Еблан зачем ты зашел в карты без геолокации? Соси хуй еп)", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(FreeRunActivity.this, MainActivity.class);
-            startActivity(intent);
-            this.finish();
-        }
+
         model.isRunning = true;
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
