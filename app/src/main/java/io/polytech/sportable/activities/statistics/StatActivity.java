@@ -12,14 +12,21 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.statistics.certain_activity.CertainActivityPageFragment;
+import io.polytech.sportable.activities.statistics.certain_day.CertainDayFragment;
+import io.polytech.sportable.activities.statistics.total.TotalPageFragment;
 
 public class StatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatViewModel local = new StatViewModel(getApplication());
         setContentView(R.layout.activity_stat);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         ViewPager2 viewPager = findViewById(R.id.stat_view);
         TabLayout tabLayout = findViewById(R.id.tabs);
         viewPager.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
@@ -34,37 +41,33 @@ public class StatActivity extends AppCompatActivity {
             @NonNull
             @Override
             public Fragment createFragment(int position) {
-                    if (local.getAllPractices().getValue() != null) {
-                        switch (position) {
-                            case 0:
-                                return new TotalPageFragment(local);
-                            case 1:
-                                return CertainActivityPageFragment.newInstance();
-                            case 2:
-                                return CertainDayFragment.newInstance();
-                            default:
-                                return null;
-                        }
-                    } else {
-                        return NoInformationFragment.newInstance();
+                    switch (position) {
+                        case 0:
+                            return TotalPageFragment.newInstance();
+                        case 1:
+                            return CertainActivityPageFragment.newInstance();
+                        case 2:
+                            return CertainDayFragment.newInstance();
+                        default:
+                            return null;
                     }
-            }
+                }
         });
         TabLayoutMediator mediator = new TabLayoutMediator(
                 tabLayout, viewPager, true, (tab, position) -> {
-                    switch (position) {
-                        case 0:
-                            tab.setText("Общее");
-                            break;
-                        case 1:
-                            tab.setText("По тренировкам");
-                            break;
-                        case 2:
-                            tab.setText("По дням");
-                            break;
-                    }
-                    viewPager.setCurrentItem(tab.getPosition(), true);
-                });
+            switch (position) {
+                case 0:
+                    tab.setText("Общее");
+                    break;
+                case 1:
+                    tab.setText("По тренировкам");
+                    break;
+                case 2:
+                    tab.setText("По дням");
+                    break;
+            }
+            viewPager.setCurrentItem(tab.getPosition(), true);
+        });
         mediator.attach();
     }
 }
