@@ -15,7 +15,7 @@
         android:backgroundTint="#FF0202"
         android:onClick="onMyButtonClick"
         android:text="@string/settings_button_text"
-        app:icon="@android:drawable/ic_menu_manage"
+        android:drawableStart="@android:drawable/ic_menu_manage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#FFFFFF" />
@@ -29,7 +29,7 @@
         android:backgroundTint="#FF0000"
         android:onClick="onMyButtonClick"
         android:text="@string/statistics_button_text"
-        app:icon="@android:drawable/ic_menu_info_details"
+        android:drawableStart="@android:drawable/ic_menu_info_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         android:backgroundTint="#FF0000"
         android:onClick="onMyButtonClick"
         android:text="@string/freerun_button_text"
-        app:icon="@android:drawable/ic_media_play"
+        android:drawableStart="@android:drawable/ic_media_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -55,7 +55,7 @@
         android:backgroundTint="#FF0000"
         android:onClick="onMyButtonClick"
         android:text="@string/map_button_text"
-        app:icon="@android:drawable/ic_menu_mapmode"
+        android:drawableStart="@android:drawable/ic_menu_mapmode"
         app:layout_constraintBottom_toTopOf="@+id/freerun_button"
         app:layout_constraintStart_toStartOf="parent" />
 
