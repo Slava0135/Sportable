@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import io.polytech.sportable.models.practice.PracticeType;
+
 public class PracticeResultViewModel extends AndroidViewModel {
 
     public LiveData<List<PracticeResult>> allData;
@@ -15,9 +17,19 @@ public class PracticeResultViewModel extends AndroidViewModel {
 
     public PracticeResultViewModel(@NonNull Application application) {
         super(application);
-        PracticeDao practiceDao = AppDatabase.getDatabase(application).practiceDao();
         rep = new PracticeRepository(application);
         allData = rep.getAllPractices();
     }
 
+    public LiveData<List<PracticeResult>> getAllByPractice(PracticeType practiceType) {
+        return rep.getAllByPractice(practiceType);
+    }
+
+    public LiveData<PracticeResult> getByDate(long date) {
+        return rep.getByDate(date);
+    }
+
+    public void insert(PracticeResult res) {
+        rep.insert(res);
+    }
 }

@@ -2,14 +2,10 @@ package io.polytech.sportable.persistence;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.polytech.sportable.models.practice.PracticeType;
 
@@ -17,7 +13,6 @@ public class PracticeRepository {
 
     private PracticeDao mPracticeDao;
     private LiveData<List<PracticeResult>> mAllPractices;
-
 
     public PracticeRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
@@ -29,8 +24,12 @@ public class PracticeRepository {
         return mAllPractices;
     }
 
-    public List<PracticeResult> getAllPracticesAfter(long date) {
-        return mPracticeDao.getAllAfter(date);
+    public LiveData<List<PracticeResult>> getAllByPractice(PracticeType practiceType) {
+        return mPracticeDao.getAllByPractice(practiceType);
+    }
+
+    public LiveData<PracticeResult> getByDate(long date) {
+        return mPracticeDao.getByDate(date);
     }
 
     public void insert (PracticeResult practiceResult) {
