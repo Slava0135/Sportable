@@ -19,7 +19,9 @@
 
         </service>
 
-        <activity android:name=".activities.MapActivity"/>
+        <activity android:name=".activities.mapRun.MapActivity"/>
+        <activity android:name=".activities.mapRun.MapActivityRun"/>
+        <activity android:name=".activities.mapRun.MapActivityChoose"/>
         <activity
             android:name=".activities.freerun.FreeRunStatActivity"
             android:theme="@style/Theme.Sportable.NoActionBar"
