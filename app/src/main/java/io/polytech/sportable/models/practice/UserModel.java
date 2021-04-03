@@ -18,6 +18,15 @@ public class UserModel {
             case Walk: {
                 return time / 60f * (0.035f * weight + 0.029f * (velocity * velocity / height) * weight);
             }
+            case Run: {
+                return time / 60f * (0.035f * weight + 0.029f * (velocity * velocity / height) * weight);
+            }
+            case Bicycle: {
+                return time / 60f * (5 * weight * 3.5f) / 200;
+            }
+            case Skies: {
+                return time / 60f * (7 * weight * 3.5f) / 200;
+            }
             default: {
                 return 0f;
             }
