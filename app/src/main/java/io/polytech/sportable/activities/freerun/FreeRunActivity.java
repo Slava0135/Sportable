@@ -1,28 +1,37 @@
 package io.polytech.sportable.activities.freerun;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 import java.util.Random;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
+import io.polytech.sportable.activities.settings.ChangeProfile;
+import io.polytech.sportable.activities.settings.SettingsActivity;
 import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
@@ -31,15 +40,16 @@ public class FreeRunActivity extends AppCompatActivity {
 
     RunViewModel model;
 
+
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
         model = new ViewModelProvider(this).get(RunViewModel.class);
-        model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
-        model.isRunning = true;
         setContentView(R.layout.activity_free_run);
+
+        model.isRunning = true;
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
             if (model.isRunning) {
@@ -70,20 +80,11 @@ public class FreeRunActivity extends AppCompatActivity {
                     model.mService.getCalories(),
                     model.mService.getTimeSeconds(),
                     model.practiceType));
-            finish();
             startActivity(stats);
         });
-
-        Intent service = new Intent(this, PracticeService.class);
-        bindService(service, model.connection, Context.BIND_AUTO_CREATE);
+        Intent intent = new Intent(this, PracticeService.class);
+        bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
         runTimer();
-    }
-
-    @Override
-    public void finish() {
-        unbindService(model.connection);
-        model.mService.stopSelf();
-        super.finish();
     }
 
     public void runTimer() {
@@ -101,9 +102,9 @@ public class FreeRunActivity extends AppCompatActivity {
                     int minutes = seconds / 60;
                     String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds % 60);
                     valueTime.setText(time);
-                    valueDistance.setText(String.format(Locale.getDefault(), "%.0f", model.mService.getDistanceMeters()));
-                    valueSpeed.setText(String.format(Locale.getDefault(), "%.1f", model.mService.getSpeedMetersPerSecond()));
-                    valueCalories.setText(String.format(Locale.getDefault(), "%.0f",  + model.mService.getCalories()));
+                    valueDistance.setText("" + model.mService.getDistanceMeters());
+                    valueSpeed.setText("" + model.mService.getSpeedMetersPerSecond());
+                    valueCalories.setText("" + model.mService.getCalories());
                 }
                 handler.postDelayed(this, 1000);
             }
