@@ -62,13 +62,10 @@ public class MainActivity extends AppCompatActivity {
                     enableGeo();
                 } else {
                     Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
+                    freerun.putExtra("activity_type", getSelectedActivity());
                     startActivity(freerun);
                     finish();
                 }
-                Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
-                freerun.putExtra("activity_type", getSelectedActivity());
-                startActivity(freerun);
-                finish();
                 break;
         }
     }
@@ -83,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void enableGeo() {
-        Toast.makeText(this, "Еблан зачем ты зашел в карты без геолокации? Соси хуй еп)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Включите геолокацию, чтобы приложение работало корректно", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         this.finish();
