@@ -23,7 +23,6 @@ public class PracticeResult {
     @ColumnInfo(name = "time")
     public final int time;
 
-    @TypeConverters({PracticeTypeConverter.class})
     @ColumnInfo(name = "practiceType")
     public final PracticeType practiceType;
 

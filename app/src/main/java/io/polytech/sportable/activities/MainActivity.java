@@ -9,13 +9,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.RadioGroup;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.mapRun.MapActivity;
 import io.polytech.sportable.activities.statistics.StatActivity;
 import io.polytech.sportable.activities.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
-//Удалить этот комментарий
+import io.polytech.sportable.models.practice.PracticeType;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -63,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(freerun);
                     finish();
                 }
+                Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
+                freerun.putExtra("activity_type", getSelectedActivity());
+                startActivity(freerun);
+                finish();
                 break;
         }
     }
@@ -81,5 +87,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         this.finish();
+    }
+
+    private String getSelectedActivity() {
+        RadioGroup group = findViewById(R.id.activityType);
+        switch (group.getCheckedRadioButtonId()) {
+            case R.id.radioWalk: return PracticeType.Walk.toString();
+            case R.id.radioSki: return PracticeType.Skies.toString();
+            case R.id.radioBicycle: return PracticeType.Bicycle.toString();
+            case R.id.radioRun: return PracticeType.Run.toString();
+        }
+        return "";
     }
 }

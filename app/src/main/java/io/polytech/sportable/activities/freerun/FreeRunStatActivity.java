@@ -15,12 +15,6 @@ import io.polytech.sportable.activities.MainActivity;
 import io.polytech.sportable.activities.statistics.StatActivity;
 
 public class FreeRunStatActivity extends AppCompatActivity {
-
-    float distance;
-    int time;
-    int calories;
-    float speed;
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +40,8 @@ public class FreeRunStatActivity extends AppCompatActivity {
         final Button buttonToMain = findViewById(R.id.buttonToMain);
         buttonToMain.setOnClickListener(v -> {
             Intent main = new Intent(FreeRunStatActivity.this, MainActivity.class);
+            finish();
             startActivity(main);
-            finish();
-        });
-
-        final Button buttonStats = findViewById(R.id.buttonToStatistics);
-        buttonStats.setOnClickListener(v -> {
-            Intent stats = new Intent(FreeRunStatActivity.this, StatActivity.class);
-            startActivity(stats);
-            finish();
         });
     }
 }

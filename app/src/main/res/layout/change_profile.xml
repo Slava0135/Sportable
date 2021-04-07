@@ -5,29 +5,28 @@
     android:layout_height="match_parent"
     tools:context=".activities.settings.ChangeProfile">
 
+    <TextView
+        android:id="@+id/menuName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/menuName"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <EditText
         android:id="@+id/nameBox"
-        android:layout_width="175dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="40dp"
         android:hint="@string/newName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/name"
         android:importantForAutofill="no" />
-
-    <Button
-        android:id="@+id/saveNameButton"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#009688"
-        android:onClick="changeName"
-        android:text="@string/changeName"
-        android:textColor="#000000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameBox" />
 
     <TextView
         android:id="@+id/name"
@@ -51,33 +50,18 @@
         android:layout_height="50dp"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/saveNameButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/heightBox"
-        android:layout_width="175dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="40dp"
         android:hint="@string/newHeight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveNameButton"
+        app:layout_constraintTop_toTopOf="@+id/height"
         android:importantForAutofill="no" />
-
-    <Button
-        android:id="@+id/saveHeightButton"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#FF018786"
-        android:onClick="changeHeight"
-        android:text="@string/changeHeight"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightBox"
-        tools:ignore="MissingConstraints" />
 
 
     <TextView
@@ -101,7 +85,6 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="228dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/saveHeightButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -114,21 +97,9 @@
         android:layout_marginTop="40dp"
         android:hint="@string/newWeight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveHeightButton"
+        app:layout_constraintTop_toTopOf="@+id/weight"
         android:importantForAutofill="no" />
 
-    <Button
-        android:id="@+id/saveWeightButton"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#FF018786"
-        android:onClick="changeWeight"
-        android:text="@string/changeWeight"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightBox" />
 
     <TextView
         android:id="@+id/weight"
@@ -151,7 +122,6 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="368dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/saveWeightButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -164,21 +134,7 @@
         android:layout_marginTop="40dp"
         android:hint="@string/newYear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveWeightButton" />
-
-
-    <Button
-        android:id="@+id/yearSaveButton"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#FF018786"
-        android:onClick="changeYear"
-        android:text="@string/changeAge"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearBox" />
+        app:layout_constraintTop_toTopOf="@+id/year" />
 
 
     <TextView
@@ -201,18 +157,17 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="508dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/yearSaveButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/kill_button"
-        android:layout_width="175dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="632dp"
-        android:backgroundTint="#F16D26"
         android:onClick="saveAndQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="620dp"
+        android:backgroundTint="#F16D26"
         android:text="@string/end"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"

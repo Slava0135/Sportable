@@ -54,24 +54,25 @@
     <string name="text_time_of_workout">Время тренировки:</string>
     <string name="text_distance">Дистанция тренировки:</string>
     <string name="text_no_workout">Вы не провели ещё ни одной тренировки</string>
+
     <!--SettingsActivity Part-->
-    <string name="changeName">Изменить имя</string>
-    <string name="changeHeight">Изменить рост</string>
-    <string name="changeWeight">Изменить вес</string>
-    <string name="changeAge">Изменить год</string>
-    <string name="end">Закончить</string>
+    <string name="menuName">Введите данные профиля</string>
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
-    <string name="putName">Введите имя</string>
-    <string name="changeSex">Изменить пол</string>
-    <string name="saveAndQuit">выйти</string>
-    <string name="newName">Введите новое имя</string>
-    <string name="newHeight">Введите рост</string>
-    <string name="getName">Обновить</string>
-    <string name="newWeight">Введите вес</string>
-    <string name="newYear">Введите год</string>
-    <string name="weight">Вес:</string>
-    <string name="height">Рост:</string>
+    <string name="saveAndQuit">Выйти</string>
+    <!--ChangeProfile Part-->
     <string name="name">Имя:</string>
+    <string name="weight">Вес (кг):</string>
+    <string name="height">Рост (см):</string>
     <string name="year">Год рождения:</string>
+    <string name="newName">Введите новое имя</string>
+    <string name="newHeight">Введите новый рост</string>
+    <string name="newWeight">Введите новый вес</string>
+    <string name="newYear">Введите новый год рождения</string>
+    <string name="end">Сохранить и выйти</string>
+    <!--MainActivity Part-->
+    <string name="walk">Ходьба</string>
+    <string name="run">Бег</string>
+    <string name="bicycle">Велосипед</string>
+    <string name="ski">Лыжи</string>
 </resources>

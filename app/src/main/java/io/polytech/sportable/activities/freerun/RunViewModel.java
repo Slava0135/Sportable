@@ -14,7 +14,7 @@ import io.polytech.sportable.services.PracticeService;
 
 public class RunViewModel extends AndroidViewModel {
 
-    PracticeType practiceType = PracticeType.Run;
+    PracticeType practiceType = PracticeType.Walk;
     boolean isRunning;
     PracticeService mService;
     boolean mBound = false;

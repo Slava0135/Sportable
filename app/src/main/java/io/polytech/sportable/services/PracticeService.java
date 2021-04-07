@@ -4,29 +4,27 @@ import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
-import android.view.View;
-
-import io.polytech.sportable.R;
-import io.polytech.sportable.activities.settings.ChangeProfile;
 
 import androidx.annotation.Nullable;
 
 import io.polytech.sportable.models.practice.PracticeType;
+import io.polytech.sportable.models.practice.UserModel;
 
 public class PracticeService extends Service {
 
     LocationManager locationManager;
 
-    private int time;
+    private int timeMillis;
     private float distance;
     private PracticeType practiceType;
+
+    private UserModel userModel;
 
     private Handler handler;
     private Runnable infoUpdate;
@@ -36,18 +34,11 @@ public class PracticeService extends Service {
 
     private IBinder mBinder = new PracticeBinder();
 
-
     public class PracticeBinder extends Binder {
         public PracticeService getService() {
             return PracticeService.this;
         }
     }
-
-    private SharedPreferences settings;
-    SharedPreferences.Editor ed;
-    private static final String HEIGHT = "0";
-    private static final String WEIGHT = "0.0";
-    private static final String YEAR = "1900";
 
     @Nullable
     @Override
@@ -62,27 +53,25 @@ public class PracticeService extends Service {
         locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates( LocationManager.GPS_PROVIDER,
                 2000, 25, locationListener);
-
-
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
-
 
     @SuppressLint("MissingPermission")
     public void run(PracticeType practiceType) {
 
-        time = 0;
+        timeMillis = 0;
         distance = 0;
         this.practiceType = practiceType;
+        userModel = new UserModel(getSharedPreferences("io.polytech.sportable", MODE_PRIVATE));
         isRunning = true;
 
         infoUpdate = () -> {
             if (isRunning) {
-                time += infoPeriod;
+                timeMillis += infoPeriod;
             }
             handler.postDelayed(infoUpdate, infoPeriod);
         };
@@ -102,26 +91,19 @@ public class PracticeService extends Service {
         return distance;
     }
     public int getTimeSeconds() {
-        return time / 1000;
+        return timeMillis / 1000;
     }
     public float getSpeedMetersPerSecond() {
-        return 1000 * distance / time;
+        return 1000 * distance / timeMillis;
     }
     public float getCalories() {
-        settings = getSharedPreferences(HEIGHT, Context.MODE_PRIVATE);
-        int height = settings.getInt(HEIGHT, 0);
-        settings = getSharedPreferences(WEIGHT, Context.MODE_PRIVATE);
-        float weight = settings.getFloat(WEIGHT, 0);
-        settings = getSharedPreferences(YEAR, Context.MODE_PRIVATE);
-        int year = settings.getInt(YEAR, 1900);
-
-        return (float)((10 * weight + 6.25 * height - 5 * (2021 - year) + 5) * 1.55);
+        return userModel.getCalories(practiceType, getTimeSeconds(), getSpeedMetersPerSecond());
     }
 
     @Override
     public void onDestroy() {
         if (handler != null) {
-            handler.removeCallbacks(infoUpdate);
+            handler.removeCallbacksAndMessages(null);
         }
         super.onDestroy();
     }

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/certain_day_text_kind_of_workout"
@@ -26,11 +31,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp" />
-    </TableRow>
+    </LinearLayout>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/certain_day_text_all_calories"
@@ -44,46 +50,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp" />
-    </TableRow>
+        </LinearLayout>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-         <TextView
-             android:id="@+id/certain_day_text_distance"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/text_distance"
-             android:textSize="24sp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/certain_day_text_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_distance"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/certain_day_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp" />
-    </TableRow>
+        </LinearLayout>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:id="@+id/certain_day_text_average_speed"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_average_speed"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/certain_day_average_speed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+            android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/certain_day_text_time"
@@ -97,5 +88,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp" />
-    </TableRow>
-</TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

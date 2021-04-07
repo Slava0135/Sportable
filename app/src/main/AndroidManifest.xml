@@ -19,11 +19,17 @@
 
         </service>
 
-        <activity android:name=".activities.MapActivity"/>
-        <activity android:name=".activities.freerun.FreeRunStatActivity"/>
-        <activity android:name=".activities.freerun.FreeRunActivity"/>
-        <activity android:name=".activities.mapRun.MapActivity" />
-        <activity android:name=".activities.mapRun.MapActivityRun" />
+        <activity android:name=".activities.mapRun.MapActivity"/>
+        <activity android:name=".activities.mapRun.MapActivityRun"/>
+        <activity android:name=".activities.mapRun.MapActivityChoose"/>
+        <activity
+            android:name=".activities.freerun.FreeRunStatActivity"
+            android:theme="@style/Theme.Sportable.NoActionBar"
+            />
+        <activity
+            android:name=".activities.freerun.FreeRunActivity"
+            android:theme="@style/Theme.Sportable.NoActionBar"
+            />
         <activity
             android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"
@@ -31,7 +37,9 @@
         <activity
             android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +50,7 @@
 
         <activity android:name=".activities.settings.ChangeProfile" >
         <intent-filter>
+
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
