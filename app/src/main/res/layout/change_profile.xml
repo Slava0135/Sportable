@@ -9,59 +9,59 @@
         android:id="@+id/menuName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="@string/menuName"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameBox"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:hint="@string/newName"
+        android:importantForAutofill="no"
+        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/name"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="@+id/name" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/name"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/nameView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
     <TextView
         android:id="@+id/nameView"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/inscriptions"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/heightBox"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:hint="@string/newHeight"
+        android:importantForAutofill="no"
+        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/height"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="@+id/height" />
 
 
     <TextView
@@ -69,36 +69,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="145dp"
         android:text="@string/height"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/heightView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
     <TextView
         android:id="@+id/heightView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="228dp"
+        android:textColor="@color/inscriptions"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/height" />
 
     <EditText
         android:id="@+id/weightBox"
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:hint="@string/newWeight"
+        android:importantForAutofill="no"
+        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weight"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="@+id/weight" />
 
 
     <TextView
@@ -106,32 +104,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="260dp"
         android:text="@string/weight"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/weightView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
     <TextView
         android:id="@+id/weightView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="368dp"
+        android:textColor="@color/inscriptions"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
 
     <EditText
         android:id="@+id/yearBox"
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:hint="@string/newYear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/year" />
@@ -142,36 +137,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="375dp"
         android:text="@string/year"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/yearView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
     <TextView
         android:id="@+id/yearView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="508dp"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/year" />
 
     <Button
         android:id="@+id/kill_button"
-        android:onClick="saveAndQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="620dp"
-        android:backgroundTint="#F16D26"
+        android:layout_marginTop="490dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="saveAndQuit"
         android:text="@string/end"
-        android:textColor="#000000"
+        android:textColor="@color/inscriptions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
