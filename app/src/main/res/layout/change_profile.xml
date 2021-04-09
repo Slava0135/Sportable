@@ -3,29 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".activities.settings.ChangeProfile">
 
     <TextView
         android:id="@+id/menuName"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:text="@string/menuName"
-        android:textColor="@color/inscriptions"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameBox"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="25dp"
         android:hint="@string/newName"
         android:importantForAutofill="no"
-        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/name" />
 
@@ -36,8 +37,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:text="@string/name"
-        android:textColor="@color/inscriptions"
-        android:textSize="18sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
@@ -46,20 +46,19 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:textColor="@color/inscriptions"
-        android:textSize="20sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/heightBox"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="25dp"
         android:hint="@string/newHeight"
         android:importantForAutofill="no"
-        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/height" />
 
@@ -71,8 +70,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="145dp"
         android:text="@string/height"
-        android:textColor="@color/inscriptions"
-        android:textSize="18sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
@@ -81,20 +79,19 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:textColor="@color/inscriptions"
-        android:textSize="20sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/height" />
 
     <EditText
         android:id="@+id/weightBox"
-        android:layout_width="175dp"
+        style="@style/Text"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="25dp"
         android:hint="@string/newWeight"
         android:importantForAutofill="no"
-        android:textColor="@color/inscriptions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/weight" />
 
@@ -106,8 +103,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="260dp"
         android:text="@string/weight"
-        android:textColor="@color/inscriptions"
-        android:textSize="18sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
@@ -116,16 +112,16 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:textColor="@color/inscriptions"
-        android:textSize="20sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weight" />
 
     <EditText
         android:id="@+id/yearBox"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="200dp"
+        style="@style/Text"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="25dp"
         android:hint="@string/newYear"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,8 +135,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="375dp"
         android:text="@string/year"
-        android:textColor="@color/inscriptions"
-        android:textSize="18sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuName" />
 
@@ -149,19 +144,20 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
-        android:textSize="20sp"
+        style="@style/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/year" />
 
     <Button
         android:id="@+id/kill_button"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="500dp"
         android:backgroundTint="@color/blue"
         android:onClick="saveAndQuit"
         android:text="@string/end"
-        android:textColor="@color/inscriptions"
+        android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuName" />
