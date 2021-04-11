@@ -56,14 +56,14 @@
     <string name="text_no_workout">Вы не провели ещё ни одной тренировки</string>
 
     <!--SettingsActivity Part-->
-    <string name="menuName">Введите данные профиля</string>
+    <string name="menuName">ВВЕДИТЕ ДАННЫЕ ПРОФИЛЯ</string>
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="saveAndQuit">Выйти</string>
     <!--ChangeProfile Part-->
     <string name="name">Имя:</string>
-    <string name="weight">Вес (кг):</string>
-    <string name="height">Рост (см):</string>
+    <string name="weight">Вес [кг]:</string>
+    <string name="height">Рост [см]:</string>
     <string name="year">Год рождения:</string>
     <string name="newName">Введите новое имя</string>
     <string name="newHeight">Введите новый рост</string>
@@ -76,4 +76,5 @@
     <string name="bicycle">Велосипед</string>
     <string name="ski">Лыжи</string>
     <string name="geoOff">Включите геолокацию, чтобы приложение работало корректно</string>
+    <string name="settings">Настройки</string>
 </resources>
