@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.mapRun.MapActivity;
+import io.polytech.sportable.activities.settings.FirstEntry;
 import io.polytech.sportable.activities.statistics.StatActivity;
 import io.polytech.sportable.activities.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
@@ -24,19 +25,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findViewById(R.id.stats_button).setOnClickListener(v -> {
             Intent intent = new Intent(getBaseContext(), StatActivity.class);
             startActivity(intent);
         });
+
+        prefs = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
     }
 
-    public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-        startActivity(intent);
+    SharedPreferences prefs = null;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (prefs.getBoolean("firstrun", true)) {
+            // При первом запуске (или если юзер удалял все данные приложения) мы попадаем сюда.
+            // Делаем что-то и после действия записывам false в переменную firstrun.
+            // Итого при следующих запусках этот код не вызывается.
+            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, FirstEntry.class);
+            startActivity(intent);
+            prefs.edit().putBoolean("firstrun", false).apply();
+        }
     }
+
 
     public void onMyButtonClick(View view) {
         switch (view.getId()) {
+
+            case R.id.first_entry:
+                Intent fe = new Intent(MainActivity.this, FirstEntry.class);
+                startActivity(fe);
+                break;
+
             case R.id.stats_button:
                 Intent stats = new Intent(MainActivity.this, StatActivity.class);
                 startActivity(stats);

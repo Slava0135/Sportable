@@ -70,6 +70,13 @@
     <string name="newWeight">Введите новый вес</string>
     <string name="newYear">Введите новый год рождения</string>
     <string name="end">Сохранить и выйти</string>
+    <!--FirstEntry Part-->
+    <string name="proceed">Сохранить и продолжить</string>
+    <string name="first_entry">First Entry</string>
+    <string name="fName">Введите имя</string>
+    <string name="fHeight">Введите рост</string>
+    <string name="fWeight">Введите вес</string>
+    <string name="fYear">Введите год рождения</string>
     <!--MainActivity Part-->
     <string name="walk">Ходьба</string>
     <string name="run">Бег</string>
