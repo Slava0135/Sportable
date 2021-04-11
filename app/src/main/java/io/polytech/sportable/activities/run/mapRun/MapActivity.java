@@ -13,8 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import io.polytech.sportable.R;
 
 public class MapActivity extends AppCompatActivity {
-    boolean isAutoCreate;
+
+    boolean autoCreate;
     String[] typesActivity = {"Километры", "Время", "Калории"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +25,10 @@ public class MapActivity extends AppCompatActivity {
         Button buttonStart = findViewById(R.id.buttonStart);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                isAutoCreate = true;
+                autoCreate = true;
                 buttonStart.setText("Побежали!");
             } else {
-                isAutoCreate = false;
+                autoCreate = false;
                 buttonStart.setText("Выбрать точку");
             }
         });
@@ -37,7 +39,7 @@ public class MapActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         buttonStart.setOnClickListener(v -> {
-                    if (isAutoCreate){
+                    if (autoCreate){
                         Intent run = new Intent(MapActivity.this, MapActivityRun.class);
                         startActivity(run);
                         finish();
@@ -47,16 +49,6 @@ public class MapActivity extends AppCompatActivity {
                     }
                 }
             );
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 }
 

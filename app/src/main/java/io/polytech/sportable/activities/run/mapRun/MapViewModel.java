@@ -3,12 +3,12 @@ package io.polytech.sportable.activities.run.mapRun;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
-import android.location.LocationManager;
 import android.os.IBinder;
 
 import androidx.lifecycle.AndroidViewModel;
 
 import com.yandex.mapkit.mapview.MapView;
+import com.yandex.mapkit.user_location.UserLocationLayer;
 
 import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeRepository;
@@ -22,9 +22,9 @@ public class MapViewModel extends AndroidViewModel {
     PracticeService mService;
     boolean mBound = false;
 
+    UserLocationLayer userLocationLayer;
     MapView mapView;
     PracticeRepository repository;
-    LocationManager locationManager;
 
     public MapViewModel(Application application) {
         super(application);
