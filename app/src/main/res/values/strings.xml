@@ -76,4 +76,5 @@
     <string name="bicycle">Велосипед</string>
     <string name="ski">Лыжи</string>
     <string name="geoOff">Включите геолокацию, чтобы приложение работало корректно</string>
+    <string name="settings">Настройки</string>
 </resources>
