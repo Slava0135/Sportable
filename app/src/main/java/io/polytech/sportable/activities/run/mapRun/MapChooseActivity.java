@@ -34,8 +34,10 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_map_choose);
 
-        startLocation = new Point(savedInstanceState.getFloat("latitude"), savedInstanceState.getFloat("longitude"));
-        distance = savedInstanceState.getFloat("distance");
+        Bundle arguments = getIntent().getExtras();
+
+        startLocation = new Point((double) arguments.get("latitude"), (double) arguments.get("longitude"));
+        distance = (float) arguments.get("distance");
 
         mapView = findViewById(R.id.chooseMapview);
         mapView.getMap().addTapListener(this);
@@ -73,8 +75,8 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
     @Override
     public void onMapTap(@NonNull Map map, @NonNull Point point) {
         mapObjects.clear();
-        mapObjects.addPlacemark(startLocation);
         startLocation = point;
+        mapObjects.addPlacemark(startLocation);
     }
 
     @Override
