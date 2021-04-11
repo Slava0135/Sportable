@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".activities.MainActivity">
 
     <Button
@@ -12,13 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="#FF0202"
+        android:background="@color/blue"
+        style="@style/Text"
         android:onClick="onMyButtonClick"
         android:text="@string/settings_button_text"
         android:drawableStart="@android:drawable/ic_menu_manage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FFFFFF" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/stats_button"
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FF0000"
+        android:background="@color/blue"
+        style="@style/Text"
         android:onClick="onMyButtonClick"
         android:text="@string/statistics_button_text"
         android:drawableStart="@android:drawable/ic_menu_info_details"
@@ -35,27 +37,29 @@
 
     <Button
         android:id="@+id/freerun_button"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FF0000"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="108dp"
+        android:background="@color/blue"
+        android:drawableStart="@android:drawable/ic_media_play"
         android:onClick="onMyButtonClick"
         android:text="@string/freerun_button_text"
-        android:drawableStart="@android:drawable/ic_media_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/map_button"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FF0000"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/blue"
+        android:drawableStart="@android:drawable/ic_menu_mapmode"
         android:onClick="onMyButtonClick"
         android:text="@string/map_button_text"
-        android:drawableStart="@android:drawable/ic_menu_mapmode"
         app:layout_constraintBottom_toTopOf="@+id/freerun_button"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -63,31 +67,35 @@
         android:id="@+id/activityType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radioSki"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ski" />
 
         <RadioButton
             android:id="@+id/radioBicycle"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bicycle" />
 
         <RadioButton
             android:id="@+id/radioRun"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/run" />
 
         <RadioButton
             android:id="@+id/radioWalk"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"

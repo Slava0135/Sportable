@@ -2,7 +2,8 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/text_title_calories"
-            android:textSize="28sp" />
+            style="@style/Bigger" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -54,13 +55,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_total_calories"
-                android:textSize="24sp" />
+                style="@style/Text"/>
 
             <TextView
                 android:id="@+id/certain_activity_all_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,13 +74,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_average_calories"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_average_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,13 +93,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_biggest_calories"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_biggest_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,13 +112,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_smallest_calories"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_smallest_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -141,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/text_title_distance"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,13 +155,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_total_distance"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_all_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -173,13 +174,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_average_distance"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_average_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -192,13 +193,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_biggest_distance"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_biggest_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text"/>
         </LinearLayout>
 
         <LinearLayout
@@ -211,13 +212,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_smallest_distance"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_smallest_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -241,7 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/text_title_time"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
         </LinearLayout>
 
         <LinearLayout
@@ -254,13 +255,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_total_time"
-                android:textSize="24sp" />
+                style="@style/Text"/>
 
             <TextView
                 android:id="@+id/certain_activity_all_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text"/>
         </LinearLayout>
 
         <LinearLayout
@@ -273,13 +274,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_average_time"
-                android:textSize="24sp" />
+                style="@style/Text"/>
 
             <TextView
                 android:id="@+id/certain_activity_average_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -292,13 +293,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_biggest_time"
-                android:textSize="24sp" />
+                style="@style/Text"/>
 
             <TextView
                 android:id="@+id/certain_activity_biggest_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
 
         <LinearLayout
@@ -311,13 +312,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_smallest_time"
-                android:textSize="24sp" />
+                style="@style/Text" />
 
             <TextView
                 android:id="@+id/certain_activity_smallest_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                style="@style/Text" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -18,10 +18,10 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <!-- MainActivity Part -->
-    <string name="statistics_button_text">Statistics</string>
-    <string name="settings_button_text">Settings</string>
-    <string name="freerun_button_text">Freerun</string>
-    <string name="map_button_text">map</string>
+    <string name="statistics_button_text">Статистика</string>
+    <string name="settings_button_text">Настройки</string>
+    <string name="freerun_button_text">Свободная тренировка</string>
+    <string name="map_button_text">Своя цель</string>
     <!-- StatActivity Part -->
     <string name="title_activity_stat">StatActivity</string>
     <string name="tab_total">Общее</string>
