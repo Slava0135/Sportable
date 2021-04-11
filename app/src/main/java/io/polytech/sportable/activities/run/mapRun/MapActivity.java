@@ -40,6 +40,7 @@ public class MapActivity extends AppCompatActivity {
                     if (isAutoCreate){
                         Intent run = new Intent(MapActivity.this, MapActivityRun.class);
                         startActivity(run);
+                        finish();
                     } else {
                         Intent choose = new Intent(MapActivity.this, MapActivityChoose.class);
                         startActivity(choose);

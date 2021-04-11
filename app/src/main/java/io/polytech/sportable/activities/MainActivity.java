@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                     enableGeo();
                 } else {
                     startActivity(map);
-                    finish();
                 }
                 break;
 
