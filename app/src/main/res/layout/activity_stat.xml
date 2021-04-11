@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".activities.statistics.StatActivity">
 
 
@@ -19,6 +20,7 @@
 
             <TextView
                 android:id="@+id/title"
+                style="@style/Bigger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -37,17 +39,20 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_total" />
+                android:text="@string/tab_total"
+                style="@style/Text"/>
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_certain_activity" />
+                android:text="@string/tab_certain_activity"
+                style="@style/Text"/>
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_certain_day" />
+                android:text="@string/tab_certain_day"
+                style="@style/Text"/>
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
