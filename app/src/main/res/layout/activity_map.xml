@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,6 +14,8 @@
         android:text="Выбрать точку"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/blue"
+        style="@style/Text"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxAutoCreate" />
 
     <CheckBox
@@ -20,7 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75pt"
-        android:text="построить маршрут от текущего местоположения"
+        style="@style/Text"
+        android:text="от текущего местоположения"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerChoose" />
@@ -30,6 +34,7 @@
         android:layout_width="201dp"
         android:layout_height="45dp"
         android:layout_marginTop="10pt"
+        style="@style/Text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/innputNumber" />
@@ -42,6 +47,7 @@
         android:ems="10"
         android:hint="Введите число"
         android:inputType="number"
+        style="@style/Text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/background"
     tools:context=".activities.run.freerun.FreeRunActivity">
 
     <LinearLayout
@@ -28,11 +28,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="46dp"
-                android:fontFamily="sans-serif"
                 android:scaleX="1"
                 android:scaleY="1"
                 android:text="Время:"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/textKilometers"
@@ -40,11 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="46dp"
-                android:fontFamily="sans-serif"
                 android:scaleX="1"
                 android:scaleY="1"
                 android:text="Расстояние:"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/textCalories"
@@ -52,11 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="55dp"
-                android:fontFamily="sans-serif"
                 android:scaleX="1"
                 android:scaleY="1"
                 android:text="Калории:"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/textSpeed"
@@ -64,11 +61,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="53dp"
-                android:fontFamily="sans-serif"
                 android:scaleX="1"
                 android:scaleY="1"
                 android:text="Скорость:"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <FrameLayout
                 android:layout_width="197dp"
@@ -80,12 +76,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="205dp"
-                    android:background="#4CAF50"
-                    android:text="pause"
-                    android:textColor="#FFFFFF"
-                    app:iconTint="#FF9800"
+                    android:background="@color/green_blue"
+                    android:text="пауза"
+                    style="@style/Text"
                     app:layout_constraintTop_toBottomOf="@+id/textTime"
-                    app:rippleColor="#4CAF50" />
+                    />
 
             </FrameLayout>
 
@@ -102,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="46dp"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/valueDistance"
@@ -110,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="46dp"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/valueCalories"
@@ -118,7 +113,7 @@
                 android:layout_height="51dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="55dp"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <TextView
                 android:id="@+id/valueSpeed"
@@ -126,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="38dp"
-                android:textSize="28sp" />
+                style="@style/Bigger" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -139,9 +134,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginTop="200dp"
-                    android:text="stop"
-                    app:iconTint="#F44336"
-                    app:rippleColor="#4CAF50" />
+                    android:text="стоп"
+                    android:background="@color/green_blue"
+                    style="@style/Text" />
 
             </FrameLayout>
 
