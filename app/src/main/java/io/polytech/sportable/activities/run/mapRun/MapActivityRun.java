@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PointF;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,13 +24,21 @@ import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
 import com.yandex.mapkit.Animation;
+import com.yandex.mapkit.MapKit;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
+import com.yandex.mapkit.layers.ObjectEvent;
 import com.yandex.mapkit.map.CameraPosition;
+import com.yandex.mapkit.map.CompositeIcon;
+import com.yandex.mapkit.map.IconStyle;
+import com.yandex.mapkit.map.RotationType;
+import com.yandex.mapkit.user_location.UserLocationObjectListener;
+import com.yandex.mapkit.user_location.UserLocationView;
+import com.yandex.runtime.image.ImageProvider;
 
 import java.util.Locale;
 
-public class MapActivityRun extends AppCompatActivity {
+public class MapActivityRun extends AppCompatActivity implements UserLocationObjectListener {
 
     MapViewModel model;
 
@@ -41,11 +51,16 @@ public class MapActivityRun extends AppCompatActivity {
         setContentView(R.layout.activity_map_run);
         model = new ViewModelProvider(this).get(MapViewModel.class);
         model.isRunning = true;
-        model.locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
-        model.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                2000, 25, locationListener);
         model.mapView = findViewById(R.id.mapview);
+        model.mapView.getMap().move(
+                new CameraPosition(new Point(0, 0), 17, 0, 0)
+        );
+
+        MapKit mapKit = MapKitFactory.getInstance();
+        model.userLocationLayer = mapKit.createUserLocationLayer(model.mapView.getMapWindow());
+        model.userLocationLayer.setVisible(true);
+        model.userLocationLayer.setHeadingEnabled(true);
+        model.userLocationLayer.setObjectListener(this);
 
         final Button buttonPause = findViewById(R.id.mapButtonPause);
         buttonPause.setOnClickListener(v -> {
@@ -117,9 +132,18 @@ public class MapActivityRun extends AppCompatActivity {
         MapKitFactory.getInstance().onStart();
     }
 
-    LocationListener locationListener = location -> model.mapView.getMap().move(
-            new CameraPosition(new Point(location.getLatitude(), location.getLongitude()), 17, 0, 0),
-            new Animation(Animation.Type.SMOOTH, 1),
-            null
-            );
+    @Override
+    public void onObjectAdded(@NonNull UserLocationView userLocationView) {
+        model.userLocationLayer.setAnchor(
+                new PointF((float)(model.mapView.getWidth() * 0.5), (float)(model.mapView.getHeight() * 0.5)),
+                new PointF((float)(model.mapView.getWidth() * 0.5), (float)(model.mapView.getHeight() * 0.5)));
+    }
+
+    @Override
+    public void onObjectRemoved(@NonNull UserLocationView userLocationView) {
+    }
+
+    @Override
+    public void onObjectUpdated(@NonNull UserLocationView userLocationView, @NonNull ObjectEvent objectEvent) {
+    }
 }
