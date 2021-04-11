@@ -13,15 +13,20 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import io.polytech.sportable.R;
 
 public class MapActivity extends AppCompatActivity {
 
-    LocationManager locationManager;
-    Location mLocation;
+    private FusedLocationProviderClient fusedLocationClient;
 
     boolean autoCreate;
 
@@ -32,6 +37,7 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -50,37 +56,34 @@ public class MapActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         buttonStart.setOnClickListener(v -> {
-                    if (autoCreate){
-                        if (mLocation == null) {
-                            Toast.makeText(this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Intent preview = new Intent(MapActivity.this, MapPreviewActivity.class);
-                            preview.putExtra("distance", getDistance());
-                            preview.putExtra("latitude", mLocation.getLatitude());
-                            preview.putExtra("longitude", mLocation.getLongitude());
-                            startActivity(preview);
-                            finish();
-                        }
-                    } else {
-                        if (mLocation == null) {
-                            Toast.makeText(this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Intent choose = new Intent(MapActivity.this, MapChooseActivity.class);
-                            choose.putExtra("distance", getDistance());
-                            choose.putExtra("latitude", mLocation.getLatitude());
-                            choose.putExtra("longitude", mLocation.getLongitude());
-                            startActivity(choose);
-                        }
-                    }
-                }
-            );
-
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates( LocationManager.GPS_PROVIDER,
-                1000, 10, locationListener);
+            if (autoCreate) {
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(this, location -> {
+                            if (location != null) {
+                                Intent preview = new Intent(MapActivity.this, MapPreviewActivity.class);
+                                preview.putExtra("distance", getDistance());
+                                preview.putExtra("latitude", location.getLatitude());
+                                preview.putExtra("longitude", location.getLongitude());
+                                startActivity(preview);
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
+            } else {
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(this, location -> {
+                            if (location != null) {
+                                Intent choose = new Intent(MapActivity.this, MapChooseActivity.class);
+                                choose.putExtra("distance", getDistance());
+                                choose.putExtra("latitude", location.getLatitude());
+                                choose.putExtra("longitude", location.getLongitude());
+                                startActivity(choose);
+                            }
+                        })
+                        .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
+            }
+        });
     }
-
-    LocationListener locationListener = location -> mLocation = location;
 
     float getDistance() {
         return 1000f;
