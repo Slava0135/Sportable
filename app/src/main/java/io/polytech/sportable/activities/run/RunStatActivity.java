@@ -1,4 +1,4 @@
-package io.polytech.sportable.activities.freerun;
+package io.polytech.sportable.activities.run;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,14 +12,13 @@ import java.text.DecimalFormat;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.MainActivity;
-import io.polytech.sportable.activities.statistics.StatActivity;
 
-public class FreeRunStatActivity extends AppCompatActivity {
+public class RunStatActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_free_run_stat);
+        setContentView(R.layout.activity_run_stat);
 
         Bundle arguments = getIntent().getExtras();
 
@@ -39,7 +38,7 @@ public class FreeRunStatActivity extends AppCompatActivity {
 
         final Button buttonToMain = findViewById(R.id.buttonToMain);
         buttonToMain.setOnClickListener(v -> {
-            Intent main = new Intent(FreeRunStatActivity.this, MainActivity.class);
+            Intent main = new Intent(RunStatActivity.this, MainActivity.class);
             finish();
             startActivity(main);
         });

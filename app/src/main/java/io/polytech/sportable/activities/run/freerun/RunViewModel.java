@@ -1,4 +1,4 @@
-package io.polytech.sportable.activities.freerun;
+package io.polytech.sportable.activities.run.freerun;
 
 import android.app.Application;
 import android.content.ComponentName;

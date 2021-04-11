@@ -1,41 +1,33 @@
-package io.polytech.sportable.activities.mapRun;
+package io.polytech.sportable.activities.run.mapRun;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.google.android.material.button.MaterialButton;
-
 import io.polytech.sportable.R;
-import io.polytech.sportable.activities.freerun.FreeRunActivity;
-import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
 
 public class MapActivity extends AppCompatActivity {
     boolean isAutoCreate;
-    String[] typesActivity = {"Выберите цель", "Километры", "Время", "Калории"};
+    String[] typesActivity = {"Километры", "Время", "Калории"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    isAutoCreate = true;
-                    buttonStart.setText("Побежали!");
-                } else {
-                    isAutoCreate = false;
-                    buttonStart.setText("Выбрать точку");
-                }
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                isAutoCreate = true;
+                buttonStart.setText("Побежали!");
+            } else {
+                isAutoCreate = false;
+                buttonStart.setText("Выбрать точку");
             }
         });
 
