@@ -1,4 +1,4 @@
-package io.polytech.sportable.activities.mapRun;
+package io.polytech.sportable.activities.run.mapRun;
 
 import android.app.Application;
 import android.content.ComponentName;

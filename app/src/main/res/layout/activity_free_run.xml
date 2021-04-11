@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".activities.freerun.FreeRunActivity">
+    tools:context=".activities.run.freerun.FreeRunActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

@@ -1,10 +1,8 @@
-package io.polytech.sportable.activities.mapRun;
+package io.polytech.sportable.activities.run.mapRun;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -14,13 +12,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activities.freerun.RunViewModel;
 
 import com.yandex.mapkit.Animation;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
-import com.yandex.mapkit.mapview.MapView;
 
 public class MapActivityRun extends AppCompatActivity {
 

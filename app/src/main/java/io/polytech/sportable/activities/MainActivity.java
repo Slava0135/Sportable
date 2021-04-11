@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +11,9 @@ import android.widget.Toast;
 import android.widget.RadioGroup;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activities.mapRun.MapActivity;
+import io.polytech.sportable.activities.run.mapRun.MapActivity;
 import io.polytech.sportable.activities.statistics.StatActivity;
-import io.polytech.sportable.activities.freerun.FreeRunActivity;
+import io.polytech.sportable.activities.run.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
 import io.polytech.sportable.models.practice.PracticeType;
 
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                     enableGeo();
                 } else {
                     startActivity(map);
-                    finish();
                 }
                 break;
 
