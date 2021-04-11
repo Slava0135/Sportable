@@ -83,6 +83,24 @@ public class MapActivityRun extends AppCompatActivity {
 
         Intent intent = new Intent(this, PracticeService.class);
         bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
+        runTimer();
+    }
+
+    public void runTimer() {
+        final TextView valueTime = findViewById(R.id.mapValueTime);
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (model.mBound && model.isRunning){
+                    int seconds = model.mService.getTimeSeconds();
+                    int minutes = seconds / 60;
+                    String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds % 60);
+                    valueTime.setText(time);
+                }
+                handler.postDelayed(this, 1000);
+            }
+        });
     }
 
     @Override
