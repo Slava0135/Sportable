@@ -1,45 +1,28 @@
-package io.polytech.sportable.activities.freerun;
+package io.polytech.sportable.activities.run.freerun;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
-import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.provider.Settings;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
-import java.util.Random;
 
 import io.polytech.sportable.R;
-import io.polytech.sportable.activities.MainActivity;
-import io.polytech.sportable.activities.freerun.FreeRunStatActivity;
-import io.polytech.sportable.activities.settings.ChangeProfile;
-import io.polytech.sportable.activities.settings.SettingsActivity;
-import io.polytech.sportable.models.practice.PracticeType;
+import io.polytech.sportable.activities.run.RunStatActivity;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
 public class FreeRunActivity extends AppCompatActivity {
 
     RunViewModel model;
-
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
@@ -69,7 +52,7 @@ public class FreeRunActivity extends AppCompatActivity {
 
         final Button buttonStop = findViewById(R.id.buttonStop);
         buttonStop.setOnClickListener(v -> {
-            Intent stats = new Intent(FreeRunActivity.this, FreeRunStatActivity.class);
+            Intent stats = new Intent(FreeRunActivity.this, RunStatActivity.class);
             stats.putExtra("distance", model.mService.getDistanceMeters());
             stats.putExtra("time", model.mService.getTimeSeconds());
             stats.putExtra("calories", model.mService.getCalories());
@@ -81,6 +64,7 @@ public class FreeRunActivity extends AppCompatActivity {
                     model.mService.getTimeSeconds(),
                     model.practiceType));
             startActivity(stats);
+            finish();
         });
         Intent intent = new Intent(this, PracticeService.class);
         bindService(intent, model.connection, Context.BIND_AUTO_CREATE);

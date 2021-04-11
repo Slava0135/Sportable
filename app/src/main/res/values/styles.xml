@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#041914</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/calibri_bold</item>
+    </style>
+    <style name="Bigger">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#041914</item>
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">@font/calibri_bold</item>
+    </style>
+</resources>

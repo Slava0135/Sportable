@@ -19,15 +19,15 @@
 
         </service>
 
-        <activity android:name=".activities.mapRun.MapActivity"/>
-        <activity android:name=".activities.mapRun.MapActivityRun"/>
-        <activity android:name=".activities.mapRun.MapActivityChoose"/>
+        <activity android:name=".activities.run.mapRun.MapActivity"/>
+        <activity android:name=".activities.run.mapRun.MapActivityRun"/>
+        <activity android:name=".activities.run.mapRun.MapActivityChoose"/>
         <activity
-            android:name=".activities.freerun.FreeRunStatActivity"
+            android:name=".activities.run.RunStatActivity"
             android:theme="@style/Theme.Sportable.NoActionBar"
             />
         <activity
-            android:name=".activities.freerun.FreeRunActivity"
+            android:name=".activities.run.freerun.FreeRunActivity"
             android:theme="@style/Theme.Sportable.NoActionBar"
             />
         <activity
