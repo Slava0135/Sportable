@@ -24,7 +24,6 @@ public class FreeRunActivity extends AppCompatActivity {
 
     RunViewModel model;
 
-
     @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +64,7 @@ public class FreeRunActivity extends AppCompatActivity {
                     model.mService.getTimeSeconds(),
                     model.practiceType));
             startActivity(stats);
+            finish();
         });
         Intent intent = new Intent(this, PracticeService.class);
         bindService(intent, model.connection, Context.BIND_AUTO_CREATE);
