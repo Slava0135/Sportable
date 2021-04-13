@@ -11,13 +11,18 @@ import com.yandex.mapkit.mapview.MapView;
 
 public class MapPreviewModel extends AndroidViewModel {
 
-
     Point startLocation;
     MapView mapView;
     MapObjectCollection mapObjects;
     float distance;
 
+    boolean isBuilt = false;
+
     public MapPreviewModel(@NonNull Application application) {
         super(application);
+    }
+
+    void rebuild() {
+        isBuilt = true;
     }
 }
