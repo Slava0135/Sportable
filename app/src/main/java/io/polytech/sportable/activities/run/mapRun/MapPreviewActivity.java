@@ -28,16 +28,15 @@ public class MapPreviewActivity extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
 
         model.startLocation = new Point((double) arguments.get("latitude"), (double) arguments.get("longitude"));
-        model.distance = (float) arguments.get("distance");
+        model.setDistance((float) arguments.get("distance"));
 
         model.mapView = findViewById(R.id.mapPreview);
         model.mapView.getMap().move(
                 new CameraPosition(model.startLocation, 17, 0, 0)
         );
 
-        if (!model.isBuilt) {
-            model.rebuild();
-        }
+        model.mapObjects = model.mapView.getMap().getMapObjects().addCollection();
+        model.rebuild();
 
         Button buttonStart = findViewById(R.id.startFromPreviewButton);
         buttonStart.setOnClickListener(v -> {
