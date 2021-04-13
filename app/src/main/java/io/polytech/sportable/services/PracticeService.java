@@ -50,7 +50,7 @@ public class PracticeService extends Service {
     @Override
     public void onCreate() {
         handler = new Handler();
-        locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates( LocationManager.GPS_PROVIDER,
                 2000, 25, locationListener);
     }
