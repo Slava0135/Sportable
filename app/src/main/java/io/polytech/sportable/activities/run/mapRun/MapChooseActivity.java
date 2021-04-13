@@ -29,10 +29,11 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MapKitFactory.setApiKey("18400120-4838-48c7-905a-b2abc915eab0");
+
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_map_choose);
+
+        super.onCreate(savedInstanceState);
 
         Bundle arguments = getIntent().getExtras();
 
@@ -68,8 +69,8 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
     @Override
     protected void onStart() {
         super.onStart();
-        MapKitFactory.getInstance().onStart();
         mapView.onStart();
+        MapKitFactory.getInstance().onStart();
     }
 
     @Override

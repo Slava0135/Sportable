@@ -35,10 +35,12 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MapKitFactory.setApiKey("18400120-4838-48c7-905a-b2abc915eab0");
+
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_map_run);
+
+        super.onCreate(savedInstanceState);
+
         model = new ViewModelProvider(this).get(MapViewModel.class);
         model.isRunning = true;
         model.mapView = findViewById(R.id.chooseMapview);
