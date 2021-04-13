@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class MapActivity extends AppCompatActivity {
 
     boolean autoCreate;
 
-    String[] typesActivity = {"Километры", "Время", "Калории"};
+    String[] typesActivity = {"Метры", "Время", "Калории"};
 
     @SuppressLint("MissingPermission")
     @Override
@@ -56,12 +57,16 @@ public class MapActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         buttonStart.setOnClickListener(v -> {
+            TextView num = findViewById(R.id.inputNumber);
+            CharSequence text = num.getText();
+            if (text.length() <= 0) return;
+            float distance = Float.parseFloat(text.toString());
             if (autoCreate) {
                 fusedLocationClient.getLastLocation()
                         .addOnSuccessListener(this, location -> {
                             if (location != null) {
                                 Intent preview = new Intent(MapActivity.this, MapPreviewActivity.class);
-                                preview.putExtra("distance", getDistance());
+                                preview.putExtra("distance", distance);
                                 preview.putExtra("latitude", location.getLatitude());
                                 preview.putExtra("longitude", location.getLongitude());
                                 startActivity(preview);
@@ -74,7 +79,7 @@ public class MapActivity extends AppCompatActivity {
                         .addOnSuccessListener(this, location -> {
                             if (location != null) {
                                 Intent choose = new Intent(MapActivity.this, MapChooseActivity.class);
-                                choose.putExtra("distance", getDistance());
+                                choose.putExtra("distance", distance);
                                 choose.putExtra("latitude", location.getLatitude());
                                 choose.putExtra("longitude", location.getLongitude());
                                 startActivity(choose);
@@ -83,10 +88,6 @@ public class MapActivity extends AppCompatActivity {
                         .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
             }
         });
-    }
-
-    float getDistance() {
-        return 1000f;
     }
 }
 

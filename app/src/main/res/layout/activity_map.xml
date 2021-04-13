@@ -8,48 +8,51 @@
 
     <Button
         android:id="@+id/buttonStart"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20pt"
-        android:text="Выбрать точку"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/blue"
-        style="@style/Text"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxAutoCreate" />
+        android:text="Выбрать точку"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/checkBoxAutoCreate"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75pt"
-        style="@style/Text"
+        android:layout_marginBottom="16dp"
         android:text="от текущего местоположения"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerChoose" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerChoose"
+        style="@style/Text"
         android:layout_width="201dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10pt"
-        style="@style/Text"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxAutoCreate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/innputNumber" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/innputNumber"
+        android:id="@+id/inputNumber"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25pt"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Введите число"
         android:inputType="number"
-        style="@style/Text"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerChoose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
