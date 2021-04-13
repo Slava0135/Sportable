@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MapRunActivity extends AppCompatActivity implements UserLocationObjectListener {
 
-    MapViewModel model;
+    MapRunViewModel model;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -41,7 +41,7 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
 
         super.onCreate(savedInstanceState);
 
-        model = new ViewModelProvider(this).get(MapViewModel.class);
+        model = new ViewModelProvider(this).get(MapRunViewModel.class);
         model.isRunning = true;
         model.mapView = findViewById(R.id.chooseMapview);
         model.mapView.getMap().move(

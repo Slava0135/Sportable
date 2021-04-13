@@ -19,6 +19,7 @@ import com.yandex.mapkit.map.MapObjectCollection;
 import com.yandex.mapkit.mapview.MapView;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.models.practice.PracticeType;
 
 public class MapChooseActivity extends AppCompatActivity implements GeoObjectTapListener, InputListener {
 
