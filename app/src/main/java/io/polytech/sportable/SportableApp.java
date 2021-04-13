@@ -5,7 +5,6 @@ import android.app.Application;
 import com.yandex.mapkit.MapKitFactory;
 
 public class SportableApp extends Application {
-
     @Override
     public void onCreate() {
         super.onCreate();
