@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.yandex.mapkit.MapKitFactory;
+import com.yandex.mapkit.directions.DirectionsFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
+import com.yandex.mapkit.transport.TransportFactory;
+import com.yandex.mapkit.transport.masstransit.MasstransitRouter;
+import com.yandex.mapkit.transport.masstransit.PedestrianRouter;
 
 import io.polytech.sportable.R;
 
@@ -21,9 +25,12 @@ public class MapPreviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_map_preview);
+        TransportFactory.initialize(this);
         super.onCreate(savedInstanceState);
 
         model = new ViewModelProvider(this).get(MapPreviewModel.class);
+
+        model.router = TransportFactory.getInstance().createPedestrianRouter();
 
         Bundle arguments = getIntent().getExtras();
 
