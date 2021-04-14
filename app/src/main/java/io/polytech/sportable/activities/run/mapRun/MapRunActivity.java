@@ -46,6 +46,7 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
         super.onCreate(savedInstanceState);
 
         model = new ViewModelProvider(this).get(MapRunViewModel.class);
+
         model.isRunning = true;
         model.mapView = findViewById(R.id.chooseMapview);
         model.mapView.getMap().move(
@@ -57,6 +58,8 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
         model.userLocationLayer.setVisible(true);
         model.userLocationLayer.setHeadingEnabled(true);
         model.userLocationLayer.setObjectListener(this);
+
+        model.mapObjects = model.mapView.getMap().getMapObjects().addCollection();
 
         final Button buttonPause = findViewById(R.id.mapButtonPause);
         buttonPause.setOnClickListener(v -> {
@@ -92,7 +95,7 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
             finish();
         });
 
-        Route route = SportableApp.getInstance(this).lastRoute;
+        Route route = ((SportableApp) getApplication()).lastRoute;
         for (Section section : route.getSections()) {
             model.mapObjects.addPolyline(SubpolylineHelper.subpolyline(route.getGeometry(), section.getGeometry())).setStrokeColor(0xFF24a1a6);
         }

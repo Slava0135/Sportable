@@ -13,10 +13,6 @@ public class SportableApp extends Application {
 
     public Route lastRoute;
 
-    public static SportableApp getInstance(Context context) {
-        return ((SportableApp) context.getApplicationContext());
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();

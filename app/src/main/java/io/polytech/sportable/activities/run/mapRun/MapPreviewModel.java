@@ -29,8 +29,6 @@ import static com.yandex.runtime.Runtime.getApplicationContext;
 
 public class MapPreviewModel extends AndroidViewModel implements Session.RouteListener {
 
-    SportableApp app;
-
     Point startLocation;
     MapView mapView;
     MapObjectCollection mapObjects;
@@ -73,7 +71,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     @Override
     public void onMasstransitRoutes(@NonNull List<Route> list) {
         if (list.size() > 0) {
-            app.lastRoute = list.get(0);
+            ((SportableApp) getApplication()).lastRoute = list.get(0);
             for (Section section : list.get(0).getSections()) {
                 mapObjects.addPolyline(SubpolylineHelper.subpolyline(list.get(0).getGeometry(), section.getGeometry())).setStrokeColor(0xFF24a1a6);
             }

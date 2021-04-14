@@ -31,8 +31,6 @@ public class MapPreviewActivity extends AppCompatActivity {
 
         model = new ViewModelProvider(this).get(MapPreviewModel.class);
 
-        model.app = SportableApp.getInstance(this);
-
         model.router = TransportFactory.getInstance().createPedestrianRouter();
 
         Bundle arguments = getIntent().getExtras();
