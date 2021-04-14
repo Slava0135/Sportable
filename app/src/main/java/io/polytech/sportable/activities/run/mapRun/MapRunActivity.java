@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.SportableApp;
 import io.polytech.sportable.activities.run.RunStatActivity;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
@@ -21,8 +22,11 @@ import io.polytech.sportable.services.PracticeService;
 import com.yandex.mapkit.MapKit;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
+import com.yandex.mapkit.geometry.SubpolylineHelper;
 import com.yandex.mapkit.layers.ObjectEvent;
 import com.yandex.mapkit.map.CameraPosition;
+import com.yandex.mapkit.transport.masstransit.Route;
+import com.yandex.mapkit.transport.masstransit.Section;
 import com.yandex.mapkit.user_location.UserLocationObjectListener;
 import com.yandex.mapkit.user_location.UserLocationView;
 
@@ -87,6 +91,11 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
             startActivity(stats);
             finish();
         });
+
+        Route route = SportableApp.getInstance(this).lastRoute;
+        for (Section section : route.getSections()) {
+            model.mapObjects.addPolyline(SubpolylineHelper.subpolyline(route.getGeometry(), section.getGeometry())).setStrokeColor(0xFF24a1a6);
+        }
 
         Intent intent = new Intent(this, PracticeService.class);
         bindService(intent, model.connection, Context.BIND_AUTO_CREATE);

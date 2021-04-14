@@ -16,6 +16,7 @@ import com.yandex.mapkit.transport.masstransit.MasstransitRouter;
 import com.yandex.mapkit.transport.masstransit.PedestrianRouter;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.SportableApp;
 
 public class MapPreviewActivity extends AppCompatActivity {
 
@@ -29,6 +30,8 @@ public class MapPreviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         model = new ViewModelProvider(this).get(MapPreviewModel.class);
+
+        model.app = SportableApp.getInstance(this);
 
         model.router = TransportFactory.getInstance().createPedestrianRouter();
 

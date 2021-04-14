@@ -1,10 +1,22 @@
 package io.polytech.sportable;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.yandex.mapkit.MapKitFactory;
+import com.yandex.mapkit.transport.masstransit.Route;
+import com.yandex.mapkit.transport.masstransit.Section;
+
+import java.util.List;
 
 public class SportableApp extends Application {
+
+    public Route lastRoute;
+
+    public static SportableApp getInstance(Context context) {
+        return ((SportableApp) context.getApplicationContext());
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
