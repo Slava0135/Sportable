@@ -27,6 +27,7 @@
         android:layout_marginTop="25dp"
         android:hint="@string/newName"
         android:importantForAutofill="no"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/name" />
 
@@ -59,6 +60,7 @@
         android:layout_marginTop="25dp"
         android:hint="@string/newHeight"
         android:importantForAutofill="no"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/height" />
 
@@ -92,6 +94,7 @@
         android:layout_marginTop="25dp"
         android:hint="@string/newWeight"
         android:importantForAutofill="no"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/weight" />
 
@@ -124,6 +127,7 @@
         android:layout_marginStart="190dp"
         android:layout_marginTop="25dp"
         android:hint="@string/newYear"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/year" />
 

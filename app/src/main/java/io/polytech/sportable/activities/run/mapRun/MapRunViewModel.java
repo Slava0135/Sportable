@@ -7,6 +7,7 @@ import android.os.IBinder;
 
 import androidx.lifecycle.AndroidViewModel;
 
+import com.yandex.mapkit.map.MapObjectCollection;
 import com.yandex.mapkit.mapview.MapView;
 import com.yandex.mapkit.user_location.UserLocationLayer;
 
@@ -21,6 +22,8 @@ public class MapRunViewModel extends AndroidViewModel {
     boolean isRunning;
     PracticeService mService;
     boolean mBound = false;
+
+    MapObjectCollection mapObjects;
 
     UserLocationLayer userLocationLayer;
     MapView mapView;
