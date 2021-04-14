@@ -12,19 +12,19 @@ public class PracticeResult {
 
     @PrimaryKey
     @ColumnInfo(name = "date")
-    public final long date;
+    public final long date; // Дата тренировки
 
     @ColumnInfo(name = "distance")
-    public final float distance;
+    public final float distance; // Проеодолённая дистанция
 
     @ColumnInfo(name = "calories")
-    public final float calories;
+    public final float calories; // Сожённые каллории
 
     @ColumnInfo(name = "time")
-    public final int time;
+    public final int time; // Затраченное на тренировку время
 
     @ColumnInfo(name = "practiceType")
-    public final PracticeType practiceType;
+    public final PracticeType practiceType; // Вид проведённой тренировки
 
     public PracticeResult(long date, float distance, float calories, int time, PracticeType practiceType) {
         this.date = date;
