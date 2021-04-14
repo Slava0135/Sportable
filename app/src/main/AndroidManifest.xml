@@ -2,34 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.polytech.sportable">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".SportableApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportable">
+        <activity android:name=".activities.run.mapRun.MapPreviewActivity" />
+
         <service
             android:name=".services.PracticeService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true" />
 
-        </service>
-
-        <activity android:name=".activities.run.mapRun.MapActivity"/>
-        <activity android:name=".activities.run.mapRun.MapActivityRun"/>
-        <activity android:name=".activities.run.mapRun.MapActivityChoose"/>
+        <activity android:name=".activities.run.mapRun.MapActivity" />
+        <activity android:name=".activities.run.mapRun.MapRunActivity" />
+        <activity android:name=".activities.run.mapRun.MapChooseActivity" />
         <activity
             android:name=".activities.run.RunStatActivity"
-            android:theme="@style/Theme.Sportable.NoActionBar"
-            />
+            android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity
             android:name=".activities.run.freerun.FreeRunActivity"
-            android:theme="@style/Theme.Sportable.NoActionBar"
-            />
+            android:theme="@style/Theme.Sportable.NoActionBar" />
         <activity
             android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"
@@ -40,22 +39,17 @@
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.settings.ChangeProfile" >
-        <intent-filter>
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <activity android:name=".activities.settings.ChangeProfile">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

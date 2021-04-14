@@ -15,7 +15,7 @@ import io.polytech.sportable.persistence.PracticeRepository;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
-public class MapViewModel extends AndroidViewModel {
+public class MapRunViewModel extends AndroidViewModel {
 
     PracticeType practiceType = PracticeType.Walk;
     boolean isRunning;
@@ -26,7 +26,7 @@ public class MapViewModel extends AndroidViewModel {
     MapView mapView;
     PracticeRepository repository;
 
-    public MapViewModel(Application application) {
+    public MapRunViewModel(Application application) {
         super(application);
         repository = new PracticeRepository(application);
     }

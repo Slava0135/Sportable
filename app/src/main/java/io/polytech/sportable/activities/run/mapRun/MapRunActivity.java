@@ -1,12 +1,9 @@
 package io.polytech.sportable.activities.run.mapRun;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -14,44 +11,39 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.run.RunStatActivity;
-import io.polytech.sportable.activities.run.freerun.FreeRunActivity;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
-import com.yandex.mapkit.Animation;
 import com.yandex.mapkit.MapKit;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.layers.ObjectEvent;
 import com.yandex.mapkit.map.CameraPosition;
-import com.yandex.mapkit.map.CompositeIcon;
-import com.yandex.mapkit.map.IconStyle;
-import com.yandex.mapkit.map.RotationType;
 import com.yandex.mapkit.user_location.UserLocationObjectListener;
 import com.yandex.mapkit.user_location.UserLocationView;
-import com.yandex.runtime.image.ImageProvider;
 
 import java.util.Locale;
 
-public class MapActivityRun extends AppCompatActivity implements UserLocationObjectListener {
+public class MapRunActivity extends AppCompatActivity implements UserLocationObjectListener {
 
-    MapViewModel model;
+    MapRunViewModel model;
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MapKitFactory.setApiKey("18400120-4838-48c7-905a-b2abc915eab0");
+
         MapKitFactory.initialize(this);
         setContentView(R.layout.activity_map_run);
-        model = new ViewModelProvider(this).get(MapViewModel.class);
+
+        super.onCreate(savedInstanceState);
+
+        model = new ViewModelProvider(this).get(MapRunViewModel.class);
         model.isRunning = true;
-        model.mapView = findViewById(R.id.mapview);
+        model.mapView = findViewById(R.id.chooseMapview);
         model.mapView.getMap().move(
                 new CameraPosition(new Point(0, 0), 17, 0, 0)
         );
@@ -81,7 +73,7 @@ public class MapActivityRun extends AppCompatActivity implements UserLocationObj
 
         final Button buttonStop = findViewById(R.id.mapButtonStop);
         buttonStop.setOnClickListener(v -> {
-            Intent stats = new Intent(MapActivityRun.this, RunStatActivity.class);
+            Intent stats = new Intent(MapRunActivity.this, RunStatActivity.class);
             stats.putExtra("distance", model.mService.getDistanceMeters());
             stats.putExtra("time", model.mService.getTimeSeconds());
             stats.putExtra("calories", model.mService.getCalories());

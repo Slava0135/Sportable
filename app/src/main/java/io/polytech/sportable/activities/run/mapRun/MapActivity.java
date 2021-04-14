@@ -1,26 +1,43 @@
 package io.polytech.sportable.activities.run.mapRun;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import io.polytech.sportable.R;
 
 public class MapActivity extends AppCompatActivity {
 
+    private FusedLocationProviderClient fusedLocationClient;
+
     boolean autoCreate;
+
     String[] typesActivity = {"Километры", "Время", "Калории"};
 
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -39,16 +56,37 @@ public class MapActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         buttonStart.setOnClickListener(v -> {
-                    if (autoCreate){
-                        Intent run = new Intent(MapActivity.this, MapActivityRun.class);
-                        startActivity(run);
-                        finish();
-                    } else {
-                        Intent choose = new Intent(MapActivity.this, MapActivityChoose.class);
-                        startActivity(choose);
-                    }
-                }
-            );
+            if (autoCreate) {
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(this, location -> {
+                            if (location != null) {
+                                Intent preview = new Intent(MapActivity.this, MapPreviewActivity.class);
+                                preview.putExtra("distance", getDistance());
+                                preview.putExtra("latitude", location.getLatitude());
+                                preview.putExtra("longitude", location.getLongitude());
+                                startActivity(preview);
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
+            } else {
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(this, location -> {
+                            if (location != null) {
+                                Intent choose = new Intent(MapActivity.this, MapChooseActivity.class);
+                                choose.putExtra("distance", getDistance());
+                                choose.putExtra("latitude", location.getLatitude());
+                                choose.putExtra("longitude", location.getLongitude());
+                                startActivity(choose);
+                            }
+                        })
+                        .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
+            }
+        });
+    }
+
+    float getDistance() {
+        return 1000f;
     }
 }
 
