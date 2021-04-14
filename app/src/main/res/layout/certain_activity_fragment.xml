@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/certain_activity_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -37,288 +36,456 @@
                 android:text="@string/tab_skiing" />
         </com.google.android.material.tabs.TabLayout>
 
-        <TextView
-            android:id="@+id/certain_activity_title_calories"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/text_title_calories"
-            style="@style/Bigger" />
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_text_all_calories"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_total_calories"
-                style="@style/Text"/>
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/certain_activity_all_calories"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_calories" />
+
+                <TextView
+                    style="@style/Bigger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_title_calories" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_all_calories"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 кал." />
 
-            <TextView
-                android:id="@+id/certain_activity_text_average_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/total"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_average_calories"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_average_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_average_calories"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 кал." />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/averaged"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_biggest_calories"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 кал." />
 
-            <TextView
-                android:id="@+id/certain_activity_text_biggest_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/maximum"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_biggest_calories"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_biggest_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_smallest_calories"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 кал." />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/minimum"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_distance" />
 
-            <TextView
-                android:id="@+id/certain_activity_text_smallest_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Bigger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Расстояние" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_smallest_calories"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_smallest_calories"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_all_distance"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 км. 0 м." />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="Всего"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_average_distance"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 км. 0 м." />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="В среднем"
+                    android:textSize="24sp" />
+            </FrameLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_title_distance"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/text_title_distance"
-                style="@style/Bigger" />
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_biggest_distance"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 км. 0 м." />
 
-            <TextView
-                android:id="@+id/certain_activity_text_all_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="Максимум"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_total_distance"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_all_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_smallest_distance"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0 км. 0 м." />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="Минимум"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_clock" />
 
-            <TextView
-                android:id="@+id/certain_activity_text_average_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Bigger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Время" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_average_distance"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_average_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_all_time"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0000:00:00" />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/total"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_average_time"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0000:00:00" />
 
-            <TextView
-                android:id="@+id/certain_activity_text_biggest_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/averaged"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_biggest_distance"
-                style="@style/Text" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-            <TextView
-                android:id="@+id/certain_activity_biggest_distance"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/certain_activity_biggest_time"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0000:00:00" />
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/maximum"
+                    android:textSize="24sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Text"/>
-        </LinearLayout>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/certain_activity_smallest_time"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_with_colour"
+                    android:gravity="center|end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="24sp"
+                    tools:text="0000:00:00" />
 
-            <TextView
-                android:id="@+id/certain_activity_text_smallest_distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_smallest_distance"
-                style="@style/Text" />
-
-            <TextView
-                android:id="@+id/certain_activity_smallest_distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_title_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/text_title_time"
-                style="@style/Bigger" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_text_all_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_total_time"
-                style="@style/Text"/>
-
-            <TextView
-                android:id="@+id/certain_activity_all_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Text"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_text_average_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_average_time"
-                style="@style/Text"/>
-
-            <TextView
-                android:id="@+id/certain_activity_average_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_text_biggest_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_biggest_time"
-                style="@style/Text"/>
-
-            <TextView
-                android:id="@+id/certain_activity_biggest_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Text" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/certain_activity_text_smallest_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_smallest_time"
-                style="@style/Text" />
-
-            <TextView
-                android:id="@+id/certain_activity_smallest_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Text" />
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_without_colour"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/minimum"
+                    android:textSize="24sp" />
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
