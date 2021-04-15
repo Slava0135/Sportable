@@ -60,6 +60,7 @@
     <string name="changeProfile">Изменить профиль</string>
     <string name="clearStatistics">Очистить статистику</string>
     <string name="saveAndQuit">Выйти</string>
+
     <!--ChangeProfile Part-->
     <string name="name">Имя:</string>
     <string name="weight">Вес [кг]:</string>
@@ -69,14 +70,15 @@
     <string name="newHeight">Введите новый рост</string>
     <string name="newWeight">Введите новый вес</string>
     <string name="newYear">Введите новый год рождения</string>
-    <string name="end">Сохранить и выйти</string>
-    <!--FirstEntry Part-->
     <string name="proceed">Сохранить и продолжить</string>
-    <string name="first_entry">First Entry</string>
+
+    <!--FirstEntry Part-->
     <string name="fName">Введите имя</string>
     <string name="fHeight">Введите рост</string>
     <string name="fWeight">Введите вес</string>
     <string name="fYear">Введите год рождения</string>
+    <string name="letsgo">Побежали!</string>
+
     <!--MainActivity Part-->
     <string name="walk">Ходьба</string>
     <string name="run">Бег</string>

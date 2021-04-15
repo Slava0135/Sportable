@@ -31,7 +31,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void changeProfile(View view) {
-        Toast.makeText(this, "Вы будете менять профиль!", Toast.LENGTH_SHORT).show();
         Intent intentChangeProfile =
                 new Intent(SettingsActivity.this, ChangeProfile.class);
         startActivity(intentChangeProfile);
@@ -46,11 +45,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         builder.setPositiveButton("ДА", (dialog, which) -> {
             deleteStat.deleteAll();
-            Toast.makeText(SettingsActivity.this,
-                    "Работает или нет? who knows..", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
-
         builder.setNegativeButton("НЕТ", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alert = builder.create();
@@ -58,7 +54,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void saveAndQuit(View view) {
-        Toast.makeText(this, "Вы выходите из настроек!", Toast.LENGTH_SHORT).show();
         Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(intentQuit);
     }
@@ -79,7 +74,6 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Toast.makeText(this, "Вы выходите из настроек!", Toast.LENGTH_SHORT).show();
             Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
             startActivity(intentQuit);
             return true;
