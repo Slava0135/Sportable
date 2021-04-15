@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             // При первом запуске (или если юзер удалял все данные приложения) мы попадаем сюда.
             // Делаем что-то и после действия записывам false в переменную firstrun.
             // Итого при следующих запусках этот код не вызывается.
-            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, FirstEntry.class);
             startActivity(intent);
             prefs.edit().putBoolean("firstrun", false).apply();

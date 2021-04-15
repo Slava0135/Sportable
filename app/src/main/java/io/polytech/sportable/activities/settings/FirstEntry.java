@@ -140,7 +140,6 @@ public class FirstEntry extends AppCompatActivity {
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        if (item.getItemId() == android.R.id.home) {
-//            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
 //            Intent intentQuit = new Intent(FirstEntry.this, MainActivity.class);
 //            startActivity(intentQuit);
 //            return true;
