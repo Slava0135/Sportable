@@ -65,11 +65,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void mainActivity(View view) {
-        Intent intentMainActivity =
-                new Intent(SettingsActivity.this, MainActivity.class);
-        startActivity(intentMainActivity);
-    }
+//    public void mainActivity(View view) {
+//        Intent intentMainActivity =
+//                new Intent(SettingsActivity.this, MainActivity.class);
+//        startActivity(intentMainActivity);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
