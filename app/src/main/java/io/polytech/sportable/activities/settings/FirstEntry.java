@@ -19,7 +19,7 @@ import io.polytech.sportable.activities.MainActivity;
 public class FirstEntry extends AppCompatActivity {
 
     SharedPreferences settings;
-    boolean flag = true;
+    boolean flag = false;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,7 +42,7 @@ public class FirstEntry extends AppCompatActivity {
         weightView.setText(Float.toString(weight));
 
         TextView yearView = findViewById(R.id.yearView);
-        int year = settings.getInt(ChangeProfile.YEAR, 1900);
+        int year = settings.getInt(ChangeProfile.YEAR, 0);
         yearView.setText(Integer.toString(year));
 
         ActionBar actionBar = getSupportActionBar();
@@ -83,9 +83,9 @@ public class FirstEntry extends AppCompatActivity {
                 heightView.setText(Integer.toString(height));
                 heightBox.setText(null);
 
+                flag = true;
             } catch (NumberFormatException e) {
                 heightBox.setText(null);
-                flag = false;
             }
         }
 
@@ -100,9 +100,10 @@ public class FirstEntry extends AppCompatActivity {
                 TextView weightView = findViewById(R.id.weightView);
                 weightView.setText(Float.toString(weight));
                 weightBox.setText(null);
+
+                flag = true;
             } catch (NumberFormatException e) {
                 weightBox.setText(null);
-                flag = false;
             }
         }
 
@@ -117,9 +118,10 @@ public class FirstEntry extends AppCompatActivity {
                 TextView yearView = findViewById(R.id.yearView);
                 yearView.setText(Integer.toString(year));
                 yearBox.setText(null);
+
+                flag = true;
             } catch (NumberFormatException e) {
                 yearBox.setText(null);
-                flag = false;
             }
         }
         tryToQuit();
@@ -127,22 +129,23 @@ public class FirstEntry extends AppCompatActivity {
 
     public void tryToQuit() {
         if (flag) {
-            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Беги, " + settings.getString(ChangeProfile.NAME,
+                    "[ДАННЫЕ УДАЛЕНЫ]") + ", беги!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(FirstEntry.this, MainActivity.class);
             startActivity(intent);
         }
         else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
-            Intent intentQuit = new Intent(FirstEntry.this, MainActivity.class);
-            startActivity(intentQuit);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == android.R.id.home) {
+//            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+//            Intent intentQuit = new Intent(FirstEntry.this, MainActivity.class);
+//            startActivity(intentQuit);
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 }
