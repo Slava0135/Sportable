@@ -127,7 +127,6 @@ public class ChangeProfile extends AppCompatActivity {
 
     public void tryToQuit() {
         if (flag) {
-            Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intent);
         }

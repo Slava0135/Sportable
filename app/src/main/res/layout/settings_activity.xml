@@ -7,8 +7,9 @@
     android:background="@color/background"
     tools:context=".activities.settings.SettingsActivity">
 
+        <!-- android:id="@+id/back_to_main"
+        android:onClick="mainActivity" -->
         <Button
-            android:id="@+id/back_to_main"
             style="@style/Text"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
