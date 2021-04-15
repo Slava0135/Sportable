@@ -53,25 +53,18 @@
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:launchMode="singleTop">
-            <intent-filter>
+            <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.settings.ChangeProfile">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
         </activity>
 
-        <!--<activity android:name=".activities.SplashActivity"  android:theme="@style/SplashTheme">
+        <activity android:name=".activities.SplashActivity"  android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> -->
+        </activity>
 
     </application>
 

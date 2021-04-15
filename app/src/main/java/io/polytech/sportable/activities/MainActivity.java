@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
@@ -51,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMyButtonClick(View view) {
         switch (view.getId()) {
-
-            case R.id.first_entry:
-                Intent fe = new Intent(MainActivity.this, FirstEntry.class);
-                startActivity(fe);
-                break;
 
             case R.id.stats_button:
                 Intent stats = new Intent(MainActivity.this, StatActivity.class);
