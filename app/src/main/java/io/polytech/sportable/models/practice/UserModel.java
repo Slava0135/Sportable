@@ -2,7 +2,7 @@ package io.polytech.sportable.models.practice;
 
 import android.content.SharedPreferences;
 
-public class АгаUserModel {
+public class UserModel {
 
     private final int height;
     private final float weight;
