@@ -8,6 +8,19 @@
     tools:context=".activities.MainActivity">
 
     <Button
+        android:id="@+id/first_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FF018786"
+        android:onClick="onMyButtonClick"
+        android:text="@string/first_entry"
+        app:icon="@android:drawable/star_big_on"
+        app:layout_constraintBottom_toTopOf="@+id/map_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

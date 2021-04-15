@@ -6,17 +6,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 
-public class ChangeProfile extends AppCompatActivity {
-
-    public static final String NAME = "name";
-    public static final String HEIGHT = "height";
-    public static final String WEIGHT = "weight";
-    public static final String YEAR = "year";
+public class FirstEntry extends AppCompatActivity {
 
     SharedPreferences settings;
     boolean flag = true;
@@ -25,24 +25,24 @@ public class ChangeProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_profile);
+        setContentView(R.layout.first_entry);
 
         settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
 
         TextView nameView =  findViewById(R.id.nameView);
-        String name = settings.getString(NAME, "[ДАННЫЕ УДАЛЕНЫ]");
+        String name = settings.getString(ChangeProfile.NAME, "[ДАННЫЕ УДАЛЕНЫ]");
         nameView.setText(name);
 
         TextView heightView = findViewById(R.id.heightView);
-        int height = settings.getInt(HEIGHT, 0);
+        int height = settings.getInt(ChangeProfile.HEIGHT, 0);
         heightView.setText(Integer.toString(height));
 
         TextView weightView = findViewById(R.id.weightView);
-        float weight = settings.getFloat(WEIGHT, 0);
+        float weight = settings.getFloat(ChangeProfile.WEIGHT, 0);
         weightView.setText(Float.toString(weight));
 
         TextView yearView = findViewById(R.id.yearView);
-        int year = settings.getInt(YEAR, 1900);
+        int year = settings.getInt(ChangeProfile.YEAR, 1900);
         yearView.setText(Integer.toString(year));
 
         ActionBar actionBar = getSupportActionBar();
@@ -62,7 +62,7 @@ public class ChangeProfile extends AppCompatActivity {
         if (!nameBox.getText().toString().equals("")) {
             String name = nameBox.getText().toString();
             SharedPreferences.Editor prefEditor = settings.edit();
-            prefEditor.putString(NAME, name);
+            prefEditor.putString(ChangeProfile.NAME, name);
             prefEditor.apply();
 
             TextView nameView = findViewById(R.id.nameView);
@@ -76,7 +76,7 @@ public class ChangeProfile extends AppCompatActivity {
                 if (height < 50 || height > 300) throw new NumberFormatException();
 
                 SharedPreferences.Editor prefEditor = settings.edit();
-                prefEditor.putInt(HEIGHT, height);
+                prefEditor.putInt(ChangeProfile.HEIGHT, height);
                 prefEditor.apply();
 
                 TextView heightView = findViewById(R.id.heightView);
@@ -94,7 +94,7 @@ public class ChangeProfile extends AppCompatActivity {
                 float weight = Float.parseFloat(weightBox.getText().toString());
                 if (weight < 20.0 || weight > 200.0) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
-                prefEditor.putFloat(WEIGHT, weight);
+                prefEditor.putFloat(ChangeProfile.WEIGHT, weight);
                 prefEditor.apply();
 
                 TextView weightView = findViewById(R.id.weightView);
@@ -111,7 +111,7 @@ public class ChangeProfile extends AppCompatActivity {
                 int year = Integer.parseInt(yearBox.getText().toString());
                 if (year < 1900 || year > 2015) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
-                prefEditor.putInt(YEAR, year);
+                prefEditor.putInt(ChangeProfile.YEAR, year);
                 prefEditor.apply();
 
                 TextView yearView = findViewById(R.id.yearView);
@@ -127,8 +127,8 @@ public class ChangeProfile extends AppCompatActivity {
 
     public void tryToQuit() {
         if (flag) {
-            Toast.makeText(this, "Вы выходите из настроек профиля!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
+            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(FirstEntry.this, MainActivity.class);
             startActivity(intent);
         }
         else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
@@ -137,12 +137,12 @@ public class ChangeProfile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Toast.makeText(this, "Вы выходите из настроек профиля и ничего не сохраняете!",
-                    Toast.LENGTH_SHORT).show();
-            Intent intentQuit = new Intent(ChangeProfile.this, SettingsActivity.class);
+            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+            Intent intentQuit = new Intent(FirstEntry.this, MainActivity.class);
             startActivity(intentQuit);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
