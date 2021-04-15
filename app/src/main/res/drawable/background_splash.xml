@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:drawable="@color/white"/>
+
 
     <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@mipmap/ic_launcher" />
+        <shape android:shape="rectangle" >
+            <gradient
+                android:angle="90"
+                android:endColor="#0CEBEB"
+                android:startColor="#20E3B2" />
+        </shape>
+    </item>
+
+    <item android:gravity="center"
+            android:drawable="@drawable/ic_launcher_foreground">
+
     </item>
 
 </layer-list>
