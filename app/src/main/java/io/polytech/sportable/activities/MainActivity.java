@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.run.mapRun.MapActivity;
+import io.polytech.sportable.activities.settings.FirstEntry;
 import io.polytech.sportable.activities.statistics.StatActivity;
 import io.polytech.sportable.activities.run.freerun.FreeRunActivity;
 import io.polytech.sportable.activities.settings.SettingsActivity;
@@ -27,15 +29,30 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(), StatActivity.class);
             startActivity(intent);
         });
+
+        prefs = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
     }
 
-    public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-        startActivity(intent);
+    SharedPreferences prefs = null;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (prefs.getBoolean("firstrun", true)) {
+            // При первом запуске (или если юзер удалял все данные приложения) мы попадаем сюда.
+            // Делаем что-то и после действия записывам false в переменную firstrun.
+            // Итого при следующих запусках этот код не вызывается.
+            Toast.makeText(this, ":)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, FirstEntry.class);
+            startActivity(intent);
+            prefs.edit().putBoolean("firstrun", false).apply();
+        }
     }
+
 
     public void onMyButtonClick(View view) {
         switch (view.getId()) {
+
             case R.id.stats_button:
                 Intent stats = new Intent(MainActivity.this, StatActivity.class);
                 startActivity(stats);

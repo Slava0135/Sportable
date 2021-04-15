@@ -36,20 +36,36 @@
         <activity
             android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
+
+        <activity android:name=".activities.settings.ChangeProfile" >
+        <intent-filter>
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+    <activity android:name=".activities.settings.FirstEntry" >
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+        </activity>
+
+        <activity android:name=".activities.SplashActivity"  android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.settings.ChangeProfile">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
