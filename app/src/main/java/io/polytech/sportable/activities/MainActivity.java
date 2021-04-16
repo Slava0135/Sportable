@@ -89,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
         LocationManager mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         boolean mIsGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         boolean mIsNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        boolean mIsGeoDisabled = mIsGPSEnabled && mIsNetworkEnabled;
-        return mIsGeoDisabled;
+        return mIsGPSEnabled || mIsNetworkEnabled;
     }
 
     public void enableGeo() {
