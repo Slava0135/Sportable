@@ -4,5 +4,6 @@ public enum PracticeType {
     Walk,
     Run,
     Bicycle,
-    Skies
+    Skies,
+    Nothing
 }

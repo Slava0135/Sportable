@@ -15,11 +15,42 @@
         android:layout_marginEnd="10dp">
 
         <TextView
+            android:id="@+id/certain_day_day"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:gravity="center|end"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:textSize="24sp"
+            tools:text="16.04.2021" />
+
+        <TextView
+            style="@style/Text"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_rectangle_without_colour"
+            android:gravity="center"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="@string/date"
+            android:textSize="24sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
             android:id="@+id/certain_day_kind_of_workout"
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_with_colour"
+            android:background="@drawable/ic_rectangle_with_colour"
             android:gravity="center|end"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
@@ -30,11 +61,11 @@
             style="@style/Text"
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_without_colour"
+            android:background="@drawable/ic_rectangle_without_colour"
             android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:text="Тренировка"
+            android:text="@string/workout"
             android:textSize="24sp" />
     </FrameLayout>
 
@@ -50,7 +81,7 @@
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_with_colour"
+            android:background="@drawable/ic_rectangle_with_colour"
             android:gravity="center|end"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
@@ -61,11 +92,11 @@
             style="@style/Text"
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_without_colour"
+            android:background="@drawable/ic_rectangle_without_colour"
             android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:text="Калории"
+            android:text="@string/text_title_calories"
             android:textSize="24sp" />
     </FrameLayout>
 
@@ -81,7 +112,7 @@
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_with_colour"
+            android:background="@drawable/ic_rectangle_with_colour"
             android:gravity="center|end"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
@@ -92,11 +123,11 @@
             style="@style/Text"
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_without_colour"
+            android:background="@drawable/ic_rectangle_without_colour"
             android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:text="Дистанция"
+            android:text="@string/distance"
             android:textSize="24sp" />
     </FrameLayout>
 
@@ -112,7 +143,7 @@
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_with_colour"
+            android:background="@drawable/ic_rectangle_with_colour"
             android:gravity="center|end"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
@@ -123,11 +154,11 @@
             style="@style/Text"
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:background="@drawable/rectangle_without_colour"
+            android:background="@drawable/ic_rectangle_without_colour"
             android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:text="Время"
+            android:text="@string/time"
             android:textSize="24sp" />
     </FrameLayout>
 </LinearLayout>
