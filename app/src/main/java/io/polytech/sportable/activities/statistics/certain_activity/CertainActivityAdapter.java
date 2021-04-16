@@ -1,5 +1,6 @@
 package io.polytech.sportable.activities.statistics.certain_activity;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,7 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
+
+import static java.lang.String.format;
 
 public class CertainActivityAdapter {
 
@@ -36,7 +40,19 @@ public class CertainActivityAdapter {
         this.view = view;
     }
 
+    @SuppressLint("SetTextI18n") //Исправить
     public void setData(List<PracticeResult> data) {
+        if (data.isEmpty()) {
+            data.add(
+                    new PracticeResult(
+                            0,
+                            0.f,
+                            0.f,
+                            0,
+                            PracticeType.Nothing
+                    )
+            );
+        }
         this.data = data;
         totalCalories = 0.f;
         maxCalories = 0.f;
@@ -78,17 +94,61 @@ public class CertainActivityAdapter {
         maxTimeTxt = view.findViewById(R.id.certain_activity_biggest_time);
         minTimeTxt = view.findViewById(R.id.certain_activity_smallest_time);
 
-        totalCaloriesTxt.setText(String.valueOf(totalCalories));
-        averagedCaloriesTxt.setText(String.valueOf(averagedCalories));
-        maxCaloriesTxt.setText(String.valueOf(maxCalories));
-        minCaloriesTxt.setText(String.valueOf(minCalories));
-        totalDistanceTxt.setText(String.valueOf(totalDistance));
-        averagedDistanceTxt.setText(String.valueOf(averagedDistance));
-        maxDistanceTxt.setText(String.valueOf(maxDistance));
-        minDistanceTxt.setText(String.valueOf(minDistance));
-        totalTimeTxt.setText(String.valueOf(totalTime));
-        averagedTimeTxt.setText(String.valueOf(averagedTime));
-        maxTimeTxt.setText(String.valueOf(maxTime));
-        minTimeTxt.setText(String.valueOf(minTime));
+        totalCaloriesTxt.setText(totalCalories + " кал.");
+        averagedCaloriesTxt.setText(format("%.2f", averagedCalories) + " кал.");
+        maxCaloriesTxt.setText(maxCalories + " кал.");
+        minCaloriesTxt.setText(minCalories + " кал.");
+        totalDistanceTxt.setText(format(
+                "%s",
+                String.valueOf(totalDistance).split("\\.")[0]
+        ) + " км." + format(
+                "%s",
+                String.valueOf(totalDistance).split("\\.")[1]
+        ) + " м.");
+        averagedDistanceTxt.setText(format(
+                "%s",
+                String.valueOf(averagedDistance).split("\\.")[0]
+        ) + " км." + format(
+                "%s",
+                String.valueOf(averagedDistance).split("\\.")[1]
+        ) + " м.");
+        maxDistanceTxt.setText(format(
+                "%s",
+                String.valueOf(maxDistance).split("\\.")[0]
+        ) + " км." + format(
+                "%s",
+                String.valueOf(maxDistance).split("\\.")[1]
+        ) + " м.");
+        minDistanceTxt.setText(format(
+                "%s",
+                String.valueOf(minDistance).split("\\.")[0]
+        ) + " км." + format(
+                "%s",
+                String.valueOf(minDistance).split("\\.")[1]
+        ) + " м.");
+        totalTimeTxt.setText(String.format(
+                "%s:%s:%s",
+                totalTime / 3600000,
+                totalTime / 60000,
+                totalTime / 1000
+        ));
+        averagedTimeTxt.setText(String.format(
+                "%s:%s:%s",
+                averagedTime / 3600000,
+                averagedTime / 60000,
+                averagedTime / 1000
+        ));
+        maxTimeTxt.setText(String.format(
+                "%s:%s:%s",
+                maxTime / 3600000,
+                maxTime / 60000,
+                maxTime / 1000
+        ));
+        minTimeTxt.setText(String.format(
+                "%s:%s:%s",
+                minTime / 3600000,
+                minTime / 60000,
+                minTime / 1000
+        ));
     }
 }

@@ -51,37 +51,29 @@ public class CertainActivityPageFragment extends Fragment {
                     case 0: {
                         mPracticeResultViewModel.getAllByPractice(PracticeType.Walk)
                                 .observe(getViewLifecycleOwner(), adapter::setData);
-                        Toast.makeText(getContext(), "Вы выбрали Ходьбу", Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case 1: {
                         mPracticeResultViewModel.getAllByPractice(PracticeType.Run)
                                 .observe(getViewLifecycleOwner(), adapter::setData);
-                        Toast.makeText(getContext(), "Вы выбрали Бег", Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case 2:
                         mPracticeResultViewModel.getAllByPractice(PracticeType.Bicycle)
                                 .observe(getViewLifecycleOwner(), adapter::setData);
-                        Toast.makeText(getContext(), "Вы выбрали Велосипед", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         mPracticeResultViewModel.getAllByPractice(PracticeType.Skies)
                                 .observe(getViewLifecycleOwner(), adapter::setData);
-                        Toast.makeText(getContext(), "Вы выбрали Лыжи", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab) { }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) { }
         });
         return view;
     }

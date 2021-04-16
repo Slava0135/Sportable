@@ -1,6 +1,8 @@
 package io.polytech.sportable.activities.statistics;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 import io.polytech.sportable.activities.statistics.certain_activity.CertainActivityPageFragment;
 import io.polytech.sportable.activities.statistics.certain_day.CertainDayFragment;
 import io.polytech.sportable.activities.statistics.total.TotalPageFragment;
@@ -22,6 +25,13 @@ public class StatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stat);
+        ImageView backArrow = findViewById(R.id.stat_back);
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 
     @Override
