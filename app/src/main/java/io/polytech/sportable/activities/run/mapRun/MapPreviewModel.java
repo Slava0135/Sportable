@@ -5,6 +5,8 @@ import android.location.Location;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.yandex.mapkit.RequestPoint;
 import com.yandex.mapkit.RequestPointType;
@@ -40,7 +42,9 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
 
     private float distanceInDegrees;
     float targetDistance;
-    float actualDistance = 0;
+    float actualDistance;
+
+    MutableLiveData<Float> distance = new MutableLiveData<>(targetDistance);
 
     PedestrianRouter router;
     TimeOptions timeOptions = new TimeOptions();
@@ -82,6 +86,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
             List<Point> route = list.get(0).getGeometry().getPoints();
             List<Point> points = new ArrayList<>();
             points.add(route.get(0));
+            actualDistance = 0;
             for (int i = 1; i < route.size(); i++) {
                 Location start = new Location("start");
                 Location end = new Location("end");
@@ -105,6 +110,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
                 points.add(route.get(i));
             }
 
+            distance.setValue(actualDistance);
             ((SportableApp) getApplication()).lastRoute = points;
 
             PolylineBuilder polyline = new PolylineBuilder();
@@ -117,6 +123,5 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
 
     @Override
     public void onMasstransitRoutesError(@NonNull Error error) {
-
     }
 }
