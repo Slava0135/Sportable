@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.directions.DirectionsFactory;
@@ -47,6 +48,9 @@ public class MapPreviewActivity extends AppCompatActivity {
 
         model.mapObjects = model.mapView.getMap().getMapObjects().addCollection();
         model.rebuild();
+
+        TextView distanceText = findViewById(R.id.distanceMeters);
+        distanceText.setText("Расстояние: " + model.distance);
 
         Button buttonStart = findViewById(R.id.startFromPreviewButton);
         buttonStart.setOnClickListener(v -> {

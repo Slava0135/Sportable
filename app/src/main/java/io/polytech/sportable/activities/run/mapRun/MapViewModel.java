@@ -17,7 +17,7 @@ import io.polytech.sportable.persistence.PracticeResult;
 public class MapViewModel extends AndroidViewModel {
 
     FusedLocationProviderClient fusedLocationClient;
-    boolean autoCreate;
+    boolean autoCreate = true;
     PracticeType practiceType;
     Units unit = Units.meters;
     PracticeRepository repository;

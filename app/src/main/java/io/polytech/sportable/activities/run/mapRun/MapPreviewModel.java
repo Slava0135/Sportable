@@ -37,6 +37,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     PracticeType practiceType;
 
     private float distanceInDegrees;
+    float distance;
 
     PedestrianRouter router;
     TimeOptions timeOptions = new TimeOptions();
@@ -68,6 +69,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     }
 
     public void setDistance(float distance) {
+        this.distance = distance;
         distanceInDegrees = distance / 111000f;
     }
 
