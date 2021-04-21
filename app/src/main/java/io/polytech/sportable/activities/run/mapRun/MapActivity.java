@@ -41,10 +41,10 @@ public class MapActivity extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_map);
 
         model = new ViewModelProvider(this).get(MapViewModel.class);
-
         model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
-
+        model.repository.getAllByPractice(model.practiceType).observe(this, model::setRecords);
         model.fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -67,7 +67,7 @@ public class MapActivity extends AppCompatActivity implements AdapterView.OnItem
             TextView num = findViewById(R.id.inputNumber);
             CharSequence text = num.getText();
             if (text.length() <= 0) return;
-            float distance = model.unit.calculateDistance(Float.parseFloat(text.toString()));
+            float distance = model.calculateDistance(Float.parseFloat(text.toString()));
             if (model.autoCreate) {
                 model.fusedLocationClient.getLastLocation()
                         .addOnSuccessListener(this, location -> {
