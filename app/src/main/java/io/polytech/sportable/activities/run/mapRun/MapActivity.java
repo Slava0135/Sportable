@@ -24,12 +24,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.models.practice.PracticeType;
 
 public class MapActivity extends AppCompatActivity {
 
     private FusedLocationProviderClient fusedLocationClient;
 
     boolean autoCreate;
+
+    PracticeType practiceType;
 
     String[] typesActivity = {"Метры", "Время", "Калории"};
 
@@ -38,6 +41,9 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
@@ -69,6 +75,7 @@ public class MapActivity extends AppCompatActivity {
                                 preview.putExtra("distance", distance);
                                 preview.putExtra("latitude", location.getLatitude());
                                 preview.putExtra("longitude", location.getLongitude());
+                                preview.putExtra("activity_type", practiceType.toString());
                                 startActivity(preview);
                                 finish();
                             }
@@ -82,6 +89,7 @@ public class MapActivity extends AppCompatActivity {
                                 choose.putExtra("distance", distance);
                                 choose.putExtra("latitude", location.getLatitude());
                                 choose.putExtra("longitude", location.getLongitude());
+                                choose.putExtra("activity_type", practiceType.toString());
                                 startActivity(choose);
                             }
                         })

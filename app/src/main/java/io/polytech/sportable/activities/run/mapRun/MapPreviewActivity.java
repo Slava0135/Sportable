@@ -17,6 +17,7 @@ import com.yandex.mapkit.transport.masstransit.PedestrianRouter;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.SportableApp;
+import io.polytech.sportable.models.practice.PracticeType;
 
 public class MapPreviewActivity extends AppCompatActivity {
 
@@ -35,6 +36,7 @@ public class MapPreviewActivity extends AppCompatActivity {
 
         Bundle arguments = getIntent().getExtras();
 
+        model.practiceType = PracticeType.valueOf((String) arguments.get("activity_type"));
         model.startLocation = new Point((double) arguments.get("latitude"), (double) arguments.get("longitude"));
         model.setDistance((float) arguments.get("distance"));
 
@@ -49,6 +51,7 @@ public class MapPreviewActivity extends AppCompatActivity {
         Button buttonStart = findViewById(R.id.startFromPreviewButton);
         buttonStart.setOnClickListener(v -> {
             Intent run = new Intent(MapPreviewActivity.this, MapRunActivity.class);
+            run.putExtra("activity_type", model.practiceType.toString());
             startActivity(run);
             finish();
         });
