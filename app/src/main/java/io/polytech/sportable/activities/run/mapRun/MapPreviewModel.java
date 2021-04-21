@@ -1,6 +1,7 @@
 package io.polytech.sportable.activities.run.mapRun;
 
 import android.app.Application;
+import android.location.Location;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -8,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.yandex.mapkit.RequestPoint;
 import com.yandex.mapkit.RequestPointType;
 import com.yandex.mapkit.geometry.Point;
+import com.yandex.mapkit.geometry.PolylineBuilder;
 import com.yandex.mapkit.geometry.SubpolylineHelper;
 import com.yandex.mapkit.map.MapObjectCollection;
 import com.yandex.mapkit.mapview.MapView;
@@ -37,7 +39,8 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     PracticeType practiceType;
 
     private float distanceInDegrees;
-    float distance;
+    float targetDistance;
+    float actualDistance = 0;
 
     PedestrianRouter router;
     TimeOptions timeOptions = new TimeOptions();
@@ -69,17 +72,46 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     }
 
     public void setDistance(float distance) {
-        this.distance = distance;
+        this.targetDistance = distance;
         distanceInDegrees = distance / 111000f;
     }
 
     @Override
     public void onMasstransitRoutes(@NonNull List<Route> list) {
-        if (list.size() > 0) {
-            ((SportableApp) getApplication()).lastRoute = list.get(0);
-            for (Section section : list.get(0).getSections()) {
-                mapObjects.addPolyline(SubpolylineHelper.subpolyline(list.get(0).getGeometry(), section.getGeometry())).setStrokeColor(0xFF24a1a6);
+        if (list.size() > 1) {
+            List<Point> route = list.get(0).getGeometry().getPoints();
+            List<Point> points = new ArrayList<>();
+            points.add(route.get(0));
+            for (int i = 1; i < route.size(); i++) {
+                Location start = new Location("start");
+                Location end = new Location("end");
+                start.setLatitude(route.get(i - 1).getLatitude());
+                start.setLongitude(route.get(i - 1).getLongitude());
+                end.setLatitude(route.get(i).getLatitude());
+                end.setLongitude(route.get(i).getLongitude());
+                float dist = start.distanceTo(end);
+                if (actualDistance + dist > targetDistance) {
+                    float frac = (targetDistance - actualDistance) / dist;
+                    double latitude = start.getLatitude() + frac * (end.getLatitude() - start.getLatitude());
+                    double longitude = start.getLongitude() + frac * (end.getLongitude() - start.getLongitude());
+                    Location finish = new Location("finish");
+                    finish.setLatitude(latitude);
+                    finish.setLongitude(longitude);
+                    actualDistance += start.distanceTo(finish);
+                    points.add(new Point(latitude, longitude));
+                    break;
+                }
+                actualDistance += dist;
+                points.add(route.get(i));
             }
+
+            ((SportableApp) getApplication()).lastRoute = points;
+
+            PolylineBuilder polyline = new PolylineBuilder();
+            for (Point point : points) {
+                polyline.append(point);
+            }
+            mapObjects.addPolyline(polyline.build()).setStrokeColor(0xFF24a1a6);
         }
     }
 

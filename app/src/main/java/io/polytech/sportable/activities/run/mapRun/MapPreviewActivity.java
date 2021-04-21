@@ -50,7 +50,7 @@ public class MapPreviewActivity extends AppCompatActivity {
         model.rebuild();
 
         TextView distanceText = findViewById(R.id.distanceMeters);
-        distanceText.setText("Расстояние: " + model.distance);
+        distanceText.setText("Расстояние: " + model.actualDistance);
 
         Button buttonStart = findViewById(R.id.startFromPreviewButton);
         buttonStart.setOnClickListener(v -> {
