@@ -63,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.map_button:
-                Intent map = new Intent(MainActivity.this, MapActivity.class);
                 if (!isGeoEnabled()) {
                     enableGeo();
                 } else {
+                    Intent map = new Intent(MainActivity.this, MapActivity.class);
+                    map.putExtra("activity_type", getSelectedActivity());
                     startActivity(map);
                 }
                 break;

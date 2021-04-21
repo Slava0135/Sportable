@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Random;
 
 import io.polytech.sportable.SportableApp;
+import io.polytech.sportable.models.practice.PracticeType;
 
 import static com.yandex.runtime.Runtime.getApplicationContext;
 
@@ -32,6 +33,8 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
     Point startLocation;
     MapView mapView;
     MapObjectCollection mapObjects;
+
+    PracticeType practiceType;
 
     private float distanceInDegrees;
 

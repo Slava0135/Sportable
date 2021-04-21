@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import io.polytech.sportable.R;
 import io.polytech.sportable.SportableApp;
 import io.polytech.sportable.activities.run.RunStatActivity;
+import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
@@ -46,6 +47,8 @@ public class MapRunActivity extends AppCompatActivity implements UserLocationObj
         super.onCreate(savedInstanceState);
 
         model = new ViewModelProvider(this).get(MapRunViewModel.class);
+
+        model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
 
         model.isRunning = true;
         model.mapView = findViewById(R.id.chooseMapview);

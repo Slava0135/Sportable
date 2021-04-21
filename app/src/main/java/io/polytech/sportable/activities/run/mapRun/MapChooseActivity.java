@@ -27,6 +27,9 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
     Point startLocation;
     MapView mapView;
     MapObjectCollection mapObjects;
+
+    PracticeType practiceType;
+
     float distance;
 
     @Override
@@ -39,6 +42,7 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
 
         Bundle arguments = getIntent().getExtras();
 
+        practiceType = PracticeType.valueOf((String) arguments.get("activity_type"));
         startLocation = new Point((double) arguments.get("latitude"), (double) arguments.get("longitude"));
         distance = (float) arguments.get("distance");
 
@@ -56,6 +60,7 @@ public class MapChooseActivity extends AppCompatActivity implements GeoObjectTap
             preview.putExtra("distance", distance);
             preview.putExtra("latitude", startLocation.getLatitude());
             preview.putExtra("longitude", startLocation.getLongitude());
+            preview.putExtra("activity_type", practiceType.toString());
             startActivity(preview);
             finish();
         });

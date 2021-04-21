@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import io.polytech.sportable.R;
 import io.polytech.sportable.activities.run.RunStatActivity;
+import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
 import io.polytech.sportable.services.PracticeService;
 
@@ -33,6 +34,9 @@ public class FreeRunActivity extends AppCompatActivity {
         setContentView(R.layout.activity_free_run);
 
         model.isRunning = true;
+
+        model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
+
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
             if (model.isRunning) {
