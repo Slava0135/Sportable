@@ -7,6 +7,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -24,17 +27,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.run.freerun.RunViewModel;
 import io.polytech.sportable.models.practice.PracticeType;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private FusedLocationProviderClient fusedLocationClient;
-
-    boolean autoCreate;
-
-    PracticeType practiceType;
-
-    String[] typesActivity = {"Метры", "Время", "Калории"};
+    MapViewModel model;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -42,54 +40,57 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
+        model = new ViewModelProvider(this).get(MapViewModel.class);
+        model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
+        model.repository.getAllByPractice(model.practiceType).observe(this, model::setRecords);
+        model.fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         CheckBox checkBox = findViewById(R.id.checkBoxAutoCreate);
         Button buttonStart = findViewById(R.id.buttonStart);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                autoCreate = true;
+                model.autoCreate = true;
                 buttonStart.setText("Побежали!");
             } else {
-                autoCreate = false;
+                model.autoCreate = false;
                 buttonStart.setText("Выбрать точку");
             }
         });
 
         Spinner spinner = findViewById(R.id.spinnerChoose);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typesActivity);
+        ArrayAdapter<MapViewModel.Units> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, MapViewModel.Units.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         buttonStart.setOnClickListener(v -> {
             TextView num = findViewById(R.id.inputNumber);
             CharSequence text = num.getText();
             if (text.length() <= 0) return;
-            float distance = Float.parseFloat(text.toString());
-            if (autoCreate) {
-                fusedLocationClient.getLastLocation()
+            float distance = model.calculateDistance(Float.parseFloat(text.toString()));
+            if (model.autoCreate) {
+                model.fusedLocationClient.getLastLocation()
                         .addOnSuccessListener(this, location -> {
                             if (location != null) {
                                 Intent preview = new Intent(MapActivity.this, MapPreviewActivity.class);
                                 preview.putExtra("distance", distance);
                                 preview.putExtra("latitude", location.getLatitude());
                                 preview.putExtra("longitude", location.getLongitude());
-                                preview.putExtra("activity_type", practiceType.toString());
+                                preview.putExtra("activity_type", model.practiceType.toString());
                                 startActivity(preview);
                                 finish();
                             }
                         })
                         .addOnFailureListener(this, e -> Toast.makeText(MapActivity.this, "Не удалось получить местоположение", Toast.LENGTH_SHORT).show());
             } else {
-                fusedLocationClient.getLastLocation()
+                model.fusedLocationClient.getLastLocation()
                         .addOnSuccessListener(this, location -> {
                             if (location != null) {
                                 Intent choose = new Intent(MapActivity.this, MapChooseActivity.class);
                                 choose.putExtra("distance", distance);
                                 choose.putExtra("latitude", location.getLatitude());
                                 choose.putExtra("longitude", location.getLongitude());
-                                choose.putExtra("activity_type", practiceType.toString());
+                                choose.putExtra("activity_type", model.practiceType.toString());
                                 startActivity(choose);
                             }
                         })
@@ -97,5 +98,15 @@ public class MapActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        model.unit = (MapViewModel.Units) parent.getItemAtPosition(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
 }
 
