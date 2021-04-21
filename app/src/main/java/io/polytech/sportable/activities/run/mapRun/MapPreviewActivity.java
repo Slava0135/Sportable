@@ -49,9 +49,6 @@ public class MapPreviewActivity extends AppCompatActivity {
         model.mapObjects = model.mapView.getMap().getMapObjects().addCollection();
         model.rebuild();
 
-        TextView distanceText = findViewById(R.id.distanceMeters);
-        distanceText.setText("Расстояние: " + model.distance);
-
         Button buttonStart = findViewById(R.id.startFromPreviewButton);
         buttonStart.setOnClickListener(v -> {
             Intent run = new Intent(MapPreviewActivity.this, MapRunActivity.class);
@@ -63,6 +60,11 @@ public class MapPreviewActivity extends AppCompatActivity {
         Button buttonRebuild = findViewById(R.id.rebuildButton);
         buttonRebuild.setOnClickListener(v -> {
             model.rebuild();
+        });
+
+        model.distance.observe(this, d -> {
+            TextView distanceText = findViewById(R.id.distanceMeters);
+            distanceText.setText(String.format("Расстояние: %.0f", d));
         });
     }
 
