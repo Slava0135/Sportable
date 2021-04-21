@@ -82,7 +82,7 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
 
     @Override
     public void onMasstransitRoutes(@NonNull List<Route> list) {
-        if (list.size() > 1) {
+        if (list.size() > 0) {
             List<Point> route = list.get(0).getGeometry().getPoints();
             List<Point> points = new ArrayList<>();
             points.add(route.get(0));
@@ -118,6 +118,8 @@ public class MapPreviewModel extends AndroidViewModel implements Session.RouteLi
                 polyline.append(point);
             }
             mapObjects.addPolyline(polyline.build()).setStrokeColor(0xFF24a1a6);
+        } else {
+            distance.setValue(0f);
         }
     }
 
