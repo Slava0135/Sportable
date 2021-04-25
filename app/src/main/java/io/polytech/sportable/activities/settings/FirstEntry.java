@@ -136,15 +136,4 @@ public class FirstEntry extends AppCompatActivity {
         }
         else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == android.R.id.home) {
-//            Intent intentQuit = new Intent(FirstEntry.this, MainActivity.class);
-//            startActivity(intentQuit);
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
 }
