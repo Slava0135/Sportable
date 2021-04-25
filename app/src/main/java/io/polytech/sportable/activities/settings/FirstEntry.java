@@ -110,7 +110,7 @@ public class FirstEntry extends AppCompatActivity {
         if (!yearBox.getText().toString().equals("")) {
             try {
                 int year = Integer.parseInt(yearBox.getText().toString());
-                if (year < 1900 || year > 2016) throw new NumberFormatException();
+                if (year < 1900 || year > 2015) throw new NumberFormatException();
                 SharedPreferences.Editor prefEditor = settings.edit();
                 prefEditor.putInt(ChangeProfile.YEAR, year);
                 prefEditor.apply();
