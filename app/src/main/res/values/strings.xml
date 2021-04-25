@@ -51,14 +51,15 @@
     <string name="saveAndQuit">Выйти</string>
 
     <!--ChangeProfile Part-->
-    <string name="name">Имя:</string>
-    <string name="weight">Вес [кг]:</string>
-    <string name="height">Рост [см]:</string>
-    <string name="year">Год рождения:</string>
+    <string name="menuChange">ИЗМЕНЕНИЕ ПРОФИЛЯ</string>
+    <string name="name"> Имя: </string>
+    <string name="weight"> Вес [кг]:</string>
+    <string name="height"> Рост [см]:</string>
+    <string name="year"> Год рождения:</string>
     <string name="newName">Введите новое имя</string>
     <string name="newHeight">Введите новый рост</string>
     <string name="newWeight">Введите новый вес</string>
-    <string name="newYear">Введите новый год рождения</string>
+    <string name="newYear">Введите новую дату</string>
     <string name="proceed">Сохранить и продолжить</string>
 
     <!--FirstEntry Part-->

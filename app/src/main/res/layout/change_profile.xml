@@ -1,169 +1,206 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background"
     tools:context=".activities.settings.FirstEntry">
 
-    <TextView
-        android:id="@+id/menuName"
-        style="@style/Text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="@string/menuName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center">
 
-    <EditText
-        android:id="@+id/nameBox"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="25dp"
-        android:hint="@string/fName"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/name" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_menu_myplaces" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+        <TextView
+            style="@style/Bigger"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/menuChange" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/name"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuName" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp">
 
-    <TextView
-        android:id="@+id/nameView"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <EditText
+            android:id="@+id/nameBox"
+            style="@style/Text"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:gravity="center|end"
+            android:hint="@string/newName"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name" />
 
-    <EditText
-        android:id="@+id/heightBox"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="25dp"
-        android:hint="@string/fHeight"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/height" />
+        <TextView
+            android:id="@+id/name"
+            android:background="@drawable/ic_rectangle_without_colour"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/name"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/nameView"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="145dp"
-        android:text="@string/height"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuName" />
-
-    <TextView
-        android:id="@+id/heightView"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/height" />
-
-    <EditText
-        android:id="@+id/weightBox"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="25dp"
-        android:hint="@string/fWeight"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weight" />
+        <EditText
+            android:id="@+id/heightBox"
+            style="@style/Text"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:gravity="center|end"
+            android:layout_marginTop="100dp"
+            android:hint="@string/newHeight"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/height" />
 
 
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="260dp"
-        android:text="@string/weight"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuName" />
+        <TextView
+            android:id="@+id/height"
+            android:background="@drawable/ic_rectangle_without_colour"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="100dp"
+            android:text="@string/height"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/weightView"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weight" />
+        <TextView
+            android:id="@+id/heightView"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="150dp"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/height" />
 
-    <EditText
-        android:id="@+id/yearBox"
-        style="@style/Text"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="25dp"
-        android:hint="@string/fYear"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/year" />
+        <EditText
+            android:id="@+id/weightBox"
+            style="@style/Text"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:gravity="center|end"
+            android:layout_marginTop="200dp"
+            android:hint="@string/newWeight"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/weight" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:background="@drawable/ic_rectangle_without_colour"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="200dp"
+            android:text="@string/weight"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/weightView"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="250dp"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+        <EditText
+            android:id="@+id/yearBox"
+            style="@style/Text"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:gravity="center|end"
+            android:layout_marginTop="300dp"
+            android:hint="@string/newYear"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/year" />
 
 
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="375dp"
-        android:text="@string/year"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuName" />
+        <TextView
+            android:id="@+id/year"
+            android:background="@drawable/ic_rectangle_without_colour"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="300dp"
+            android:text="@string/year"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/yearView"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        style="@style/Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/year" />
+        <TextView
+            android:id="@+id/yearView"
+            android:background="@drawable/ic_rectangle_with_colour"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginTop="350dp"
+            style="@style/Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/year" />
 
-    <Button
-        android:id="@+id/kill_button"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:backgroundTint="@color/blue"
-        android:onClick="saveAndQuit"
-        android:text="@string/proceed"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuName" />
+        <Button
+            android:id="@+id/kill_button"
+            style="@style/Text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="420dp"
+            android:backgroundTint="@color/blue"
+            android:onClick="saveAndQuit"
+            android:text="@string/proceed"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+</LinearLayout>
