@@ -43,7 +43,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginBottom="108dp"
         android:background="@color/blue"
-        android:drawableStart="@android:drawable/ic_media_play"
+
         android:onClick="onMyButtonClick"
         android:text="@string/freerun_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
