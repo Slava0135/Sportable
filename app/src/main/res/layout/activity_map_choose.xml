@@ -18,11 +18,11 @@
 
     <Button
         android:id="@+id/chooseStartButton"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@color/blue"
-        style="@style/Text"
+        android:background="@drawable/ic_rectangle_with_colour"
         android:text="OK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

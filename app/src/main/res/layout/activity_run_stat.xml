@@ -9,13 +9,13 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/Bigger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginTop="16dp"
-        android:text="Молодец, user!"
-        style="@style/Bigger"
+        android:text="Молодец!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
         android:layout_marginBottom="16dp"
         android:text="Меню"
         style="@style/Text"
-        android:backgroundTint="@color/blue"
+        android:background="@drawable/ic_rectangle_with_colour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

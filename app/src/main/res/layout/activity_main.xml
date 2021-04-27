@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,75 +10,87 @@
 
     <Button
         android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/blue"
-        style="@style/Text"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_settings_1"
         android:onClick="onMyButtonClick"
-        android:text="@string/settings_button_text"
-        android:drawableStart="@android:drawable/ic_menu_manage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/welcome"
+        style="@style/Bigger"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="35dp"
+        android:text="Добро пожаловать!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
     <Button
         android:id="@+id/stats_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/blue"
         style="@style/Text"
+        android:layout_width="256dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="384dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_statistics"
         android:onClick="onMyButtonClick"
-        android:text="@string/statistics_button_text"
-        android:drawableStart="@android:drawable/ic_menu_info_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/modes"
+        style="@style/Bigger"
+        android:layout_width="212dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="10dp"
+        android:text="Режимы"
+        app:layout_constraintBottom_toTopOf="@+id/map_button"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/freerun_button"
         style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="108dp"
-        android:background="@color/blue"
-        android:drawableStart="@android:drawable/ic_media_play"
+        android:layout_width="355dp"
+        android:layout_height="75dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_freerun"
         android:onClick="onMyButtonClick"
-        android:text="@string/freerun_button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map_button" />
 
     <Button
         android:id="@+id/map_button"
         style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/blue"
-        android:drawableStart="@android:drawable/ic_menu_mapmode"
+        android:layout_width="355dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_own_target"
         android:onClick="onMyButtonClick"
-        android:text="@string/map_button_text"
-        app:layout_constraintBottom_toTopOf="@+id/freerun_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_button" />
 
     <RadioGroup
         android:id="@+id/activityType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="270dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/radioSki"
-            style="@style/Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ski" />
 
         <RadioButton
             android:id="@+id/radioBicycle"
@@ -102,14 +115,68 @@
             android:text="@string/walk" />
     </RadioGroup>
 
+
     <View
         android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="4dp"
-        android:layout_marginTop="16dp"
-        android:background="?android:attr/listDivider"
+        android:layout_marginTop="8dp"
+        android:background="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+
+    <TextView
+        android:id="@+id/typeOf"
+        style="@style/Bigger"
+        android:layout_width="212dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:text="Тип тренировки"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/runningMan"
+        style="@style/Text"
+        android:layout_width="93dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="164dp"
+
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_running"
+        android:onClick="onMyButtonClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cyclingMan"
+        style="@style/Text"
+        android:layout_width="93dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="164dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_cycling"
+        android:onClick="onMyButtonClick"
+        app:layout_constraintEnd_toStartOf="@+id/walkingMan"
+        app:layout_constraintStart_toEndOf="@+id/runningMan"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/walkingMan"
+        style="@style/Text"
+        android:layout_width="93dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="35dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_walking"
+        android:onClick="onMyButtonClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

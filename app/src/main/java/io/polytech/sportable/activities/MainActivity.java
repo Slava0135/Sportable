@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         RadioGroup group = findViewById(R.id.activityType);
         switch (group.getCheckedRadioButtonId()) {
             case R.id.radioWalk: return PracticeType.Walk.toString();
-            case R.id.radioSki: return PracticeType.Skies.toString();
             case R.id.radioBicycle: return PracticeType.Bicycle.toString();
             case R.id.radioRun: return PracticeType.Run.toString();
         }
