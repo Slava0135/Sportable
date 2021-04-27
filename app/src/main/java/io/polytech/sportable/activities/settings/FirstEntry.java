@@ -28,7 +28,7 @@ public class FirstEntry extends AppCompatActivity {
         settings = getSharedPreferences("io.polytech.sportable", MODE_PRIVATE);
 
         TextView nameView =  findViewById(R.id.nameView);
-        String name = settings.getString(ChangeProfile.NAME, "[ДАННЫЕ УДАЛЕНЫ]");
+        String name = settings.getString(ChangeProfile.NAME, "[НЕТ ДАННЫХ]");
         nameView.setText(name);
 
         TextView heightView = findViewById(R.id.heightView);

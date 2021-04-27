@@ -194,11 +194,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="center"
-
             android:layout_marginTop="420dp"
             android:background="@drawable/ic_rectangle_without_colour"
-
             android:gravity="center"
             android:onClick="saveAndQuit"
             android:text="@string/proceed"
