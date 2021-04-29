@@ -2,30 +2,40 @@ package io.polytech.sportable.models.practice;
 
 import android.content.SharedPreferences;
 
+import com.yandex.mapkit.location.Location;
+import com.yandex.mapkit.location.LocationListener;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 public class UserModel {
 
     private final int height;
     private final float weight;
 
-//    private final float sin = getSin();
-//    private final boolean isUp;
-
     public UserModel(SharedPreferences settings) {
         this.height = settings.getInt("height", 0);
         this.weight = settings.getFloat("weight", 0);
     }
-
-//    public float getSin(/*класс местоположения*/ start, /*класс местоположения*/ end) {
-//        z1 = start.getAltitude();
-//        z2 = end.getAltitude();
-//        Hypotenuse = getDistance();
-//        this.isUp = (z2 >= z1);
-//        return abs(z1 - z2) / Hypotenuse;
+    // наше
+//    public double getSin(android.location.Location /*класс местоположения*/ start, android.location.Location /*класс местоположения*/ end) {
+//        double z1 = start.getAltitude();
+//        double z2 = end.getAltitude();
+//        float distance = start.distanceTo(end);
+//        double hypotenuse = sqrt(pow(z1 - z2, 2) + pow(distance, 2));
+//       return abs(z1 - z2) / hypotenuse;
 //    }
 //
+//    public boolean getIsUp(android.location.Location /*класс местоположения*/ start, android.location.Location /*класс местоположения*/ end) {
+//        double z1 = start.getAltitude();
+//        double z2 = end.getAltitude();
+//        return (z2 >= z1);
+//    }
 //
-//
-//    public float newGetCalories(PracticeType type, int time, float velocity) {
+//    public float getCalories(PracticeType type, int time, float velocity, android.location.Location /*класс местоположения*/ start, android.location.Location /*класс местоположения*/ end) {
+//        final boolean isUp = getIsUp(start, end);
+//        final float sin = (float) getSin(start, end);
 //        if (velocity == 0) return 0f;
 //        switch (type) {
 //            case Walk: {
@@ -46,15 +56,12 @@ public class UserModel {
 //            case Bicycle: {
 //                return time / 60f * (5 * weight * 3.5f) / 200;
 //            }
-//            case Skies: {
-//                return time / 60f * (7 * weight * 3.5f) / 200;
-//            }
 //            default: {
 //                return 0f;
 //            }
 //        }
 //    }
-
+// оригинал
     public float getCalories(PracticeType type, int time, float velocity) {
         if (velocity == 0) return 0f;
         switch (type) {
@@ -66,9 +73,6 @@ public class UserModel {
             }
             case Bicycle: {
                 return time / 60f * (5 * weight * 3.5f) / 200;
-            }
-            case Skies: {
-                return time / 60f * (7 * weight * 3.5f) / 200;
             }
             default: {
                 return 0f;
