@@ -6,7 +6,7 @@
     <color name="type_selected">#2EC79E</color>
     <color name="green_blue">#FF007991</color>
     <color name="blue">#FF24A1A6</color>
-    <color name="light_blue">#FF78FFD6</color>
+    <color name="light_blue">#64F7F7</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

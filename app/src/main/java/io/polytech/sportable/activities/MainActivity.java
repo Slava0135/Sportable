@@ -1,6 +1,7 @@
 package io.polytech.sportable.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    String typeMove = "";
 
     public void onMyButtonClick(View view) {
         switch (view.getId()) {
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     enableGeo();
                 } else {
                     Intent map = new Intent(MainActivity.this, MapActivity.class);
-                    map.putExtra("activity_type", getSelectedActivity());
+                    map.putExtra("activity_type", typeMove);
                     startActivity(map);
                 }
                 break;
@@ -77,10 +79,28 @@ public class MainActivity extends AppCompatActivity {
                     enableGeo();
                 } else {
                     Intent freerun = new Intent(MainActivity.this, FreeRunActivity.class);
-                    freerun.putExtra("activity_type", getSelectedActivity());
+                    freerun.putExtra("activity_type", typeMove);
                     startActivity(freerun);
                     finish();
                 }
+                break;
+            case R.id.runningMan:
+                typeMove = PracticeType.Walk.toString();
+                view.setBackgroundResource(R.drawable.ic_running_pressed);
+                findViewById(R.id.walkingMan).setBackgroundResource(R.drawable.ic_walking);
+                findViewById(R.id.cyclingMan).setBackgroundResource(R.drawable.ic_cycling);
+                break;
+            case R.id.walkingMan:
+                typeMove = PracticeType.Run.toString();
+                view.setBackgroundResource(R.drawable.ic_walking_pressed);
+                findViewById(R.id.runningMan).setBackgroundResource(R.drawable.ic_running);
+                findViewById(R.id.cyclingMan).setBackgroundResource(R.drawable.ic_cycling);
+                break;
+            case R.id.cyclingMan:
+                typeMove = PracticeType.Bicycle.toString();
+                view.setBackgroundResource(R.drawable.ic_cycling_pressed);
+                findViewById(R.id.walkingMan).setBackgroundResource(R.drawable.ic_walking);
+                findViewById(R.id.runningMan).setBackgroundResource(R.drawable.ic_running);
                 break;
         }
     }
@@ -98,16 +118,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         this.finish();
-    }
-
-    private String getSelectedActivity() {
-        RadioGroup group = findViewById(R.id.activityType);
-        switch (group.getCheckedRadioButtonId()) {
-            case R.id.radioWalk: return PracticeType.Walk.toString();
-            case R.id.radioSki: return PracticeType.Skies.toString();
-            case R.id.radioBicycle: return PracticeType.Bicycle.toString();
-            case R.id.radioRun: return PracticeType.Run.toString();
-        }
-        return "";
     }
 }

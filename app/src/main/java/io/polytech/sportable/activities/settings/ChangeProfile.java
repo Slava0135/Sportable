@@ -122,11 +122,13 @@ public class ChangeProfile extends AppCompatActivity {
                 flag = false;
             }
         }
+
         tryToQuit();
     }
 
     public void tryToQuit() {
         if (flag) {
+            Toast.makeText(this, ":^)", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intent);
         }
@@ -136,8 +138,7 @@ public class ChangeProfile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Toast.makeText(this, "Вы выходите из настроек профиля и ничего не сохраняете!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Выход...", Toast.LENGTH_SHORT).show();
             Intent intentQuit = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intentQuit);
             return true;

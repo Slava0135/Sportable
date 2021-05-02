@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/insert_point"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -16,7 +17,9 @@
             style="@style/Bigger"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:weekNumberColor="@color/black"
+            tools:unfocusedMonthDateColor="@color/blue" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -173,5 +176,4 @@
                 android:textSize="24sp" />
         </FrameLayout>
     </LinearLayout>
-
 </ScrollView>
