@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/insert_point"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -16,5 +18,160 @@
             android:layout_height="wrap_content"
             android:background="@color/white" />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/certain_day_day"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_with_colour"
+                android:gravity="center|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="20dp"
+                android:textSize="24sp"
+                tools:text="16.04.2021" />
+
+            <TextView
+                style="@style/Text"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_without_colour"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/date"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/certain_day_kind_of_workout"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_with_colour"
+                android:gravity="center|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="20dp"
+                android:textSize="24sp"
+                tools:text="Бег" />
+
+            <TextView
+                style="@style/Text"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_without_colour"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/workout"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/certain_day_all_calories"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_with_colour"
+                android:gravity="center|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="20dp"
+                android:textSize="24sp"
+                tools:text="0 кал." />
+
+            <TextView
+                style="@style/Text"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_without_colour"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/text_title_calories"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/certain_day_distance"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_with_colour"
+                android:gravity="center|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="20dp"
+                android:textSize="24sp"
+                tools:text="0 км. 0 м." />
+
+            <TextView
+                style="@style/Text"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_without_colour"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/distance"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/certain_day_time"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_with_colour"
+                android:gravity="center|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="20dp"
+                android:textSize="24sp"
+                tools:text="00:00:00" />
+
+            <TextView
+                style="@style/Text"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_rectangle_without_colour"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/time"
+                android:textSize="24sp" />
+        </FrameLayout>
     </LinearLayout>
+
 </ScrollView>
