@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    String typeMove = "";
+    String typeMove = PracticeType.Run.toString();
 
     public void onMyButtonClick(View view) {
         switch (view.getId()) {
