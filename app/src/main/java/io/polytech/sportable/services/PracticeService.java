@@ -22,6 +22,9 @@ public class PracticeService extends Service {
 
     private int timeMillis;
     private float distance;
+    private float calories;
+    private int lastUpdateTime;
+
     private PracticeType practiceType;
 
     private UserModel userModel;
@@ -65,6 +68,8 @@ public class PracticeService extends Service {
 
         timeMillis = 0;
         distance = 0;
+        calories = 0;
+        lastUpdateTime = 0;
         this.practiceType = practiceType;
         userModel = new UserModel(getSharedPreferences("io.polytech.sportable", MODE_PRIVATE));
         isRunning = true;
@@ -97,7 +102,7 @@ public class PracticeService extends Service {
         return 1000 * distance / timeMillis;
     }
     public float getCalories() {
-        return userModel.getCalories(practiceType, getTimeSeconds(), getSpeedMetersPerSecond());
+        return calories;
     }
 
     @Override
@@ -115,8 +120,11 @@ public class PracticeService extends Service {
         @Override
         public void onLocationChanged(android.location.Location location) {
             if (mLocation != null) {
-                distance += mLocation.distanceTo(location);
+                float dist = mLocation.distanceTo(location);
+                distance += dist;
+                calories += userModel.getCalories(practiceType, timeMillis - lastUpdateTime, dist / (timeMillis - lastUpdateTime), mLocation, location);
             }
+            lastUpdateTime = timeMillis;
             mLocation = location;
         }
     };
