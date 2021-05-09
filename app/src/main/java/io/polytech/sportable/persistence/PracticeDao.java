@@ -18,8 +18,8 @@ public interface PracticeDao {
     @Query("SELECT * from practice_table WHERE practiceType == :practiceType ORDER BY date DESC")
     LiveData<List<PracticeResult>> getAllByPractice(PracticeType practiceType);
 
-    @Query("SELECT * FROM practice_table WHERE date == :date")
-    LiveData<PracticeResult> getByDate(long date);
+    @Query("SELECT * FROM practice_table WHERE date BETWEEN :date AND :date + 86400000")
+    LiveData<List<PracticeResult>> getByDate(long date);
 
     @Query("DELETE FROM practice_table")
     void deleteAll();
