@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".activities.settings.FirstEntry">
+    tools:context=".activities.settings.ChangeProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
