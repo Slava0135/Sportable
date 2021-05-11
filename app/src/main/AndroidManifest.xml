@@ -38,17 +38,14 @@
 
         <activity
             android:name=".activities.settings.SettingsActivity"
-            android:label="@string/sett"
             android:theme="@style/Theme.Sportable.NoActionBar" />
 
         <activity
             android:name=".activities.settings.ChangeProfile"
-            android:label="@string/sett"
             android:theme="@style/Theme.Sportable.NoActionBar" />
 
         <activity
             android:name=".activities.settings.FirstEntry"
-            android:label="@string/sett"
             android:theme="@style/Theme.Sportable.NoActionBar" />
 
         <activity
