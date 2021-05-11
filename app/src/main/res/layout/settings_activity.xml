@@ -60,17 +60,5 @@
                     android:onClick="clearStatistics"
                     android:text="@string/clearStatistics" />
 
-                <Button
-                    android:id="@+id/End_button"
-                    style="@style/Text"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="250dp"
-                    android:background="@drawable/ic_rectangle_with_colour"
-                    android:onClick="saveAndQuit"
-                    android:text="@string/saveAndQuit"
-                    android:textColor="#000000" />
-
         </FrameLayout>
 </LinearLayout>
