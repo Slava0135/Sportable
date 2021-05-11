@@ -25,7 +25,7 @@ public class PracticeResultViewModel extends AndroidViewModel {
         return rep.getAllByPractice(practiceType);
     }
 
-    public LiveData<PracticeResult> getByDate(long date) {
+    public LiveData<List<PracticeResult>> getByDate(long date) {
         return rep.getByDate(date);
     }
 

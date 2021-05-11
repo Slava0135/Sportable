@@ -28,7 +28,7 @@ public class PracticeRepository {
         return mPracticeDao.getAllByPractice(practiceType);
     }
 
-    public LiveData<PracticeResult> getByDate(long date) {
+    public LiveData<List<PracticeResult>> getByDate(long date) {
         return mPracticeDao.getByDate(date);
     }
 

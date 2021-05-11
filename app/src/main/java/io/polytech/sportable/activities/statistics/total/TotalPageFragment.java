@@ -36,9 +36,6 @@ public class TotalPageFragment extends Fragment {
         TotalAdapter adapter = new TotalAdapter(view);
 
         mPracticeResultViewModel = new ViewModelProvider(this).get(PracticeResultViewModel.class);
-       /* mPracticeResultViewModel.insert(new PracticeResult(3042021, 100.f, 3.f, 100000, PracticeType.Run));
-        mPracticeResultViewModel.insert(new PracticeResult(2042021, 100.f, 3.f, 100000, PracticeType.Run));
-        mPracticeResultViewModel.insert(new PracticeResult(5042021, 10.f, 52.f, 300000, PracticeType.Walk));*/
         mPracticeResultViewModel.allData.observe(getViewLifecycleOwner(), adapter::setData);
         return view;
     }
