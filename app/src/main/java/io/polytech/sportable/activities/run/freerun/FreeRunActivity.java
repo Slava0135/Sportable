@@ -1,5 +1,6 @@
 package io.polytech.sportable.activities.run.freerun;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,14 +9,17 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 import io.polytech.sportable.activities.run.RunStatActivity;
 import io.polytech.sportable.models.practice.PracticeType;
 import io.polytech.sportable.persistence.PracticeResult;
@@ -33,6 +37,13 @@ public class FreeRunActivity extends AppCompatActivity {
         model = new ViewModelProvider(this).get(RunViewModel.class);
         setContentView(R.layout.activity_free_run);
 
+        ImageView backArrow = findViewById(R.id.goBack);
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
         model.isRunning = true;
 
         model.practiceType = PracticeType.valueOf(((String) getIntent().getExtras().get("activity_type")));
@@ -40,7 +51,8 @@ public class FreeRunActivity extends AppCompatActivity {
         final Button buttonPause = findViewById(R.id.buttonPause);
         buttonPause.setOnClickListener(v -> {
             if (model.isRunning) {
-                buttonPause.setText("continue");
+                Drawable top = getResources().getDrawable(R.drawable.ic_run);
+                buttonPause.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
                 model.isRunning = false;
                 if (model.mBound){
                     model.mService.pause();
@@ -50,7 +62,8 @@ public class FreeRunActivity extends AppCompatActivity {
                 if (model.mBound){
                     model.mService.resume();
                 }
-                buttonPause.setText("pause");
+                Drawable top = getResources().getDrawable(R.drawable.ic_pause);
+                buttonPause.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
             }
         });
 

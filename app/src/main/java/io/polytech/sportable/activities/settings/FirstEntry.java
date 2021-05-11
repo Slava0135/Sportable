@@ -42,11 +42,6 @@ public class FirstEntry extends AppCompatActivity {
         TextView yearView = findViewById(R.id.yearView);
         int year = settings.getInt(ChangeProfile.YEAR, 0);
         yearView.setText(Integer.toString(year));
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
     }
 
     @SuppressLint("SetTextI18n")

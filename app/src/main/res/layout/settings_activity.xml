@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background"
     tools:context=".activities.settings.SettingsActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:gravity="center">
 
-            <ImageView
-                android:id="@+id/settings_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_left_arrow" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_settings_1" />
 
-            <TextView
-                style="@style/Bigger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/appbar_padding"
-                android:text="@string/settings" />
+                <TextView
+                    style="@style/Bigger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/sett" />
         </LinearLayout>
 
-        <Button
-            style="@style/Text"
-            android:id="@+id/changeProfile_button"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_rectangle_without_colour"
-            android:onClick="changeProfile"
-            android:text="@string/changeProfile" />
-
-        <Button
-            style="@style/Text"
-            android:id="@+id/clearStat_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/ic_rectangle_without_colour"
-            android:onClick="clearStatistics"
-            android:text="@string/clearStatistics" />
-    </LinearLayout>
+            android:layout_marginEnd="10dp">
 
+                <Button
+                    android:id="@+id/changeProfile_button"
+                    style="@style/Text"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/ic_rectangle_with_colour"
+                    android:onClick="changeProfile"
+                    android:text="@string/changeProfile"/>
 
-</ScrollView>
+                <Button
+                    android:id="@+id/clearStat_button"
+                    style="@style/Text"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="175dp"
+                    android:background="@drawable/ic_rectangle_with_colour"
+                    android:onClick="clearStatistics"
+                    android:text="@string/clearStatistics" />
+
+        </FrameLayout>
+</LinearLayout>
