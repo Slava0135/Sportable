@@ -128,7 +128,6 @@ public class ChangeProfile extends AppCompatActivity {
 
     public void tryToQuit() {
         if (flag) {
-            Toast.makeText(this, ":^)", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intent);
         }
@@ -138,7 +137,6 @@ public class ChangeProfile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Toast.makeText(this, "Выход...", Toast.LENGTH_SHORT).show();
             Intent intentQuit = new Intent(ChangeProfile.this, SettingsActivity.class);
             startActivity(intentQuit);
             return true;
