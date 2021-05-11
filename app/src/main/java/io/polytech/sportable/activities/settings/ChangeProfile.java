@@ -10,6 +10,7 @@ import android.widget.*;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import io.polytech.sportable.R;
+import io.polytech.sportable.activities.MainActivity;
 
 public class ChangeProfile extends AppCompatActivity {
 
@@ -45,10 +46,12 @@ public class ChangeProfile extends AppCompatActivity {
         int year = settings.getInt(YEAR, 1900);
         yearView.setText(Integer.toString(year));
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ImageView backArrow = findViewById(R.id.stat_back);
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -132,15 +135,5 @@ public class ChangeProfile extends AppCompatActivity {
             startActivity(intent);
         }
         else Toast.makeText(this, "Введены некорректные данные!", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent intentQuit = new Intent(ChangeProfile.this, SettingsActivity.class);
-            startActivity(intentQuit);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
