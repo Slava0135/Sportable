@@ -33,13 +33,15 @@
             android:name=".activities.statistics.StatActivity"
             android:label="@string/title_activity_stat"
             android:theme="@style/Theme.Sportable.NoActionBar" />
-        <activity
-            android:name=".activities.settings.SettingsActivity"
-            android:label="@string/title_activity_settings" />
+
+        <activity android:name=".activities.settings.SettingsActivity" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".activities.settings.ChangeProfile" >
         <intent-filter>
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>

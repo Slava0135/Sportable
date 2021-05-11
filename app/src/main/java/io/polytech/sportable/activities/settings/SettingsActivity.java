@@ -53,23 +53,12 @@ public class SettingsActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void saveAndQuit(View view) {
-        Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
-        startActivity(intentQuit);
-    }
-
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
     }
-
-//    public void mainActivity(View view) {
-//        Intent intentMainActivity =
-//                new Intent(SettingsActivity.this, MainActivity.class);
-//        startActivity(intentMainActivity);
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
