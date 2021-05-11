@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,10 +23,12 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ImageView backArrow = findViewById(R.id.stat_back);
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         deleteStat = new PracticeRepository(getApplication());
     }
@@ -60,13 +63,13 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
-            startActivity(intentQuit);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == android.R.id.home) {
+//            Intent intentQuit = new Intent(SettingsActivity.this, MainActivity.class);
+//            startActivity(intentQuit);
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
