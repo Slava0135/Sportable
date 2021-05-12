@@ -102,7 +102,7 @@ public class PracticeService extends Service {
         return 1000 * distance / timeMillis;
     }
     public float getCalories() {
-        return calories;
+        return calories / 1000;
     }
 
     @Override
