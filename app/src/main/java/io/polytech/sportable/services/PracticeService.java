@@ -119,13 +119,15 @@ public class PracticeService extends Service {
 
         @Override
         public void onLocationChanged(android.location.Location location) {
-            if (mLocation != null) {
-                float dist = mLocation.distanceTo(location);
-                distance += dist;
-                calories += userModel.getCalories(practiceType, timeMillis - lastUpdateTime, dist / (timeMillis - lastUpdateTime), mLocation, location);
+            if (isRunning) {
+                if (mLocation != null) {
+                    float dist = mLocation.distanceTo(location);
+                    distance += dist;
+                    calories += userModel.getCalories(practiceType, timeMillis - lastUpdateTime, dist / (timeMillis - lastUpdateTime), mLocation, location);
+                }
+                lastUpdateTime = timeMillis;
+                mLocation = location;
             }
-            lastUpdateTime = timeMillis;
-            mLocation = location;
         }
     };
 }
