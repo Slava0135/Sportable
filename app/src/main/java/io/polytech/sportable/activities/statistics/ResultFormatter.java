@@ -66,12 +66,9 @@ public class ResultFormatter {
 
     @NotNull
     public String formatDistance(float distance) {
-        return String.format(
-                "%s",
-                String.valueOf(distance).split("\\.")[0]
-        ) + " км. " + format(
-                "%.2s",
-                String.valueOf(distance).split("\\.")[1]
-        ) + " м.";
+        int roundDistance = Math.round(distance);
+        int kilometers = roundDistance / 1000;
+        int meters = roundDistance % 1000;
+        return String.format("%s", kilometers) + " км. " + format("%.3s", meters) + " м.";
     }
 }
