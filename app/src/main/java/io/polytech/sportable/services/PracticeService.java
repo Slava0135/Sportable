@@ -127,6 +127,8 @@ public class PracticeService extends Service {
                 }
                 lastUpdateTime = timeMillis;
                 mLocation = location;
+            } else {
+                mLocation = null;
             }
         }
     };
